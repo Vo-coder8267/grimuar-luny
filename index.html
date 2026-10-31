@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100b18">
+<title>Гримуар Луны — Книга звёздных тайн</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Marcellus&display=swap');
+
+:root {
+  --gold: #d8bd86;
+  --gold-light: #f0dcae;
+  --purple: #a98abf;
+  --text: #e9dfeb;
+  --muted: #b6a6bd;
+  --panel: rgba(28,20,39,.91);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 19px;
+  background:
+    radial-gradient(ellipse at 50% 0%, #49304f 0%, transparent 48%),
+    radial-gradient(ellipse at 10% 80%, #28203e 0%, transparent 40%),
+    linear-gradient(145deg,#100b18,#171020 55%,#090811);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .3;
+  background-image:
+    radial-gradient(#fff 1px, transparent 1px),
+    radial-gradient(#d8bd86 1px, transparent 1px);
+  background-size: 73px 73px, 113px 113px;
+  background-position: 0 0, 30px 40px;
+}
+
+header {
+  text-align: center;
+  padding: 55px 15px 35px;
+}
+
+.moon-symbol {
+  color: var(--gold);
+  font-size: 38px;
+  letter-spacing: 15px;
+  text-shadow: 0 0 20px #d8bd86;
+}
+
+h1 {
+  font-family: 'Marcellus', Georgia, serif;
+  font-size: clamp(38px,7vw,72px);
+  font-weight: normal;
+  color: var(--gold-light);
+  letter-spacing: 5px;
+  margin: 15px 0;
+  text-shadow: 0 0 30px #9c6cae;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 23px;
+  font-style: italic;
+}
+
+header .ornament {
+  color: var(--gold);
+  margin-top: 25px;
+  letter-spacing: 8px;
+}
+
+main {
+  width: min(1100px,92%);
+  margin: auto;
+  position: relative;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid rgba(192,157,198,.45);
+  border-radius: 15px;
+  padding: 28px;
+  margin: 22px 0;
+  box-shadow: 0 12px 40px #0008, inset 0 0 25px #8e65900b;
+}
+
+h2 {
+  font-family: 'Marcellus', Georgia, serif;
+  font-weight: normal;
+  color: var(--gold);
+  font-size: 27px;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.date {
+  text-align: center;
+  color: var(--purple);
+  font-size: 19px;
+  margin-bottom: 15px;
+}
+
+.daily-message {
+  text-align: center;
+  line-height: 1.65;
+  font-size: 23px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.divider {
+  text-align: center;
+  color: var(--gold);
+  letter-spacing: 10px;
+  margin: 22px 0;
+}
+
+.moon-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.moon-emoji {
+  font-size: 65px;
+  color: var(--gold);
+  text-shadow: 0 0 25px #d8bd86;
+}
+
+.moon-info {
+  max-width: 570px;
+  line-height: 1.6;
+}
+
+.moon-name {
+  color: var(--gold-light);
+  font-size: 26px;
+}
+
+.sign-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 13px;
+}
+
+.sign {
+  background: linear-gradient(145deg,#30243c,#1c1527);
+  border: 1px solid #624c70;
+  border-radius: 12px;
+  padding: 18px 8px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.sign:hover, .sign.active {
+  border-color: var(--gold);
+  background: linear-gradient(145deg,#57405d,#30213e);
+  box-shadow: 0 0 20px #c6a06b35;
+  transform: translateY(-3px);
+}
+
+.sign-symbol {
+  display: block;
+  font-size: 35px;
+  color: var(--gold);
+  margin-bottom: 7px;
+}
+
+.sign-dates {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.forecast {
+  text-align: center;
+  line-height: 1.7;
+  font-size: 23px;
+  min-height: 70px;
+}
+
+.selected-sign {
+  color: var(--gold-light);
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.magic-section {
+  text-align: center;
+  line-height: 1.7;
+  font-size: 22px;
+}
+
+.magic-symbol {
+  font-size: 45px;
+  color: var(--gold);
+  margin: 5px;
+}
+
+.action {
+  display: block;
+  margin: 20px auto 0;
+  padding: 12px 25px;
+  color: #f4e9d2;
+  background: linear-gradient(135deg,#61466e,#392843);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.action:hover {
+  background: linear-gradient(135deg,#80618a,#50385c);
+}
+
+footer {
+  text-align: center;
+  padding: 40px 15px;
+  color: #98869f;
+  line-height: 1.8;
+}
+
+@media(max-width:700px) {
+  .sign-grid { grid-template-columns: repeat(3,1fr); }
+  .panel { padding: 20px 14px; }
+  .daily-message,.forecast { font-size: 21px; }
+}
+
+@media(max-width:420px) {
+  .sign-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="moon-symbol">☾ ✦ ☽</div>
+  <h1>Гримуар Луны</h1>
+  <div class="subtitle">Книга звёздных тайн и древней магии</div>
+  <div class="ornament">✧ ━━━━━ ✧ ━━━━━ ✧</div>
+</header>
+
+<main>
+
+<section class="panel">
+  <h2>✧ Послание нового дня ✧</h2>
+  <div class="date" id="today"></div>
+  <div class="daily-message" id="daily"></div>
+  <div class="divider">☽ ✦ ☾</div>
+  <div class="moon-card">
+    <div class="moon-emoji" id="moonEmoji">🌙</div>
+    <div class="moon-info">
+      <div class="moon-name" id="moonName"></div>
+      <div id="moonText"></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>✧ Звёздная книга двенадцати знаков ✧</h2>
+  <p style="text-align:center;color:#b6a6bd">
+    Выбери свой знак, чтобы открыть его сегодняшнее предсказание.
+  </p>
+  <div class="sign-grid" id="signGrid"></div>
+</section>
+
+<section class="panel">
+  <h2>✧ Откровение звёзд ✧</h2>
+  <div class="selected-sign" id="selectedSign">✦ Твой знак ждёт тебя ✦</div>
+  <div class="forecast" id="forecast">
+    Прикоснись к своему знаку зодиака, и гримуар откроет тебе его тайну.
+  </div>
+</section>
+
+<section class="panel">
+  <h2>✧ Магия дня ✧</h2>
+  <div class="magic-symbol">♜</div>
+  <div class="magic-section" id="ritual"></div>
+  <button class="action" onclick="newRitual()">Открыть другой ритуал</button>
+</section>
+
+<section class="panel">
+  <h2>✧ Тайное послание ✧</h2>
+  <div class="magic-symbol">☽</div>
+  <div class="magic-section" id="secret"></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="divider">✧ ☾ ✧</div>
+  ГРИМУАР ЛУНЫ<br>
+  Книга звёздных тайн и ночных откровений<br>
+  Все тексты предназначены для вдохновения и развлечения.
+  <br>© 2026
+</footer>
+
+<script>
+const signs = [
+ {name:"Овен",symbol:"♈",dates:"21 марта — 19 апреля"},
+ {name:"Телец",symbol:"♉",dates:"20 апреля — 20 мая"},
+ {name:"Близнецы",symbol:"♊",dates:"21 мая — 20 июня"},
+ {name:"Рак",symbol:"♋",dates:"21 июня — 22 июля"},
+ {name:"Лев",symbol:"♌",dates:"23 июля — 22 августа"},
+ {name:"Дева",symbol:"♍",dates:"23 августа — 22 сентября"},
+ {name:"Весы",symbol:"♎",dates:"23 сентября — 22 октября"},
+ {name:"Скорпион",symbol:"♏",dates:"23 октября — 21 ноября"},
+ {name:"Стрелец",symbol:"♐",dates:"22 ноября — 21 декабря"},
+ {name:"Козерог",symbol:"♑",dates:"22 декабря — 19 января"},
+ {name:"Водолей",symbol:"♒",dates:"20 января — 18 февраля"},
+ {name:"Рыбы",symbol:"♓",dates:"19 февраля — 20 марта"}
+];
+
+const forecasts = [
+ "Сегодня твоя энергия способна открыть двери, которые раньше казались закрытыми. Не бойся сделать первый шаг, но выбирай направление сердцем.",
+ "Звёзды напоминают: настоящая сила живёт в спокойствии. Удели внимание дому, близким и тому, что приносит тебе чувство устойчивости.",
+ "День может принести интересную мысль или неожиданную встречу. Не отмахивайся от маленьких совпадений — иногда они становятся началом большого пути.",
+ "Твоя чувствительность сегодня станет даром. Прислушайся к интуиции, но не забывай защищать собственные границы.",
+ "Сегодня время проявить себя. Не прячь таланты и не позволяй чужим сомнениям заглушить твой внутренний свет.",
+ "Внимание к мелочам поможет увидеть то, что другие пропускают. Заверши начатое и освободи место для новых возможностей.",
+ "Ищи равновесие между собственными желаниями и ожиданиями окружающих. Не обязательно соглашаться со всеми, чтобы сохранить мир.",
+ "День подходит для глубоких размышлений и честных решений. Отпусти то, что давно перестало приносить тебе пользу.",
+ "Перед тобой может открыться необычный путь. Сохрани любопытство и не бойся учиться новому.",
+ "Терпение сегодня станет твоим главным союзником. Даже маленькое движение вперёд приближает тебя к большой цели.",
+ "Необычная идея может оказаться ценнее привычного плана. Дай воображению свободу и запиши всё, что придёт в голову.",
+ "Твоя душа нуждается в тишине и вдохновении. Не торопись с ответами: иногда мудрость приходит именно в паузе."
+];
+
+const dailyMessages = [
+ "Сегодня вселенная словно приоткрывает тяжёлую завесу. Не ищи ответы во внешнем мире, пока не услышишь собственный голос.",
+ "Даже самая долгая ночь заканчивается рассветом. Не отказывайся от надежды, если путь кажется непростым.",
+ "Всё, что уходит, освобождает место для нового. Не держись за двери, которые судьба уже закрыла.",
+ "Внимательно наблюдай за знаками вокруг. Иногда самое важное послание приходит в самой простой форме.",
+ "Сегодня твоя сила — в выборе. Не позволяй страху решать за тебя.",
+ "Береги свою энергию. Не каждый зов требует ответа и не каждая битва достойна твоего участия.",
+ "Позволь мечтам стать немного смелее. Мир меняется с того момента, когда ты решаешь поверить в возможность."
+];
+
+const rituals = [
+ "Зажги свечу или включи мягкий свет. Сделай три глубоких вдоха. Назови про себя одно желание, которому хочешь посвятить сегодняшний день.",
+ "Возьми лист бумаги и запиши то, от чего хочешь освободиться. Затем сложи лист и убери его подальше. Это символический жест отпускания прошлого.",
+ "Налей стакан чистой воды. Посмотри на её поверхность и подумай о спокойствии, которое хочешь сохранить внутри себя.",
+ "Открой окно и впусти свежий воздух. Представь, как вместе с ним в твою жизнь приходит обновление.",
+ "Перед сном запиши три вещи, за которые благодарна этому дню. Даже маленькие события могут скрывать большое значение."
+];
+
+const secrets = [
+ "Не всякая тень означает опасность. Иногда именно в темноте рождается самый яркий свет.",
+ "Твоя история ещё не завершена. Самые важные страницы могут быть впереди.",
+ "Не сравнивай свой путь с чужим. У каждой души собственное время расцвета.",
+ "То, что ты ищешь, иногда находится ближе, чем кажется. Загляни внутрь себя.",
+ "Смелость — это не отсутствие страха, а способность идти вперёд, несмотря на него.",
+ "Не забывай: ты имеешь право начинать заново столько раз, сколько потребуется."
+];
+
+const date = new Date();
+const dayNumber = Math.floor(Date.UTC(
+ date.getFullYear(),date.getMonth(),date.getDate()
+)/86400000);
+
+function dailyPick(arr,offset=0) {
+ return arr[((dayNumber+offset)%arr.length+arr.length)%arr.length];
+}
+
+document.getElementById("today").textContent =
+ date.toLocaleDateString("ru-RU",{
+  weekday:"long",day:"numeric",month:"long",year:"numeric"
+ });
+
+document.getElementById("daily").textContent = dailyPick(dailyMessages);
+
+const lunarAge = (((date.getTime()-Date.UTC(2000,0,6,18,14))/86400000)
+ %29.530588 +29.530588)%29.530588;
+
+const phases = [
+ ["🌑","Новолуние","Время новых намерений, тишины и внутреннего обновления."],
+ ["🌒","Растущий серп","Период первых шагов, планов и зарождения новых идей."],
+ ["🌓","Первая четверть","Время действовать, преодолевать сомнения и укреплять намерения."],
+ ["🌔","Растущая Луна","Период развития, накопления сил и движения к цели."],
+ ["🌕","Полнолуние","Время ярких эмоций, осознаний и подведения промежуточных итогов."],
+ ["🌖","Убывающая Луна","Период освобождения от лишнего и завершения старых дел."],
+ ["🌗","Последняя четверть","Время переосмысления, очищения пространства и выбора нового пути."],
+ ["🌘","Стареющий серп","Период отдыха, спокойствия и подготовки к новому циклу."]
+];
+
+const phaseIndex = Math.round(lunarAge/29.530588*8)%8;
+document.getElementById("moonEmoji").textContent=phases[phaseIndex][0];
+document.getElementById("moonName").textContent=phases[phaseIndex][1];
+document.getElementById("moonText").textContent=phases[phaseIndex][2];
+
+const grid=document.getElementById("signGrid");
+
+signs.forEach((sign,index)=>{
+ const button=document.createElement("button");
+ button.className="sign";
+ button.innerHTML=
+  '<span class="sign-symbol">'+sign.symbol+'</span>'+
+  sign.name+
+  '<span class="sign-dates">'+sign.dates+'</span>';
+
+ button.addEventListener("click",()=>{
+  document.querySelectorAll(".sign").forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
+  document.getElementById("selectedSign").textContent=
+   sign.symbol+" "+sign.name;
+  document.getElementById("forecast").textContent=
+   forecasts[(index+dayNumber)%forecasts.length];
+ });
+ grid.appendChild(button);
+});
+
+function newRitual(){
+ const index=Math.floor(Math.random()*rituals.length);
+ document.getElementById("ritual").textContent=rituals[index];
+}
+
+document.getElementById("secret").textContent=dailyPick(secrets,3);
+newRitual();
+</script>
+
+</body>
+</html>
