@@ -3,21 +3,37 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Гримуар Луны</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Гримуар Луны — библиотека тайн</title>
 <style>
-:root{--bg:#10152b;--panel:#1b2541;--panel2:#263451;--gold:#d6b66e;--silver:#d8d7e9;--text:#eeeaf5;--muted:#b8bad0;--line:rgba(214,182,110,.3)}
+:root{
+ --bg:#10152b;--panel:#1b2541;--panel2:#263451;
+ --gold:#d6b66e;--silver:#d8d7e9;--text:#eeeaf5;
+ --muted:#b8bad0;--line:rgba(214,182,110,.3);
+}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#263254,#10152b 65%);color:var(--text);font-family:Georgia,"Times New Roman",serif;min-height:100vh}
+body{
+ margin:0;min-height:100vh;color:var(--text);
+ background:radial-gradient(ellipse at top,#263254,#10152b 68%);
+ font-family:Georgia,"Times New Roman",serif;
+}
 button,input,textarea{font:inherit}
 button{cursor:pointer}
 .layout{display:grid;grid-template-columns:245px 1fr;min-height:100vh}
-.sidebar{background:rgba(10,15,32,.96);border-right:1px solid var(--line);padding:25px 15px;position:sticky;top:0;height:100vh;overflow:auto;z-index:10}
+.sidebar{
+ background:rgba(10,15,32,.97);border-right:1px solid var(--line);
+ padding:25px 15px;position:sticky;top:0;height:100vh;
+ overflow:auto;z-index:10
+}
 .brand{text-align:center;color:var(--gold);font-size:23px;line-height:1.4;margin:5px 0 25px}
 .brand small{display:block;color:var(--muted);font-size:12px;letter-spacing:2px}
-.nav button{display:block;width:100%;text-align:left;padding:12px 13px;margin:5px 0;border:1px solid transparent;border-radius:9px;background:transparent;color:#d8d9e9;font-size:15px}
+.nav button{
+ display:block;width:100%;text-align:left;padding:12px 13px;
+ margin:5px 0;border:1px solid transparent;border-radius:9px;
+ background:transparent;color:#d8d9e9;font-size:15px
+}
 .nav button:hover,.nav button.active{background:#263451;border-color:var(--line);color:var(--gold)}
-main{padding:28px;max-width:1500px;width:100%;margin:auto}
+main{padding:28px;max-width:1550px;width:100%;margin:auto}
 .topline{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:25px}
 .topline span{color:var(--muted);font-size:13px}
 .menu-toggle{display:none}
@@ -28,13 +44,19 @@ h1{font-size:clamp(28px,4vw,42px);font-weight:normal;color:var(--gold);margin:12
 h2{font-size:25px;font-weight:normal;color:var(--gold);margin-top:30px}
 h3{color:#e5d6a8;font-size:19px;font-weight:normal}
 p{line-height:1.72;color:#e1dfeb}
-.lead{font-size:18px;color:#d5d5e8;max-width:950px}
+.lead{font-size:18px;color:#d5d5e8;max-width:1000px}
 .muted{color:var(--muted)}
 .eyebrow{color:#aeb9dc;letter-spacing:3px;text-transform:uppercase;font-size:11px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-.card{background:linear-gradient(145deg,rgba(40,53,83,.95),rgba(23,31,55,.96));border:1px solid var(--line);border-radius:14px;padding:19px;margin:12px 0}
+.card{
+ background:linear-gradient(145deg,rgba(40,53,83,.95),rgba(23,31,55,.96));
+ border:1px solid var(--line);border-radius:14px;padding:19px;margin:12px 0
+}
 .card p{margin-bottom:5px}
-.card button,.action{background:#344364;color:#f3e8c9;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:6px 5px 3px 0}
+.card button,.action{
+ background:#344364;color:#f3e8c9;border:1px solid var(--line);
+ border-radius:8px;padding:10px 14px;margin:6px 5px 3px 0
+}
 .card button:hover,.action:hover{background:#4a5273}
 .pill{display:inline-block;color:#d8c28a;border:1px solid var(--line);border-radius:20px;padding:4px 9px;font-size:12px;margin:3px}
 .rule{height:1px;background:var(--line);margin:25px 0}
@@ -42,33 +64,54 @@ p{line-height:1.72;color:#e1dfeb}
 .detail h2{margin-top:0}
 .detail h3{margin-bottom:5px;margin-top:24px}
 .detail p{margin-top:5px}
-.fact{border-left:3px solid var(--gold);padding:10px 15px;background:#222d43;margin:14px 0;color:#e4e0ed;line-height:1.6}
+.fact{border-left:3px solid var(--gold);padding:10px 15px;background:#222d43;margin:14px 0;color:#e4e0ed;line-height:1.7}
 .warning{border-left:3px solid #9e9cc9;padding:10px 15px;background:#252b47;margin:15px 0;color:#d8d9e8;line-height:1.6}
-.item-button{width:100%;text-align:left;background:rgba(28,39,65,.9);color:var(--text);border:1px solid var(--line);padding:14px;border-radius:10px}
-.item-button:hover{background:#354361}
 .symbol{font-size:36px;color:var(--gold);display:block;margin-bottom:8px}
 .zodiac-card{min-height:155px;text-align:center}
 .zodiac-card .symbol{font-size:44px}
 .zodiac-card strong{display:block;color:var(--gold);font-size:19px;margin:5px}
-.zodiac-detail{margin-top:22px}
+.zodiac-card.selected{border-color:#e6c879;box-shadow:0 0 18px #b79b4a55}
 .zodiac-detail h2{font-size:30px}
 .zodiac-detail .intro{font-size:18px;color:#ded8ef}
 ul{color:#e1dfeb;line-height:1.8;padding-left:23px}
 a{color:#d8c28a}
-input,textarea{width:100%;background:#111a30;color:white;border:1px solid var(--line);border-radius:8px;padding:12px;margin:7px 0}
+input,textarea,select{
+ width:100%;background:#111a30;color:white;border:1px solid var(--line);
+ border-radius:8px;padding:12px;margin:7px 0
+}
 textarea{min-height:130px;resize:vertical}
 footer{text-align:center;color:#8f94b3;font-size:12px;padding:35px 0}
-.home-hero{padding:35px 25px;border:1px solid var(--line);border-radius:18px;background:radial-gradient(ellipse at 80% 10%,#45517a,#1b2a4a 48%,#11172d)}
+.home-hero{
+ padding:35px 25px;border:1px solid var(--line);border-radius:18px;
+ background:radial-gradient(ellipse at 80% 10%,#45517a,#1b2a4a 48%,#11172d)
+}
 .home-hero h1{text-align:center}
-.home-hero p{text-align:center;max-width:760px;margin:15px auto}
+.home-hero p{text-align:center;max-width:900px;margin:15px auto}
 .symbol-row{text-align:center;color:#c9c5e8;font-size:23px;letter-spacing:13px;margin:22px}
-.home-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:25px}
-.shortcut{min-height:190px;padding:25px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#293958,#18223d);display:flex;flex-direction:column;justify-content:space-between}
-.shortcut h2{margin:0 0 10px;font-size:24px}
-.shortcut p{margin:5px 0 15px}
-.shortcut button{align-self:flex-start;background:#344364;color:#f3e8c9;border:1px solid var(--line);border-radius:8px;padding:11px 17px}
+.home-block{margin-top:25px}
+.home-block>.card{padding:25px}
+.home-message{text-align:center;padding:28px;background:linear-gradient(145deg,#293958,#18223d)}
+.home-message .message-text{font-size:20px;color:#f0e5c5;max-width:850px;margin:20px auto}
+.weekday{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}
+.weekday button{background:#202d49;color:#e9e3f0;border:1px solid var(--line);padding:9px 12px;border-radius:8px}
+.weekday button.active{background:#655637;color:#fff0c8}
+.forecast-date{color:var(--gold);font-size:14px}
+.item-button{
+ width:100%;text-align:left;background:rgba(28,39,65,.9);
+ color:var(--text);border:1px solid var(--line);padding:14px;border-radius:10px
+}
+.item-button:hover{background:#354361}
+.collection-card{min-height:130px}
+.collection-card h3{margin-top:4px}
 .source-list li{margin-bottom:12px}
-@media(max-width:800px){.layout{display:block}.sidebar{position:fixed;left:-270px;top:0;width:260px;transition:left .25s}.sidebar.open{left:0}.menu-toggle{display:inline-block}main{padding:17px}.topline{align-items:flex-start}.home-shortcuts{grid-template-columns:1fr}}
+@media(max-width:800px){
+ .layout{display:block}
+ .sidebar{position:fixed;left:-270px;top:0;width:260px;transition:left .25s}
+ .sidebar.open{left:0}
+ .menu-toggle{display:inline-block}
+ main{padding:17px}
+ .topline{align-items:flex-start}
+}
 </style>
 </head>
 <body>
@@ -77,13 +120,12 @@ footer{text-align:center;color:#8f94b3;font-size:12px;padding:35px 0}
  <div class="brand">✧ Гримуар Луны ✧<small>БИБЛИОТЕКА ТАЙН</small></div>
  <nav class="nav">
   <button class="active" data-page="home">⌂ Главная</button>
-  <button data-page="revelation">✧ Откровение звёзд</button>
   <button data-page="zodiac">☉ Галерея зодиаков</button>
   <button data-page="moon">☾ Лунный календарь</button>
   <button data-page="history">❖ Древняя астрология</button>
   <button data-page="amulets">♧ Амулеты и обереги</button>
   <button data-page="message">✧ Тайное послание</button>
-  <button data-page="horoscope">☼ Ежедневный гороскоп</button>
+  <button data-page="horoscope">☼ Архив гороскопов</button>
   <button data-page="grimoire">▤ Гримуар</button>
  </nav>
 </aside>
@@ -95,7 +137,7 @@ footer{text-align:center;color:#8f94b3;font-size:12px;padding:35px 0}
  <span id="today"></span>
 </div>
 
-<!-- ГЛАВНАЯ: ТОЛЬКО ДВЕ КАРТОЧКИ -->
+<!-- ГЛАВНАЯ -->
 <section class="page active" id="home">
  <div class="home-hero">
   <div class="eyebrow">Добро пожаловать в хранилище знаний</div>
@@ -104,88 +146,122 @@ footer{text-align:center;color:#8f94b3;font-size:12px;padding:35px 0}
   <p>Книга древних символов, небесных циклов, исторических традиций и личных открытий.</p>
   <p id="homeDate"></p>
  </div>
- <div class="home-shortcuts">
-  <div class="shortcut">
-   <div><div class="symbol">☼</div><h2>Ежедневный гороскоп</h2>
-   <p>Выбери свой знак и открой сегодняшний астрологический прогноз.</p></div>
-   <button data-go="horoscope">Открыть гороскоп ✧</button>
+
+ <div class="home-block">
+  <h2>☼ Ежедневный гороскоп</h2>
+  <p class="lead">Выбери свой знак зодиака, чтобы открыть прогноз на выбранный день недели.</p>
+  <div class="weekday" id="weekDays"></div>
+  <div class="grid" id="homeHoroscopeGrid"></div>
+  <div class="detail" id="homeForecast">
+   <h2>Твой прогноз</h2><p>Выбери знак зодиака.</p>
   </div>
-  <div class="shortcut">
-   <div><div class="symbol">✧</div><h2>Тайное послание дня</h2>
-   <p>Открой символическое послание для размышления и вдохновения.</p></div>
-   <button data-go="message">Открыть послание ✧</button>
+  <div class="warning">Гороскопы относятся к развлекательной традиции астрологии. Они не являются научными предсказаниями и не заменяют самостоятельные решения.</div>
+ </div>
+
+ <div class="home-block">
+  <h2>✧ Тайное послание дня</h2>
+  <div class="card home-message">
+   <div class="symbol-row">☾ ✧ ◈ ✧ ☽</div>
+   <h2 id="homeSecretTitle">Послание дня</h2>
+   <p class="message-text" id="homeSecretText"></p>
+   <p class="muted" id="homeSecretDate"></p>
+  </div>
+ </div>
+
+ <div class="home-block">
+  <h2>Открой страницы гримуара</h2>
+  <div class="grid">
+   <div class="card"><h3>☉ Галерея зодиаков</h3><p>Двенадцать знаков и подробная энциклопедия их символики.</p><button data-go="zodiac">Открыть</button></div>
+   <div class="card"><h3>☾ Лунный календарь</h3><p>Фазы Луны и календарная справка.</p><button data-go="moon">Открыть</button></div>
+   <div class="card"><h3>❖ Древняя астрология</h3><p>История небесных традиций разных народов.</p><button data-go="history">Открыть</button></div>
+   <div class="card"><h3>♧ Амулеты и обереги</h3><p>Предметы, символы и защитные традиции.</p><button data-go="amulets">Открыть</button></div>
+   <div class="card"><h3>▤ Гримуар</h3><p>Личные записи и наблюдения.</p><button data-go="grimoire">Открыть</button></div>
   </div>
  </div>
 </section>
 
-<section class="page" id="history">
- <div class="eyebrow">Историческая библиотека</div>
- <h1>Древняя астрология и небесные традиции</h1>
- <p class="lead">От Вавилона и Египта до древних народов Восточной Европы, Поволжья, Урала, Сибири и Кавказа. Здесь собраны сведения о том, как разные общества наблюдали за небом, измеряли время и представляли устройство мира.</p>
- <div class="warning">Не все древние культуры использовали астрологию в современном смысле. У многих народов существовали собственные календари, мифы о небесных светилах, сезонные обряды и системы ориентирования по звёздам. Мы не будем искусственно превращать их в западный зодиак.</div>
- <div class="grid" id="historyCards"></div>
- <div class="detail" id="historyDetail"><p class="muted">Выбери историческую традицию, чтобы открыть подробную главу.</p></div>
-</section>
-
-<section class="page" id="amulets">
- <div class="eyebrow">Предметы веры и повседневной жизни</div>
- <h1>Амулеты и обереги</h1>
- <p class="lead">Историческая коллекция защитных предметов, украшений и символов разных культур.</p>
- <div class="warning">Не каждый древний предмет был амулетом. Если защитная функция не подтверждена, она обозначается как возможная интерпретация, а не установленный факт.</div>
- <div class="grid" id="amuletCards"></div>
- <div class="detail" id="amuletDetail"><p class="muted">Выбери предмет из коллекции.</p></div>
-</section>
-
+<!-- ГАЛЕРЕЯ ЗОДИАКОВ -->
 <section class="page" id="zodiac">
  <div class="eyebrow">Двенадцать небесных образов</div>
  <h1>Галерея зодиаков</h1>
- <p class="lead">Подробная энциклопедия двенадцати знаков. Каждая карточка открывает отдельную главу о темпераменте, характере, эмоциях, отношениях, дружбе, способностях и мифологии.</p>
- <div class="warning">Описания относятся к традиционной западной астрологической символике. Это культурная система представлений, а не научно подтверждённый способ определить личность человека.</div>
+ <p class="lead">Энциклопедия двенадцати знаков зодиака: характер, темперамент, эмоции, отношения, дружба, способности, мифология и совместимость.</p>
+ <div class="warning">Описания отражают традиционную западную астрологическую символику и культурные представления. Они не являются научно подтверждёнными характеристиками личности.</div>
  <div class="grid" id="zodiacGrid"></div>
  <div class="detail zodiac-detail" id="zodiacDetail"><h2>Выбери знак зодиака</h2><p>Нажми на карточку, чтобы прочитать подробную характеристику.</p></div>
 </section>
 
+<!-- ЛУННЫЙ КАЛЕНДАРЬ -->
 <section class="page" id="moon">
  <div class="eyebrow">Небесный календарь</div><h1>Лунный календарь</h1>
  <p class="lead">Наблюдение за лунным циклом и его основными фазами.</p>
  <div class="grid">
-  <div class="card"><h3>☾ Луна сегодня</h3><div class="symbol" id="moonSymbol">◐</div><h2 id="moonPhase">Фаза Луны</h2><p id="moonAge"></p><p id="moonIllum"></p></div>
+  <div class="card"><h3>☾ Луна</h3><div class="symbol" id="moonSymbol">◐</div><h2 id="moonPhase">Фаза Луны</h2><p id="moonAge"></p><p id="moonIllum"></p></div>
   <div class="card"><h3>Календарная дата</h3><input type="date" id="moonDate"><p id="moonInfo"></p></div>
  </div>
  <h2>Основные фазы</h2>
  <div class="grid">
   <div class="card"><h3>● Новолуние</h3><p>Луна находится примерно между Землёй и Солнцем, её освещённая сторона почти не видна с Земли.</p></div>
   <div class="card"><h3>◐ Первая четверть</h3><p>Видна примерно половина освещённого диска Луны.</p></div>
-  <div class="card"><h3>○ Полнолуние</h3><p>Освещённая сторона Луны обращена к Земле.</p></div>
+  <div class="card"><h3>○ Полнолуние</h3><p>Освещённая сторона обращена к Земле.</p></div>
   <div class="card"><h3>◑ Последняя четверть</h3><p>Освещённая видимая часть снова уменьшается.</p></div>
  </div>
- <div class="warning">Фаза и освещённость рассчитываются приблизительно. Это не точные эфемериды. Восход, заход, точные моменты фаз и лунные сутки пока не вычисляются.</div>
+ <div class="warning">Фаза и освещённость здесь рассчитываются приблизительно по синодическому месяцу. Это не точные эфемериды. Восход, заход и точные моменты фаз пока не вычисляются.</div>
 </section>
 
-<section class="page" id="revelation">
- <div class="eyebrow">Звёздные врата</div><h1>Откровение звёзд</h1>
- <p class="lead">Выбери знак, чтобы перейти к его подробной характеристике.</p>
- <div class="grid" id="revelationGrid"></div>
+<!-- ДРЕВНЯЯ АСТРОЛОГИЯ -->
+<section class="page" id="history">
+ <div class="eyebrow">Историческая библиотека</div>
+ <h1>Древняя астрология и небесные традиции</h1>
+ <p class="lead">От Вавилона и Египта до народов Восточной Европы, Поволжья, Урала, Сибири и Кавказа. История того, как люди наблюдали за небом, измеряли время и представляли устройство мира.</p>
+ <div class="warning">Не все культуры использовали астрологию в современном смысле. У многих существовали собственные календари, мифы о небесных светилах, сезонные обряды и способы ориентирования по звёздам. Мы не будем искусственно превращать их в западный зодиак.</div>
+ <div class="grid" id="historyCards"></div>
+ <div class="detail" id="historyDetail"><p class="muted">Выбери историческую традицию, чтобы открыть подробную главу.</p></div>
+ <h2>Источники для дальнейшего изучения</h2>
+ <ul class="source-list">
+  <li><a href="https://www.britishmuseum.org/" target="_blank" rel="noopener">British Museum</a> — археологические коллекции и материалы по истории древних культур.</li>
+  <li><a href="https://www.metmuseum.org/" target="_blank" rel="noopener">The Metropolitan Museum of Art</a> — египетские, ближневосточные и античные предметы.</li>
+  <li><a href="https://www.ucl.ac.uk/museums-static/digitalegypt/" target="_blank" rel="noopener">UCL Digital Egypt</a> — материалы по истории и культуре Древнего Египта.</li>
+  <li><a href="https://www.babylonian-collection.org/" target="_blank" rel="noopener">Babylonian Collection</a> — материалы для изучения клинописной традиции.</li>
+ </ul>
 </section>
 
+<!-- АМУЛЕТЫ -->
+<section class="page" id="amulets">
+ <div class="eyebrow">Предметы веры и повседневной жизни</div>
+ <h1>Амулеты и обереги</h1>
+ <p class="lead">Историческая коллекция защитных предметов, украшений, печатей и символов разных культур.</p>
+ <div class="warning">Защитные свойства описываются как верования людей соответствующей эпохи, а не как доказанное действие предметов. Не каждый древний предмет был амулетом: назначение определяется по контексту находки и письменным свидетельствам.</div>
+ <div class="grid" id="amuletCards"></div>
+ <div class="detail" id="amuletDetail"><p class="muted">Выбери предмет из коллекции.</p></div>
+</section>
+
+<!-- ТАЙНОЕ ПОСЛАНИЕ: АРХИВ -->
 <section class="page" id="message">
- <div class="eyebrow">Зал древних печатей</div><h1>Тайное послание дня</h1>
- <div class="home-hero">
+ <div class="eyebrow">Зал древних печатей</div><h1>Тайное послание</h1>
+ <p class="lead">Здесь можно посмотреть сегодняшнее послание и историю ранее показанных текстов.</p>
+ <div class="card home-message">
   <div class="symbol-row">☾ ✧ ◈ ✧ ☽</div>
-  <h2 id="secretTitle">Послание дня</h2><p id="secretText" class="lead"></p>
-  <button class="action" id="newMessage">Открыть другое послание</button>
+  <h2 id="archiveSecretTitle"></h2>
+  <p class="message-text" id="archiveSecretText"></p>
+  <p class="muted" id="archiveSecretDate"></p>
  </div>
- <p class="muted">Символические тексты для размышления и вдохновения, а не предсказания будущего.</p>
+ <h2>История посланий</h2>
+ <div id="messageHistory"></div>
+ <p class="muted">Послания — символические тексты для размышления и вдохновения, а не предсказания будущего.</p>
 </section>
 
+<!-- АРХИВ ГОРОСКОПОВ -->
 <section class="page" id="horoscope">
- <div class="eyebrow">Астрологическая страница</div><h1>Ежедневный гороскоп</h1>
- <p class="lead">Выбери знак и открой прогноз на сегодняшний день.</p>
- <div class="grid" id="horoscopeGrid"></div>
- <div class="detail" id="horoscopeDetail"><h2>Твой прогноз</h2><p>Выбери знак зодиака.</p></div>
- <div class="warning">Гороскопы — развлекательные тексты в традиции популярной астрологии, не научный прогноз и не руководство для важных решений.</div>
+ <div class="eyebrow">Календарь прогнозов</div>
+ <h1>Архив гороскопов</h1>
+ <p class="lead">Выбери дату недели и знак, чтобы прочитать прогноз. На главной странице всегда отображается текущий день.</p>
+ <div class="weekday" id="archiveWeekDays"></div>
+ <div class="grid" id="archiveHoroscopeGrid"></div>
+ <div class="detail" id="archiveForecast"><h2>Твой прогноз</h2><p>Выбери знак.</p></div>
+ <div class="warning">Астрологические прогнозы являются развлекательными текстами, а не научными предсказаниями.</div>
 </section>
 
+<!-- ЛИЧНЫЙ ГРИМУАР -->
 <section class="page" id="grimoire">
  <div class="eyebrow">Личные записи</div><h1>Гримуар</h1>
  <p class="lead">Сохраняй заметки, наблюдения, идеи и найденные сведения.</p>
@@ -197,6 +273,7 @@ footer{text-align:center;color:#8f94b3;font-size:12px;padding:35px 0}
  <h2>Мои записи</h2><div id="notes"></div>
  <div class="warning">Записи хранятся только в локальном хранилище этого браузера. Синхронизации с другими устройствами нет.</div>
 </section>
+
 <footer>✧ Гримуар Луны · История, символы и личные записи ✧</footer>
 </main>
 </div>
@@ -204,441 +281,636 @@ footer{text-align:center;color:#8f94b3;font-size:12px;padding:35px 0}
 <script>
 const $=id=>document.getElementById(id);
 const today=new Date();
-$('today').textContent=today.toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'});
+const dateKey=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const fmt=d=>d.toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'});
+const dayNames=['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'];
+const weekdayIndex=d=>(d.getDay()+6)%7;
+$('today').textContent=fmt(today);
 $('homeDate').textContent=today.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+
 function go(page){
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
  $(page).classList.add('active');
  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
- $('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'});
+ $('sidebar').classList.remove('open');
+ window.scrollTo({top:0,behavior:'smooth'});
 }
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
 $('menuToggle').onclick=()=>$('sidebar').classList.toggle('open');
 
+/* ЗНАКИ ЗОДИАКА */
+const signs=[
+{ name:'Овен',symbol:'♈',dates:'21 марта — 19 апреля',element:'Огонь',planet:'Марс',mode:'Кардинальный',
+ intro:'Овен в традиционной астрологии символизирует начало зодиакального круга, импульс жизни, движение и смелость первого шага.',
+ character:'Овна обычно описывают как прямого, энергичного и инициативного человека. Ему важно чувствовать движение, самостоятельно выбирать направление и видеть результат своих действий. Он чаще предпочитает ясность намёкам и способен быстро включаться в новое дело.',
+ emotional:'Эмоции могут проявляться открыто и быстро. Радость, раздражение и воодушевление редко остаются незаметными. Внутренняя задача — научиться давать себе паузу между сильным чувством и поступком.',
+ strengths:'Смелость, решительность, инициативность, самостоятельность, способность вдохновлять других и начинать сложные проекты.',
+ weaknesses:'Нетерпение, импульсивность, резкость в словах, склонность торопить события и быстро терять интерес к долгому ожиданию.',
+ love:'В романтических отношениях ценит искренность, живой интерес, движение и взаимное уважение. Может проявлять чувства прямо и страстно. Важно учиться слышать партнёра и не превращать разногласия в соревнование.',
+ friendship:'Часто выступает инициатором встреч и совместных приключений. Ценит честность, верность и людей, которые не боятся собственного мнения. Не любит затяжные недомолвки.',
+ work:'Традиционно связывается с начинаниями, управлением, спортом, предпринимательством и деятельностью, где важны скорость реакции и личная ответственность. В обращении с деньгами полезны планирование и пауза перед спонтанными покупками.',
+ compatibility:'В астрологических традициях часто отмечают динамику с Львом и Стрельцом, интеллектуальный интерес с Близнецами и Водолеем. С Раком, Козерогом и Весами возможны различия в темпе и способе принимать решения. Совместимость зависит не только от солнечного знака.',
+ myth:'Овен связан с образом барана и мифом о золотом руне. В греческом мифологическом цикле золотой баран спас Фрикса и Геллу; его руно стало предметом похода аргонавтов. Знак открывает тропический зодиак.'},
+{ name:'Телец',symbol:'♉',dates:'20 апреля — 20 мая',element:'Земля',planet:'Венера',mode:'Фиксированный',
+ intro:'Телец символизирует устойчивость, плодородие, материальный мир, чувственное восприятие и способность сохранять созданное.',
+ character:'Тельца традиционно описывают как основательного, терпеливого и последовательного. Он ценит надёжность, комфорт и понятные договорённости. Часто предпочитает постепенно укреплять положение, а не рисковать ради мгновенного результата.',
+ emotional:'Чувства могут быть глубокими и устойчивыми, хотя раскрываются не сразу. Безопасность и доверие помогают Тельцу чувствовать себя спокойно. Перемены иногда требуют времени на внутреннее принятие.',
+ strengths:'Терпение, верность, практичность, выдержка, надёжность, умение ценить красоту и доводить начатое до результата.',
+ weaknesses:'Упрямство, сопротивление переменам, собственнические реакции, чрезмерная привязанность к привычному комфорту.',
+ love:'В любви важны постоянство, телесная нежность, доверие и забота в повседневных мелочах. Тельцу обычно близки отношения, в которых слова подтверждаются поступками.',
+ friendship:'Ценит проверенных временем друзей. Может быть спокойной опорой, умеет хранить секреты и поддерживать делом. Не всегда быстро принимает новых людей.',
+ work:'Связывается с финансами, ремеслом, дизайном, землёй, природой, кулинарией и другими практическими областями. Сильная сторона — последовательное накопление опыта и ресурсов.',
+ compatibility:'Традиционно гармоничными считают сочетания с Девой и Козерогом; эмоциональную глубину может давать Рак или Рыбы. С Львом, Водолеем и Скорпионом возможны столкновения из-за упрямства и разных потребностей.',
+ myth:'Образ быка встречается в мифологиях многих народов. В греческой традиции с Тельцом связывают превращение Зевса в быка и историю Европы. Символика быка также связана с плодородием и силой.'},
+{ name:'Близнецы',symbol:'♊',dates:'21 мая — 20 июня',element:'Воздух',planet:'Меркурий',mode:'Мутабельный',
+ intro:'Близнецы символизируют обмен знаниями, речь, любознательность, движение идей и способность видеть ситуацию с разных сторон.',
+ character:'Близнецов описывают как подвижных, наблюдательных и общительных. Им интересно узнавать новое, сопоставлять мнения и связывать людей. Они могут быстро переключаться между темами и увлекаться сразу несколькими занятиями.',
+ emotional:'Эмоции часто проходят через осмысление и разговор. Возможность назвать чувство словами помогает разобраться в себе. При перегрузке впечатлениями может появляться беспокойство и рассеянность.',
+ strengths:'Любознательность, гибкость мышления, чувство юмора, коммуникабельность, обучаемость и умение находить неожиданные решения.',
+ weaknesses:'Непостоянство, рассеянность, нервное напряжение, поверхностность при избытке интересов и трудность с завершением однообразных дел.',
+ love:'В отношениях важны разговор, интеллектуальная близость, юмор и свобода быть собой. Рутина может утомлять, поэтому помогают общие открытия и новые впечатления.',
+ friendship:'Легко знакомится и поддерживает широкий круг общения. Любит обмен новостями, идеями и шутками. Особенно ценит друзей, с которыми можно говорить обо всём.',
+ work:'Связывается с обучением, письмом, языками, журналистикой, торговлей, посредничеством и информационными профессиями. Полезно развивать концентрацию и доводить проекты до конца.',
+ compatibility:'Часто выделяют воздушные знаки Весы и Водолей, а также огненные Овен и Лев. С Девой, Рыбами и Стрельцом могут возникать различия в темпе, глубине и потребности в определённости.',
+ myth:'Близнецы связаны с Диоскурами — Кастором и Поллуксом. В мифе братья были неразлучны, а история их связи стала символом братства и двойственности.'},
+{ name:'Рак',symbol:'♋',dates:'21 июня — 22 июля',element:'Вода',planet:'Луна',mode:'Кардинальный',
+ intro:'Рак символизирует дом, память, родственные связи, заботу, внутренний мир и эмоциональную восприимчивость.',
+ character:'Рака часто описывают как внимательного, чуткого и привязанного к близким. Он ценит чувство принадлежности, личное пространство и эмоциональную безопасность. Может долго помнить важные слова и поступки.',
+ emotional:'Эмоциональный мир образный и глубокий. Настроение может зависеть от атмосферы и отношений с окружающими. Для восстановления сил важны тишина, доверие и возможность побыть в безопасном пространстве.',
+ strengths:'Сочувствие, заботливость, интуитивность, преданность, память, умение поддерживать и создавать уют.',
+ weaknesses:'Обидчивость, замкнутость при переживаниях, тревожность, склонность держаться за прошлое и принимать чужие слова слишком близко к сердцу.',
+ love:'В романтической сфере важны душевная близость, нежность, верность и ощущение общего дома. Раку бывает трудно открываться без доверия, но при взаимности он ценит глубокую связь.',
+ friendship:'Предпочитает близкий круг, где можно быть настоящим. Хорошо замечает перемены в настроении друзей и часто поддерживает их заботой.',
+ work:'Связывается с заботой, гостеприимством, историей, психологией, питанием, недвижимостью и семейными проектами. Комфортная атмосфера помогает раскрывать способности.',
+ compatibility:'Традиционно отмечают эмоциональную близость со Скорпионом и Рыбами, а также устойчивость с Тельцом. С Овном, Весами и Козерогом могут различаться способы выражать чувства и строить безопасность.',
+ myth:'Название связано с раком из мифа о подвиге Геракла. Существо было послано на помощь Гидре и стало частью небесного образа в греческой традиции.'},
+{ name:'Лев',symbol:'♌',dates:'23 июля — 22 августа',element:'Огонь',planet:'Солнце',mode:'Фиксированный',
+ intro:'Лев символизирует жизненную силу, творчество, достоинство, щедрость и стремление выразить свою индивидуальность.',
+ character:'Льва описывают как яркого, великодушного и гордого. Ему важно чувствовать, что его усилия замечают и ценят. Часто стремится вдохновлять, защищать близких и вкладывать сердце в любимое дело.',
+ emotional:'Чувства могут быть тёплыми и выразительными. Похвала и признание поддерживают уверенность, а равнодушие или унижение переживаются болезненно. Важно не связывать собственную ценность только с одобрением.',
+ strengths:'Щедрость, смелость, творческое начало, верность, лидерские качества, способность поддерживать и вдохновлять.',
+ weaknesses:'Гордость, потребность во внимании, драматизация, уязвимость к критике и желание контролировать ситуацию.',
+ love:'В любви ценит преданность, романтику, щедрые жесты и взаимное восхищение. Хочет быть значимым для партнёра и сам готов вкладывать много тепла.',
+ friendship:'Может быть душой компании и защитником друзей. Ценит верность, открытость и совместные яркие события. Не любит предательства и скрытого соперничества.',
+ work:'Связывается с творчеством, руководством, сценой, преподаванием, организацией событий и проектами, где можно проявить личный стиль. Полезно сочетать амбиции с командной работой.',
+ compatibility:'Часто выделяют огненные Овен и Стрелец, а также воздушные Близнецы и Весы. С Тельцом, Скорпионом и Водолеем могут возникать споры о признании, свободе и контроле.',
+ myth:'Лев связан с Немейским львом, которого победил Геракл. В мифе его шкура была неуязвима для обычного оружия, а сам образ стал символом силы.'},
+{ name:'Дева',symbol:'♍',dates:'23 августа — 22 сентября',element:'Земля',planet:'Меркурий',mode:'Мутабельный',
+ intro:'Дева символизирует анализ, мастерство, внимание к деталям, служение делу и стремление улучшать окружающий мир.',
+ character:'Деву традиционно описывают как наблюдательную, рассудительную и практичную. Она замечает мелочи, умеет систематизировать информацию и предпочитает полезные действия пустым обещаниям.',
+ emotional:'Чувства могут выражаться через заботу, помощь и конкретные поступки. Иногда внутреннее переживание превращается в анализ и самокритику. Важно позволять себе несовершенство.',
+ strengths:'Внимательность, ответственность, аналитический ум, аккуратность, надёжность, трудолюбие и способность помогать.',
+ weaknesses:'Перфекционизм, тревожность, чрезмерная критичность, трудность расслабиться и желание всё предусмотреть.',
+ love:'В отношениях ценит уважение, честность и повседневную заботу. Может не сразу говорить о чувствах, предпочитая подтверждать их поступками. Важно не превращать отношения в список требований.',
+ friendship:'Надёжна в практической помощи и умеет помнить детали жизни друзей. Может давать полезные советы, но ей стоит учитывать, что иногда человеку нужно просто сочувствие.',
+ work:'Связывается с аналитикой, медициной как культурным символом служения, редактурой, исследованиями, ремеслом, учётом и организацией процессов. Сильна там, где важны качество и точность.',
+ compatibility:'Часто отмечают сочетания с Тельцом и Козерогом, а также эмоциональную поддержку Рака. С Близнецами, Стрельцом и Рыбами могут различаться подходы к порядку и спонтанности.',
+ myth:'Дева в античной традиции связывалась с разными женскими фигурами, в том числе с Астреей и Деметрой. Образ часто трактовали как символ урожая, чистоты и порядка.'},
+{ name:'Весы',symbol:'♎',dates:'23 сентября — 22 октября',element:'Воздух',planet:'Венера',mode:'Кардинальный',
+ intro:'Весы символизируют равновесие, справедливость, договорённость, красоту и искусство взаимодействия.',
+ character:'Весов описывают как дипломатичных, восприимчивых к эстетике и ориентированных на сотрудничество. Они умеют видеть разные стороны вопроса и стремятся к справедливому решению.',
+ emotional:'Внутреннее равновесие тесно связано с атмосферой отношений. Конфликт может переживаться тяжело, поэтому иногда появляется желание сгладить острые углы даже ценой собственных потребностей.',
+ strengths:'Дипломатичность, чувство меры, обаяние, справедливость, умение договариваться и видеть альтернативы.',
+ weaknesses:'Нерешительность, зависимость от чужой оценки, избегание конфликтов и склонность откладывать выбор.',
+ love:'В любви важны уважение, взаимность, романтика и партнёрство. Весам обычно важно ощущать, что решения принимаются вместе и оба человека услышаны.',
+ friendship:'Ценят приятное общение, тактичность и взаимную поддержку. Часто умеют примирять людей и создавать атмосферу, в которой комфортно разным характерам.',
+ work:'Связываются с искусством, дизайном, правом, переговорами, дипломатией, консультированием и совместными проектами. Полезно учиться принимать решения без бесконечного сравнения вариантов.',
+ compatibility:'Традиционно выделяют Близнецов и Водолея, а также огненных Льва и Стрельца. С Раком, Козерогом и Овном могут различаться способы решать конфликты и распределять инициативу.',
+ myth:'Весы — единственный неодушевлённый предмет среди двенадцати знаков. Их связывают с идеей меры и правосудия; в античной символике весы ассоциировались с порядком и справедливостью.'},
+{ name:'Скорпион',symbol:'♏',dates:'23 октября — 21 ноября',element:'Вода',planet:'Плутон в современной традиции; Марс в классической',mode:'Фиксированный',
+ intro:'Скорпион символизирует глубину, преобразование, тайну, внутреннюю силу и способность проходить через кризисы.',
+ character:'Скорпиона часто описывают как проницательного, волевого и скрытного. Он предпочитает доверять не сразу, зато ценит глубокие связи и искренность. Его привлекают темы, которые требуют исследования и смелости.',
+ emotional:'Эмоции могут быть интенсивными и долго сохраняться внутри. Доверие имеет большое значение. Важная внутренняя задача — не позволять страху потери превращаться в контроль.',
+ strengths:'Выдержка, решительность, наблюдательность, преданность, способность к глубокому исследованию и восстановлению после трудностей.',
+ weaknesses:'Подозрительность, ревность, крайности, скрытая обида и склонность долго помнить болезненные события.',
+ love:'В отношениях ищет глубину, честность и эмоциональную преданность. Поверхностность может отталкивать. Важно сохранять личные границы и не проверять любовь через испытания.',
+ friendship:'Предпочитает небольшой круг близких людей. Верность и доверие важнее популярности. Может быть надёжным хранителем чужих секретов.',
+ work:'Связывается с исследованиями, психологией, финансами, кризисным управлением, медициной, расследованиями и аналитикой. Умеет сосредоточиваться на сложных задачах.',
+ compatibility:'Часто выделяют Рака и Рыб, а также земные Деву и Козерога. С Львом, Водолеем и Тельцом могут возникать сильное притяжение и борьба за контроль.',
+ myth:'Скорпион связан с мифом об Орионе. В разных версиях мифа скорпион был послан, чтобы остановить великана-охотника; оба образа оказались на небесах.'},
+{ name:'Стрелец',symbol:'♐',dates:'22 ноября — 21 декабря',element:'Огонь',planet:'Юпитер',mode:'Мутабельный',
+ intro:'Стрелец символизирует поиск смысла, путешествие, расширение горизонтов, обучение и стремление к свободе.',
+ character:'Стрельца описывают как открытого, независимого и увлечённого поиском новых возможностей. Он любит идеи, путешествия и разговоры о больших вопросах. Часто вдохновляется перспективой и не любит ощущать себя ограниченным.',
+ emotional:'Оптимизм помогает переживать трудности, но иногда за внешней лёгкостью скрывается беспокойство о будущем. Пространство и возможность двигаться вперёд помогают восстановить силы.',
+ strengths:'Оптимизм, щедрость, любознательность, чувство юмора, смелость исследовать новое и способность вдохновлять.',
+ weaknesses:'Прямолинейность, нетерпение к ограничениям, обещания с избытком энтузиазма и недооценка деталей.',
+ love:'Ценит честность, дружбу внутри пары, общие интересы и свободу развития. Важны отношения, в которых можно расти и открывать мир вместе.',
+ friendship:'Любит активных друзей, путешествия и новые впечатления. Часто поддерживает окружающих идеями и оптимизмом, но может быть слишком прямым.',
+ work:'Связывается с образованием, языками, путешествиями, издательским делом, философией, правом и международными проектами. Важно соединять масштабное видение с практическими шагами.',
+ compatibility:'Часто отмечают Овна и Льва, а также воздушных Близнецов и Водолея. С Девой, Рыбами и Близнецами могут различаться представления о планировании и обязательствах.',
+ myth:'Стрелец часто изображается кентавром с луком. Его связывают с образом мудрого кентавра Хирона, хотя в античных источниках отождествление созвездия и мифологического персонажа неоднозначно.'},
+{ name:'Козерог',symbol:'♑',dates:'22 декабря — 19 января',element:'Земля',planet:'Сатурн',mode:'Кардинальный',
+ intro:'Козерог символизирует время, ответственность, структуру, зрелость и постепенное достижение цели.',
+ character:'Козерога описывают как собранного, выдержанного и целеустремлённого. Он умеет работать на перспективу и ценит надёжность. Часто предпочитает сначала выполнить обязательства, а потом отдыхать.',
+ emotional:'Чувства могут быть сдержанными, особенно в незнакомой обстановке. Доверие раскрывается постепенно. Иногда трудно позволить себе слабость или попросить о помощи.',
+ strengths:'Ответственность, дисциплина, терпение, стратегическое мышление, верность обязательствам и способность преодолевать препятствия.',
+ weaknesses:'Излишняя строгость к себе, пессимизм, трудоголизм, эмоциональная закрытость и страх потерять контроль.',
+ love:'Ценит серьёзность намерений, надёжность и уважение. Может выражать любовь через поддержку, ответственность и конкретные действия. Важно не забывать о нежности и спонтанности.',
+ friendship:'Не всегда стремится к большому кругу общения, но дорожит проверенными людьми. Его дружба часто проявляется в верности и готовности помочь в трудный момент.',
+ work:'Связывается с управлением, строительством, финансами, наукой, организацией и долгосрочными проектами. Сильная сторона — способность строить устойчивые системы.',
+ compatibility:'Традиционно отмечают Тельца и Деву, а также эмоциональную поддержку Рыб и Скорпиона. С Овном, Весами и Раком могут различаться подходы к ответственности и чувствам.',
+ myth:'Козерог изображается как морское козлоподобное существо. В античной традиции его связывали с Паном и мифами о превращении божества в существо, способное жить и на земле, и в воде.'},
+{ name:'Водолей',symbol:'♒',dates:'20 января — 18 февраля',element:'Воздух',planet:'Уран в современной традиции; Сатурн в классической',mode:'Фиксированный',
+ intro:'Водолей символизирует идеи, общество, свободу мысли, реформы, дружбу и стремление представить будущее иначе.',
+ character:'Водолея традиционно описывают как независимого, оригинального и интеллектуально любознательного. Он ценит право на собственное мнение и может интересоваться необычными идеями и общественными переменами.',
+ emotional:'Чувства иногда выражаются через мысли, дружбу и помощь сообществу. Внешняя отстранённость не обязательно означает отсутствие переживаний. Важно учиться говорить о личных потребностях.',
+ strengths:'Независимость, оригинальность, гуманность, изобретательность, широкий кругозор и способность мыслить нестандартно.',
+ weaknesses:'Упрямство, эмоциональная дистанция, непредсказуемость, сопротивление ограничениям и чрезмерная приверженность собственным идеям.',
+ love:'Ценит дружбу, интеллектуальное равенство и уважение к личному пространству. Ему важно, чтобы партнёр видел в нём самостоятельную личность.',
+ friendship:'Часто интересуется людьми с разными взглядами и объединяется вокруг идей. Может поддерживать друзей нестандартными решениями и честным разговором.',
+ work:'Связывается с технологиями, наукой, общественными проектами, образованием, инженерией и новаторскими направлениями. Лучше раскрывается там, где можно предлагать улучшения.',
+ compatibility:'Часто выделяют Близнецов и Весы, а также огненных Овна и Стрельца. С Тельцом, Львом и Скорпионом могут возникать споры о свободе и устойчивости.',
+ myth:'Образ Водолея связывают с Ганимедом — юношей, ставшим в мифе виночерпием богов, а также с древними образами носителя воды. Символика созвездия старше современных трактовок знака.'},
+{ name:'Рыбы',symbol:'♓',dates:'19 февраля — 20 марта',element:'Вода',planet:'Нептун в современной традиции; Юпитер в классической',mode:'Мутабельный',
+ intro:'Рыбы символизируют воображение, сострадание, духовный поиск, завершение цикла и связь видимого с невидимым.',
+ character:'Рыб описывают как восприимчивых, мечтательных и чутких. Они могут тонко улавливать атмосферу, сопереживать и находить вдохновение в искусстве, музыке и образах.',
+ emotional:'Эмоциональный мир богатый и восприимчивый. Чужие переживания могут ощущаться очень близко. Важно отличать собственные чувства от настроения окружающих и сохранять личные границы.',
+ strengths:'Сочувствие, воображение, интуитивность, творческое мышление, мягкость и способность поддерживать.',
+ weaknesses:'Уход от неприятной реальности, идеализация, размытые границы, нерешительность и склонность откладывать трудные разговоры.',
+ love:'Ценит нежность, эмоциональную близость, романтику и ощущение духовного родства. Важно сохранять реалистичный взгляд и не растворяться полностью в партнёре.',
+ friendship:'Умеет выслушивать и сопереживать. Часто ценит доверительные разговоры и дружбу без осуждения. Ей полезно помнить и о собственных потребностях.',
+ work:'Связывается с искусством, музыкой, литературой, помогающими профессиями, исследованием образов и творческими задачами. Полезно соединять вдохновение с ясным расписанием.',
+ compatibility:'Часто выделяют Рака и Скорпиона, а также земных Тельца и Козерога. С Близнецами, Стрельцом и Девой могут различаться способы воспринимать мир и решать практические вопросы.',
+ myth:'Рыбы связаны с греческими мифами об Афродите и Эросе, которые, согласно одной из версий, превратились в рыб, спасаясь от чудовища Тифона. Образ стал символом взаимной связи.'}
+];
+
+function renderZodiac(){
+ $('zodiacGrid').innerHTML=signs.map((s,i)=>`
+ <button class="item-button zodiac-card" data-sign="${i}">
+  <span class="symbol">${s.symbol}</span><strong>${s.name}</strong>
+  <span class="muted">${s.dates}</span><br>
+  <span class="pill">${s.element}</span>
+ </button>`).join('');
+ document.querySelectorAll('#zodiacGrid [data-sign]').forEach(b=>b.onclick=()=>showZodiac(+b.dataset.sign));
+}
+function showZodiac(i){
+ const s=signs[i];
+ document.querySelectorAll('#zodiacGrid .zodiac-card').forEach((b,n)=>b.classList.toggle('selected',n===i));
+ $('zodiacDetail').innerHTML=`
+ <div class="eyebrow">${s.dates} · ${s.mode}</div>
+ <h2>${s.symbol} ${s.name}</h2>
+ <p class="intro">${s.intro}</p>
+ <div><span class="pill">Стихия: ${s.element}</span><span class="pill">Планета: ${s.planet}</span></div>
+ <h3>Характер и особенности личности</h3><p>${s.character}</p>
+ <h3>Эмоциональный мир</h3><p>${s.emotional}</p>
+ <h3>Сильные стороны</h3><p>${s.strengths}</p>
+ <h3>Слабые стороны и внутренние трудности</h3><p>${s.weaknesses}</p>
+ <h3>Любовь и романтические отношения</h3><p>${s.love}</p>
+ <h3>Дружба и общение</h3><p>${s.friendship}</p>
+ <h3>Работа, способности и финансы</h3><p>${s.work}</p>
+ <h3>Совместимость с другими знаками</h3><p>${s.compatibility}</p>
+ <h3>Мифология и история</h3><p>${s.myth}</p>
+ <div class="warning">Это описание традиционной астрологической символики, а не научный психологический портрет.</div>`;
+}
+
+/* ЕЖЕДНЕВНЫЕ ПРОГНОЗЫ: 52 НЕДЕЛЬНЫХ НАБОРА */
+const forecastThemes=[
+ ['Сегодня полезно начать с самого важного. Не распыляй силы: один уверенный шаг принесёт больше, чем множество поспешных решений.','В общении обрати внимание на детали. Спокойный разговор поможет прояснить то, что раньше казалось запутанным.','День подходит для заботы о собственных ресурсах. Не обещай больше, чем действительно можешь выполнить.','Появится возможность посмотреть на привычную ситуацию иначе. Дай себе время обдумать новый вариант.','Сосредоточься на том, что зависит от тебя. Чужие решения не должны лишать тебя внутреннего равновесия.','Хороший день для завершения небольшого дела и восстановления порядка вокруг себя.','Подведи итоги недели без строгой критики. Заметь, чему ты научилась и что хочешь взять с собой дальше.'],
+ ['Сегодня стоит доверять последовательности, а не спешке. Небольшое усилие может стать основой будущего результата.','Не бойся задать прямой вопрос. Ясность в договорённостях сбережёт время и силы.','Позволь себе немного больше отдыха. Восстановление — тоже важная часть движения вперёд.','Обрати внимание на идею, которая сначала покажется непривычной. Возможно, в ней есть полезное зерно.','Не принимай чужое настроение за собственную ответственность. Сохраняй здоровые границы.','Поддержка близкого человека может оказаться важнее громких слов. Не забывай о простых знаках внимания.','Неделя подходит к завершению. Оставь позади то, что больше не помогает тебе расти.'],
+ ['Начни день с ясного намерения. Когда цель сформулирована, легче отличить важное от случайного.','Сегодня особенно полезны терпение и внимательное слушание. Не всякий ответ приходит мгновенно.','Проверь планы и расходы. Практичный взгляд поможет избежать лишней суеты.','Смени привычный порядок действий, если он перестал приносить результат. Гибкость может открыть новую дорогу.','Береги эмоциональные силы. Не каждый спор требует твоего участия.','Время для небольшого удовольствия и общения с теми, рядом с кем можно быть собой.','Поблагодари себя за пройденный путь. Даже незаметный прогресс имеет значение.'],
+ ['Смелая мысль заслуживает внимания, но ей нужен разумный план. Соедини вдохновение с конкретным действием.','Обсуждение старого вопроса может пройти легче, если говорить спокойно и по существу.','Сосредоточься на качестве, а не на количестве сделанного. Тщательность сегодня особенно ценна.','День благоприятен для обучения и поиска информации. Новое знание пригодится позже.','Не торопись с окончательным выводом. Дай событиям немного времени раскрыться.','Домашние дела и спокойный отдых помогут вернуть ощущение устойчивости.','Заверши неделю с лёгкостью: не требуй от себя невозможного.']
+];
+const dayLines=[
+ 'В личных отношениях важны искренность и внимание к словам.',
+ 'В делах полезно распределить задачи и не брать всё на себя.',
+ 'Финансовые решения лучше принимать после спокойной проверки деталей.',
+ 'Творческий подход поможет найти выход из привычной ситуации.',
+ 'Не забывай о сне, отдыхе и бережном отношении к своему самочувствию.',
+ 'В дружбе ценны простые проявления заботы и честный разговор.',
+ 'Вечером найди время для тишины и размышления о своих желаниях.'
+];
+const weekLines=[
+ 'Неделя напоминает: устойчивый результат складывается из небольших решений.',
+ 'Главная тема недели — честность с собой и ясность намерений.',
+ 'В центре внимания окажутся общение, обучение и новые точки зрения.',
+ 'Неделя подходит для упорядочивания дел и укрепления личных границ.',
+ 'Полезно уделить внимание отношениям и тому, что приносит чувство опоры.',
+ 'Период подсказывает не торопить события и внимательнее относиться к ресурсам.',
+ 'Сейчас важно сочетать смелость с терпением и не забывать о собственных целях.'
+];
+function mondayOf(d){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-weekdayIndex(x));return x}
+function weekNumber(d){const epoch=new Date(2024,0,1);const a=mondayOf(d).getTime(),b=mondayOf(epoch).getTime();return Math.floor((a-b)/(7*86400000))}
+function forecastFor(signIndex,date){
+ const w=weekNumber(date),di=weekdayIndex(date);
+ const theme=forecastThemes[((w%forecastThemes.length)+forecastThemes.length)%forecastThemes.length][di];
+ const unique=weekLines[((w%weekLines.length)+weekLines.length)%weekLines.length];
+ const sign=signs[signIndex];
+ const seed=((w*17+signIndex*11+di*7)%dayLines.length+dayLines.length)%dayLines.length;
+ return {
+  title:`${sign.name} · ${dayNames[di]}`,
+  text:`${theme} ${dayLines[seed]} ${unique}`,
+  date:new Date(date)
+ };
+}
+let selectedHomeDay=weekdayIndex(today);
+let selectedArchiveDay=weekdayIndex(today);
+function dateForDay(day){
+ const d=mondayOf(today);d.setDate(d.getDate()+day);return d;
+}
+function renderWeek(containerId,selected,handler){
+ $(containerId).innerHTML=dayNames.map((n,i)=>`<button class="${i===selected?'active':''}" data-day="${i}">${n}<br><small>${dateForDay(i).toLocaleDateString('ru-RU',{day:'numeric',month:'short'})}</small></button>`).join('');
+ $(containerId).querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>handler(+b.dataset.day));
+}
+function renderSignButtons(containerId,handler){
+ $(containerId).innerHTML=signs.map((s,i)=>`<button class="item-button zodiac-card" data-sign="${i}"><span class="symbol">${s.symbol}</span><strong>${s.name}</strong><span class="muted">${s.dates}</span></button>`).join('');
+ $(containerId).querySelectorAll('[data-sign]').forEach(b=>b.onclick=()=>handler(+b.dataset.sign));
+}
+function showForecast(targetId,signIndex,day){
+ const d=dateForDay(day),f=forecastFor(signIndex,d),s=signs[signIndex];
+ $(targetId).innerHTML=`
+ <div class="forecast-date">${f.date.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</div>
+ <h2>${s.symbol} ${f.title}</h2><p class="intro">${f.text}</p>
+ <div class="rule"></div>
+ <h3>Настроение и внутреннее состояние</h3><p>Постарайся замечать собственные чувства и не сравнивать свой путь с чужим. Тебе не обязательно успевать всё сразу.</p>
+ <h3>Отношения и общение</h3><p>Доброжелательность и открытый разговор помогут лучше понять друг друга. Не делай выводов только по одному сообщению или случайной фразе.</p>
+ <h3>Дела и работа</h3><p>Выбери одну приоритетную задачу и удели ей внимание. Чёткий план поможет не распыляться.</p>
+ <h3>Финансы</h3><p>Отнесись к покупкам осознанно. Перед важным решением проверь условия и не полагайся только на эмоции.</p>
+ <h3>Совет дня</h3><p>Сохраняй верность своим ценностям, но оставляй место для нового опыта.</p>
+ <div class="warning">Символический развлекательный прогноз. Он не основан на персональном расчёте натальной карты и не гарантирует события.</div>`;
+}
+function selectHomeDay(day){
+ selectedHomeDay=day;renderWeek('weekDays',day,selectHomeDay);
+ $('homeForecast').innerHTML='<h2>Выбери знак зодиака</h2><p>Прогноз на '+dayNames[day].toLowerCase()+'.</p>';
+ renderSignButtons('homeHoroscopeGrid',i=>showForecast('homeForecast',i,selectedHomeDay));
+}
+function selectArchiveDay(day){
+ selectedArchiveDay=day;renderWeek('archiveWeekDays',day,selectArchiveDay);
+ $('archiveForecast').innerHTML='<h2>Выбери знак зодиака</h2><p>Прогноз на '+dayNames[day].toLowerCase()+'.</p>';
+ renderSignButtons('archiveHoroscopeGrid',i=>showForecast('archiveForecast',i,selectedArchiveDay));
+}
+
+/* ТАЙНЫЕ ПОСЛАНИЯ: 365+ ТЕКСТОВ И СТАБИЛЬНОСТЬ В ТЕЧЕНИЕ ДНЯ */
+const messageSeeds=[
+ ['Тихий свет','Не всякая перемена начинается с громкого события. Иногда новая дорога открывается тогда, когда ты спокойно принимаешь решение отпустить старое.'],
+ ['Сила корней','Помни о том, что уже помогало тебе выстоять. Твоя история — не цепь ошибок, а источник опыта и внутренней опоры.'],
+ ['Звёздный путь','Не сравнивай свою дорогу с чужой. У каждого пути свой ритм, свои повороты и своё время для расцвета.'],
+ ['Лунная вода','Позволь чувствам быть услышанными. То, что ты признаёшь внутри себя, перестаёт управлять тобой из тени.'],
+ ['Старинный ключ','Ответ иногда находится не в новом знании, а в вопросе, который ты давно откладывала. Посмотри на него без страха.'],
+ ['Пламя свечи','Береги то, что вдохновляет тебя. Даже маленькое увлечение может стать светом в долгий и непростой период.'],
+ ['Серебряная нить','Связь между людьми укрепляется не обещаниями, а вниманием, уважением и поступками.'],
+ ['Крылья ветра','Не бойся менять мнение, если появились новые основания. Гибкость — не слабость, а способность расти.'],
+ ['Древо жизни','Не требуй от себя мгновенного результата. То, что действительно важно, часто развивается медленно и глубоко.'],
+ ['Хрустальный круг','Ясность приходит тогда, когда ты отделяешь собственные желания от ожиданий окружающих.'],
+ ['Забытый сад','Вернись к тому, что приносило тебе радость. Возможно, эта часть жизни ждёт не отказа, а нового внимания.'],
+ ['Порог рассвета','Завершение не всегда означает потерю. Иногда оно освобождает место для того, чему давно пора появиться.']
+];
+const messages=Array.from({length:420},(_,i)=>{
+ const s=messageSeeds[i%messageSeeds.length];
+ const endings=[
+ 'Сегодня выбери один небольшой шаг в сторону внутреннего спокойствия.',
+ 'Не забывай: забота о себе не требует оправданий.',
+ 'Пусть этот день станет поводом услышать собственный голос.',
+ 'Не торопи события — дай важному созреть.',
+ 'Сохраняй любопытство и не закрывай дверь перед добрыми переменами.'
+ ];
+ return {title:s[0],text:s[1]+' '+endings[Math.floor(i/messageSeeds.length)%endings.length]};
+});
+function loadJSON(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch(e){return fallback}}
+function saveJSON(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch(e){}}
+function dailyMessage(d){
+ const key=dateKey(d),history=loadJSON('grimuarMessageHistory',[]);
+ let found=history.find(x=>x.date===key);
+ if(!found){
+  const used=new Set(history.map(x=>x.index));
+  const seed=Math.floor(new Date(d.getFullYear(),0,1).getTime()/86400000);
+  let index=(seed*37)%messages.length;
+  for(let n=0;n<messages.length;n++){const candidate=(index+n)%messages.length;if(!used.has(candidate)){index=candidate;break}}
+  found={date:key,index,title:messages[index].title,text:messages[index].text};
+  history.push(found);
+  if(history.length>messages.length)history.shift();
+  saveJSON('grimuarMessageHistory',history);
+ }
+ return found;
+}
+function renderDailyMessage(){
+ const m=dailyMessage(today);
+ $('homeSecretTitle').textContent=m.title;
+ $('homeSecretText').textContent=m.text;
+ $('homeSecretDate').textContent=fmt(today);
+ $('archiveSecretTitle').textContent=m.title;
+ $('archiveSecretText').textContent=m.text;
+ $('archiveSecretDate').textContent=fmt(today);
+ renderMessageHistory();
+}
+function renderMessageHistory(){
+ const history=loadJSON('grimuarMessageHistory',[]).slice().reverse();
+ $('messageHistory').innerHTML=history.length?history.map(m=>`<div class="card"><span class="muted">${m.date}</span><h3>${escapeHTML(m.title)}</h3><p>${escapeHTML(m.text)}</p></div>`).join(''):'<p class="muted">История пока пуста.</p>';
+}
+
 /* ИСТОРИЯ НЕБЕСНЫХ ТРАДИЦИЙ */
 const histories=[
-{title:'Месопотамия и Вавилон',period:'IV–I тысячелетия до н. э.',region:'Древний Ближний Восток',
-intro:'Месопотамия стала одним из главных центров древнего наблюдения за небом. Шумерские, аккадские, ассирийские и вавилонские писцы фиксировали движения светил, затмения и необычные явления.',
+{title:'Месопотамия и Вавилон',period:'IV–I тысячелетия до н. э.',region:'Шумер, Аккад, Ассирия и Вавилония',
+intro:'Месопотамия стала одним из важнейших центров древнего наблюдения за небом. Жрецы и писцы фиксировали движения Луны и планет, затмения, появление комет и необычные явления. Эти записи служили календарю, храмовой практике и царскому управлению.',
 sections:[
-['Ранние наблюдения','Наблюдение за Луной и планетами было связано с календарём, сельским хозяйством, религиозными обрядами и государственной жизнью. Небесные события воспринимались как возможные знамения для царя и страны.'],
-['Энума Ану Энлиль','Большая клинописная серия знамений связывала небесные явления с событиями на земле. В ней встречались толкования затмений, появления планет и других небесных явлений.'],
-['Астрономические дневники','Вавилонские писцы записывали положения светил, даты, погоду, уровень рек и цены. Длительные наблюдения позволяли находить повторяющиеся циклы.'],
+['Ранние наблюдения','Небесные явления воспринимались как часть порядка мира и могли истолковываться как знамения для правителя и государства. Наблюдения велись поколениями и записывались на глиняных табличках.'],
+['Энума Ану Энлиль','Большая клинописная серия знамений связывала небесные явления с событиями на земле. В ней рассматривались затмения, видимость планет, лунные явления и атмосферные знаки.'],
+['Астрономические дневники','Вавилонские писцы записывали положения светил, даты, погоду, уровень рек и цены. Такие серии наблюдений позволяют современным исследователям изучать древнюю экономику и астрономию.'],
 ['Зодиак','Система двенадцати равных участков эклиптики по 30 градусов сформировалась в Вавилонии в конце V века до н. э. Она стала важной основой позднейшей западной астрологии.'],
-['Личные гороскопы','Вавилонские гороскопы известны с V века до н. э. Они фиксировали небесные положения на момент рождения. Ранние тексты не следует автоматически отождествлять с позднейшей системой домов и асцендентов.'],
-['Историческое наследие','Вавилонские методы повлияли на эллинистическую астрологию, но дальнейшее развитие происходило через взаимодействие разных культур и математических традиций.']]},
+['Личные гороскопы','Вавилонские гороскопы известны с V века до н. э. Они фиксировали положения небесных тел при рождении. Их содержание ещё не совпадало с поздней системой домов и асцендентов.'],
+['Наблюдение и вычисление','Поздневавилонские учёные развивали математические способы предсказания лунных и планетных явлений. Это важная глава истории математической астрономии.'],
+['Историческое наследие','Вавилонские методы повлияли на эллинистическую астрологию. Передача знаний происходила через контакты культур, переводчиков, писцов и учёных.']]},
 {title:'Древний Египет',period:'III тысячелетие до н. э. — поздняя античность',region:'Долина Нила',
-intro:'Египетские представления о небе соединяли календарь, религию, царскую власть и представления о загробном мире. Египетские звёздные таблицы появились задолго до распространения зодиакальной системы.',
+intro:'Египетские представления о небе соединяли календарь, религию, царскую власть и загробный мир. Звёздные таблицы появились задолго до распространения зодиакальной системы.',
 sections:[
-['Звёздные часы','Диагональные звёздные таблицы помогали определять ночное время по последовательности восходящих звёзд. Позднее важную роль играли деканы — группы звёзд, связанные с делением ночи.'],
-['Сириус и календарь','Гелиакический восход Сириуса связывался с сезонным циклом и разливом Нила. Наблюдение за звездой помогало соотносить небесные явления с земледельческим годом.'],
-['Небо и загробный мир','Звёзды, Солнце и небесные божества встречаются в погребальных текстах и росписях гробниц. Ночное путешествие Солнца было важной частью религиозных представлений.'],
-['Дендера и зодиак','В эллинистический и римский периоды в Египте распространилась система двенадцати знаков. Зодиакальные изображения встречаются в храмовых и погребальных памятниках, в том числе в Дендере.'],
-['Греко-египетская традиция','В Египте сохранились гороскопы на греческом и демотическом языках. Они отражают взаимодействие египетских, греческих и ближневосточных знаний.'],
+['Звёздные часы и деканы','Диагональные звёздные таблицы помогали определять ночное время по последовательности восходящих звёзд. Позднее важную роль играли деканы — группы звёзд, использовавшиеся в календарных и ритуальных системах.'],
+['Сириус и годовой цикл','Гелиакический восход Сириуса был связан с сезонным циклом и в традиции Египта соотносился с разливом Нила. Это наблюдение имело календарное значение.'],
+['Небо и загробный мир','Звёзды, Солнце и небесные божества изображались в погребальных текстах и росписях гробниц. Ночное путешествие Солнца было важной частью религиозных представлений.'],
+['Зодиак Дендеры','В эллинистический и римский периоды в Египте распространились двенадцать знаков зодиака. Зодиакальные изображения известны по храмовым и погребальным памятникам, включая храмовый комплекс Дендеры.'],
+['Египет и греческая астрология','В Египте существовали гороскопические тексты на греческом и демотическом языках. Они отражают взаимодействие египетских, греческих и ближневосточных знаний.'],
 ['Историческая оговорка','Нельзя утверждать, что современная западная астрология целиком возникла в Египте. Египетская традиция имела собственную историю и менялась под влиянием контактов с другими обществами.']]},
 {title:'Древняя Греция',period:'VIII век до н. э. — поздняя античность',region:'Балканы и Средиземноморье',
 intro:'Греческие мыслители, математики и авторы мифов развивали представления о космосе. В эллинистическую эпоху греческая астрология объединила ближневосточные наблюдения с математическими и философскими методами.',
 sections:[
 ['Созвездия и мифы','Небесные образы связывали с героями, животными и богами. Истории о Персее, Андромеде, Орионе и других фигурах объясняли рисунки звёздного неба.'],
-['Философские модели','Пифагорейцы связывали устройство космоса с числом и гармонией. Платон и Аристотель предложили влиятельные философские модели мира.'],
-['Гиппарх','Гиппарх занимался положениями звёзд, движением Солнца и Луны и математическими методами описания небесных явлений.'],
+['Философские модели','Пифагорейцы связывали устройство космоса с числом и гармонией. Платон и Аристотель предложили влиятельные философские модели мира, хотя их представления различались.'],
+['Гиппарх','Гиппарх занимался положениями звёзд, движением Солнца и Луны и математическими методами описания небесных явлений. Его имя связано с важными наблюдательными достижениями античной астрономии.'],
 ['Птолемей','Клавдий Птолемей систематизировал математическую астрономию в «Альмагесте», а в «Тетрабиблосе» изложил влиятельную систему астрологических представлений.'],
-['Двенадцать знаков','В эллинистическом мире развивалась система индивидуальных гороскопов. Знаки зодиака были равными участками эклиптики, а не точными копиями созвездий.'],
-['Прецессия','Из-за медленного изменения ориентации земной оси тропические знаки со временем сместились относительно одноимённых созвездий. Это важное различие между астрономией и астрологией.']]},
+['Двенадцать знаков','В эллинистическом мире развивалась система индивидуальных гороскопов. Знаки были равными участками эклиптики, а не точными копиями созвездий.'],
+['Прецессия','Из-за медленного изменения ориентации земной оси тропические знаки со временем смещаются относительно одноимённых созвездий. Это различие между астрономическим созвездием и астрологическим знаком.']]},
 {title:'Древний Рим',period:'I век до н. э. — V век н. э.',region:'Италия и Римская империя',
-intro:'Римская культура восприняла греческие и восточные астрологические традиции. Астрологи работали при дворах, составляли гороскопы, а власти периодически ограничивали предсказательную практику.',
+intro:'Римская культура восприняла греческие и восточные астрологические традиции. Астрологи составляли гороскопы, работали при дворах, а власти периодически ограничивали предсказательную практику.',
 sections:[
 ['Восточное влияние','В Рим проникали греческие и ближневосточные практики. Слово «халдей» могло употребляться как обозначение астролога.'],
 ['Астрологи при дворе','Некоторые императоры интересовались гороскопами и предсказаниями. Астрологические консультации могли иметь политическое значение.'],
-['Запреты','Власти опасались предсказаний о смерти правителя и смене власти. Поэтому в разные периоды деятельность астрологов ограничивали или изгоняли их из города.'],
+['Запреты и ограничения','Власти опасались предсказаний о смерти правителя и смене власти. В разные периоды астрологов ограничивали или изгоняли из города.'],
 ['Литература','Манилий создал поэму «Астрономика», а Фирмик Матерн оставил важный позднеантичный трактат по астрологии.'],
-['Повседневность','Гороскопы составляли для рождения, брака, путешествий и других событий. Сохранившиеся папирусы позволяют изучать реальную практику.'],
+['Повседневность','Гороскопы составляли для рождения, брака, путешествий и других событий. Сохранившиеся папирусы помогают изучать реальную практику.'],
 ['Наследие','Римская эпоха способствовала распространению эллинистической астрологии по Средиземноморью. Позднее античные тексты передавались через византийскую, арабскую и латинскую традиции.']]},
 {title:'Древняя Русь и восточные славяне',period:'IX–XIII века и более ранние славянские традиции',region:'Территории современной России, Украины и Беларуси',
 intro:'У восточных славян существовали календарные представления, связанные с сезонными работами, солнечным годовым циклом, Луной, природными явлениями и христианскими праздниками. Это не была система западного гороскопа.',
 sections:[
-['Небесный календарь','Смена времён года, продолжительность дня, солнечные повороты и фазы Луны помогали ориентироваться в земледельческом году. Наблюдения за небом были тесно связаны с хозяйственным циклом.'],
+['Небесный календарь','Смена времён года, продолжительность дня, солнечные повороты и фазы Луны помогали ориентироваться в земледельческом году. Наблюдения за небом были связаны с хозяйственным циклом.'],
 ['Солнце и сезонные праздники','В народной культуре сохранились обряды, связанные с зимним и летним солнцестоянием, весенним обновлением и сбором урожая. Их формы менялись под влиянием христианства и местных традиций.'],
-['Луна в быту','Лунные фазы могли использоваться в народных календарных практиках и хозяйственных наблюдениях. Однако конкретные правила различались по регионам и эпохам.'],
+['Луна в быту','Лунные фазы могли использоваться в народных календарных практиках и хозяйственных наблюдениях. Конкретные правила различались по регионам и эпохам.'],
 ['Письменные свидетельства','Летописи, церковные тексты и календарные записи дают сведения о счёте времени и небесных знамениях. Они не позволяют восстановить единую дохристианскую славянскую астрологию.'],
-['Мифология','Солнце, гром, небесная вода и звёзды присутствуют в славянских мифологических и фольклорных сюжетах. Поздние реконструкции иногда объединяют разрозненные данные, поэтому их следует отличать от подтверждённых свидетельств.'],
-['Что известно точно','У восточных славян были сезонные календарные обычаи и представления о небесных явлениях. Полноценная письменная система личных гороскопов по типу вавилонской или эллинистической не подтверждена.']]},
+['Мифология','Солнце, гром, небесная вода и звёзды присутствуют в славянских мифологических и фольклорных сюжетах. Поздние реконструкции следует отличать от подтверждённых свидетельств.'],
+['Что известно точно','У восточных славян были сезонные календарные обычаи и представления о небесных явлениях. Полноценная письменная система личных гороскопов не подтверждена.']]},
 {title:'Скифы и сарматы',period:'I тысячелетие до н. э. — первые века н. э.',region:'Причерноморье, степи юга современной России и соседних территорий',
 intro:'Скифские и сарматские общества были частью большого мира евразийских степей. Их культура известна по курганным погребениям, оружию, украшениям, изображениям животных и контактам с греческими городами.',
 sections:[
-['Небесные образы','В степном искусстве встречаются животные и фантастические существа. Их символика могла быть связана с представлениями о власти, защите, природе и мире предков.'],
-['Календарь и сезонность','Кочевое скотоводство требовало знания сезонных циклов, пастбищ и погодных изменений. Наблюдение за небом было практической частью жизни степных обществ.'],
+['Степное искусство','В зверином стиле встречаются животные и фантастические существа. Их символика могла быть связана с властью, защитой, природой и миром предков.'],
+['Календарь и сезонность','Кочевое скотоводство требовало знания сезонных циклов, пастбищ и погодных изменений. Наблюдение за небом было частью практической жизни степных обществ.'],
 ['Греческие контакты','В Причерноморье скифы взаимодействовали с греческими колониями. Через торговлю и культурные контакты распространялись предметы, изображения и отдельные представления античного мира.'],
-['Археология','Курганы, золотые изделия, конская упряжь и предметы быта позволяют изучать материальную культуру. Но символику конкретного предмета нельзя уверенно объяснить без контекста находки.'],
-['Астрология или космология?','Нельзя считать доказанным существование у скифов единой системы двенадцати знаков или личных гороскопов. Доступные сведения говорят прежде всего о символике и ритуальной культуре.']]},
-{title:'Финно-угорские народы Поволжья и Урала',period:'Древность — Средневековье и современные традиции',region:'Марий Эл, Мордовия, Удмуртия, Коми, Пермский край и соседние области',
+['Археология','Курганы, золотые изделия, конская упряжь и предметы быта позволяют изучать материальную культуру. Символику конкретного предмета нельзя уверенно объяснить без контекста находки.'],
+['Астрология или космология?','Существование единой системы двенадцати знаков или личных гороскопов у скифов не доказано. Доступные сведения говорят прежде всего о символике и ритуальной культуре.']]},
+{title:'Финно-угорские народы Поволжья и Урала',period:'Древность — Средневековье и современные традиции',region:'Марий Эл, Мордовия, Удмуртия, Коми, Пермский край',
 intro:'Марийские, удмуртские, коми, мордовские и другие финно-угорские народы сохраняли собственные мифологические представления о мире, природе и небесных силах. Эти традиции нельзя объединять в одну универсальную религию.',
 sections:[
-['Небесный порядок','В фольклоре разных народов встречаются представления о верхнем мире, небесных силах, Солнце, Луне и звёздах. Сюжеты и названия отличаются от народа к народу.'],
-['Марийская традиция','В марийской религиозной культуре важны молитвенные обряды, священные рощи и представления о божествах и силах природы. Небесные явления могли восприниматься в контексте общего порядка мира.'],
+['Небесный порядок','В фольклоре разных народов встречаются представления о верхнем мире, небесных силах, Солнце, Луне и звёздах. Сюжеты и названия отличаются.'],
+['Марийская традиция','В марийской религиозной культуре важны молитвенные обряды, священные рощи и представления о божествах и силах природы. Небесные явления воспринимались в контексте общего порядка мира.'],
 ['Удмуртские представления','Удмуртская традиция включает представления о верхнем и нижнем мирах, природных силах и божествах. Важную роль играли календарные праздники и обряды.'],
 ['Коми и пермские народы','В фольклоре коми и родственных народов сохранились сюжеты о создании мира, небесных силах, природных явлениях и связи человека с окружающим миром.'],
 ['Мордовская традиция','У эрзян и мокшан известны собственные календарные обряды, представления о божествах и природных силах. Их изучение опирается на этнографические записи и фольклор.'],
-['Историческая осторожность','Многие подробные описания были записаны этнографами значительно позже древности. Поэтому их нельзя автоматически переносить на доисторические эпохи.']]},
-{title:'Поволжье и Волжская Булгария',period:'VIII–XIII века',region:'Среднее Поволжье, территории современной Татарстана и соседних регионов',
-intro:'Поволжье было зоной контактов финно-угорских, тюркских, славянских и других народов. Волжская Булгария развивалась как торговое и культурное государство, где взаимодействовали разные религиозные и интеллектуальные традиции.',
+['Историческая осторожность','Многие подробные описания были записаны этнографами значительно позже древности. Их нельзя автоматически переносить на доисторические эпохи.']]},
+{title:'Поволжье и Волжская Булгария',period:'VIII–XIII века',region:'Среднее Поволжье и Прикамье',
+intro:'Волжская Булгария была средневековым государством на торговых путях между Востоком и Европой. Здесь пересекались тюркские, финно-угорские, исламские и степные культурные влияния.',
 sections:[
-['Небесные ориентиры','Для земледелия, путешествий и торговли были важны сезонные циклы и ориентирование по Солнцу и звёздам.'],
-['Тюркское наследие','Тюркские общества степей и Поволжья имели разнообразные представления о небе, небесном божестве, предках и природных силах. Их формы различались по эпохам и регионам.'],
-['Исламская астрономия','После принятия ислама в Волжской Булгарии усилилось значение исламской книжной культуры. В исламском мире развивались математическая астрономия, календарные расчёты и определение времени молитв.'],
-['Астрономия и религиозная практика','Наблюдение за Солнцем и Луной имело практическое значение для календаря и определения религиозных дат. Это не следует смешивать с гадательной астрологией.'],
-['Торговые контакты','Поволжье связывало северные и южные торговые пути. Через контакты распространялись знания, предметы и культурные образы.']]},
-{title:'Тюркские народы Сибири и Алтая',period:'Древность — Средневековье и позднейшие традиции',region:'Алтай, Хакасия, Тыва, юг Сибири',
-intro:'Тюркские народы Южной Сибири и Алтая сохраняли разнообразные космологические представления. Важное место занимали верхний мир, небесное божество, Солнце, Луна, горы и духи местности.',
+['Небо и календарь','Хозяйственная жизнь зависела от сезонных циклов, наблюдений за Солнцем и Луной. После распространения ислама важную роль приобрели лунный календарь и расчёт времени религиозных праздников.'],
+['Исламская учёность','В исламском мире развивались астрономические таблицы, математические методы и наблюдательные практики. Их знания могли распространяться по торговым и культурным связям.'],
+['Торговые контакты','Связи с Хорезмом, Средней Азией, Кавказом и Русью способствовали обмену предметами, знаниями и календарными традициями.'],
+['Археологические свидетельства','Городища, монеты, надписи, керамика и погребения позволяют изучать культурную жизнь региона. Они не дают оснований приписывать всему населению одну астрологическую систему.']]},
+{title:'Урал и Приуралье',period:'Древность — Средневековье',region:'Уральские горы и прилегающие территории',
+intro:'Урал был зоной контактов охотничьих, рыболовных, земледельческих и скотоводческих обществ. В регионе развивались разные археологические культуры, а не единая цивилизация.',
 sections:[
-['Тенгрианские представления','В ряде древнетюркских традиций Небо, часто обозначаемое именем Тенгри, выступало важнейшей космической силой. Конкретные верования менялись в разные эпохи.'],
-['Солнце и Луна','Небесные светила могли выступать персонажами мифов и участниками космического порядка. Их образы встречаются в фольклоре и ритуальной символике.'],
-['Шаманская космология','В некоторых сибирских традициях описываются верхний, средний и нижний миры, путешествия шамана и взаимодействие с духами. Подробности различаются у отдельных народов.'],
-['Алтай','Алтайские мифы содержат сюжеты о происхождении мира, небесных силах и священных горах. Природный ландшафт занимает важное место в мировоззрении.'],
-['Хакасия и Тыва','В местных традициях сохранились собственные обряды, фольклорные сюжеты и представления о небесных и природных силах. Их нельзя свести к единой системе.'],
-['Звёздная ориентация','Наблюдение за небом помогало ориентироваться в сезонных перемещениях и времени. Это практическое знание не равно составлению персональных гороскопов.']]},
-{title:'Бурятская и монгольская космология',period:'Средневековье — современность',region:'Бурятия, Забайкалье, Монголия и соседние земли',
-intro:'Бурятские и монгольские традиции соединяют древние степные представления, буддийскую культуру и более поздние религиозные влияния. В них важны небесные циклы, календарь и символика природного мира.',
+['Природный календарь','Ритмы рек, сезонные миграции животных, смена светового дня и погодные циклы имели большое практическое значение.'],
+['Символы и изображения','На предметах встречаются геометрические мотивы, изображения животных и орнаменты. Их значение устанавливается осторожно и с учётом археологического контекста.'],
+['Металлургия и обмен','Уральские месторождения металлов и ремесленные центры связывали регион с широкими торговыми сетями. Предметы могли перемещаться на большие расстояния.'],
+['Небесные представления','Фольклор народов Урала содержит сюжеты о Солнце, Луне, звёздах и устройстве мира. Записанные позднее предания не всегда позволяют точно восстановить древнейшие верования.']]},
+{title:'Сибирь и народы Севера',period:'Древность — современность',region:'Западная и Восточная Сибирь, Арктика',
+intro:'Сибирь населена множеством народов с разными языками, хозяйством и духовными традициями. Для многих обществ наблюдение за небом было связано с ориентацией, сезонными перемещениями и календарём.',
 sections:[
-['Небесный мир','В монгольских и бурятских представлениях небо выступает важным пространством сакрального порядка. Образ Вечного Синего Неба имеет глубокое историческое значение.'],
-['Буддийский календарь','С распространением буддизма усилилось влияние тибетских календарных и астрологических систем. Они использовались для расчёта благоприятных дат и религиозных событий.'],
-['Лунно-солнечные циклы','Календарные системы учитывали движение Луны и Солнца. В некоторых традициях применялись циклы животных и элементы сложных календарных расчётов.'],
-['Ламаистская астрология','В буддийской традиции Тибета и Монголии существовали сложные системы астрологических вычислений. Они не тождественны западному зодиаку.'],
-['Ритуал и повседневность','Календарные рекомендации могли применяться при выборе дат церемоний, путешествий и важных событий. Их содержание зависело от конкретной школы и календаря.']]},
-{title:'Народы Кавказа',period:'Древность — Средневековье',region:'Северный Кавказ и соседние территории',
-intro:'Кавказ — регион множества народов и религиозных традиций. Здесь переплетались местные верования, иранские, греческие, христианские, исламские и другие культурные влияния.',
+['Ориентирование по звёздам','Звёздное небо помогало определять направления и ориентироваться в открытых пространствах. Конкретные способы различались между народами и местностями.'],
+['Сезонный цикл','Для охотников, рыболовов и оленеводов важны были изменения светового дня, сезонные миграции животных, состояние рек и погода.'],
+['Космология','В мифах разных народов встречаются представления о нескольких уровнях мира, небесных существах и связи человека с природой. Эти системы не следует сводить к одной общей схеме.'],
+['Этнографические источники','Многие сведения были записаны исследователями в XVIII–XX веках. Их следует читать с учётом времени записи, языка информанта и условий полевой работы.']]},
+{title:'Алтай и древние тюркские культуры',period:'VI–XIII века и более ранние степные традиции',region:'Алтай, Южная Сибирь и Центральная Азия',
+intro:'Алтай был одним из важных регионов формирования и развития древнетюркских политических и культурных традиций. Небо, горы и природный порядок занимали важное место в мировоззрении.',
 sections:[
-['Древние космологии','В представлениях народов Кавказа встречались небесные божества, солнечная символика, культ гор и природных сил. Конкретные образы различались у разных обществ.'],
-['Скифо-сарматские контакты','Степные общества взаимодействовали с населением Северного Кавказа. Археологические находки показывают обмен предметами, художественными мотивами и обычаями.'],
-['Христианские традиции','В Грузии, Армении и ряде регионов Кавказа христианская культура оказала влияние на календарь, праздники и символику небесных светил.'],
-['Исламская культура','В мусульманских обществах Кавказа использовались лунный календарь, наблюдения за Луной и математические методы определения времени.'],
-['Региональное разнообразие','Нельзя говорить об одной общей кавказской астрологии. Для корректного исследования каждую культуру следует рассматривать отдельно.']]},
-{title:'Якутская (саха) традиция',period:'Исторические и современные этнографические материалы',region:'Республика Саха (Якутия)',
-intro:'В якутской культуре важное место занимает представление о многослойном устройстве мира, природных силах и небесных существах. Большая часть подробных сведений известна из фольклора и этнографических записей.',
+['Тенгри и небесный порядок','В древнетюркских надписях известен образ Тенгри — Неба как высшей силы и основания политического порядка. Значение термина менялось в разные эпохи и контексты.'],
+['Орхонские надписи','Древнетюркские рунические памятники VIII века содержат сведения о власти, истории и представлениях о Небе. Это важнейшие письменные источники для изучения раннетюркского мира.'],
+['Горы и сакральное пространство','Горы, источники и природные места могли иметь особое значение в локальных религиозных традициях. Конкретные практики различались.'],
+['Астрономия и астрология','Наличие почитания Неба не означает существования западной системы гороскопов. Необходимо различать космологию, религиозные представления и математическую астрономию.']]},
+{title:'Кавказские культуры',period:'Древность — Средневековье',region:'Северный и Южный Кавказ',
+intro:'Кавказ объединяет множество народов и исторических областей. Здесь взаимодействовали местные религиозные традиции, античные государства, Иран, Византия, христианство и ислам.',
 sections:[
-['Три мира','В традиционных представлениях описывались верхний, средний и нижний миры. Их населяли разные существа и силы, а человек существовал в связи с природой и предками.'],
-['Верхний мир и божества','В якутской мифологии известны небесные божества и образ верхнего мира. Небо выступало важной частью космического устройства.'],
-['Ысыах','Летний праздник Ысыах связан с обновлением, солнцем, благополучием и общинными обрядами. Его современное проведение сохраняет элементы традиционной культуры.'],
-['Солнце и сезонность','Смена света и тьмы, долгий летний день и суровая зима имели особое значение для календарного восприятия времени.'],
-['Звёзды и фольклор','Небесные объекты включались в рассказы и представления о мире. Конкретные соответствия между современными созвездиями и персонажами фольклора требуют отдельного источниковедческого изучения.']]},
-{title:'Калмыцкая и ойратская традиция',period:'Средневековье — современность',region:'Республика Калмыкия и степные территории Центральной Азии',
-intro:'Калмыцкая культура связана с ойратским наследием и тибетским буддизмом. Календарные и астрологические знания развивались под влиянием монгольских и тибетских книжных традиций.',
+['Небесные символы','Солнце, Луна и звёзды встречаются в мифологии и художественных традициях народов Кавказа. Значение символов зависело от эпохи и культурной среды.'],
+['Античные контакты','Черноморское побережье и Кавказские проходы связывали регион с греческим, римским и ближневосточным мирами. Через эти контакты распространялись календарные и религиозные идеи.'],
+['Христианские и исламские календари','В разные периоды календарная практика региона испытывала влияние юлианского, церковного и исламского лунного счёта времени.'],
+['Археология и фольклор','Храмы, надписи, погребения и устные предания позволяют изучать символику. Но фольклорная запись позднего времени не всегда доказывает древнее происхождение обычая.']]},
+{title:'Древний Китай',period:'II тысячелетие до н. э. — имперские эпохи',region:'Восточная Азия',
+intro:'Китайская астрономическая традиция развивалась при дворе и была тесно связана с календарём, государственным ритуалом и представлением о гармонии Неба и земного порядка.',
 sections:[
-['Степное наследие','Ойратские общества сохраняли представления о небесном порядке, сезонных циклах и связи человека с природой.'],
-['Буддийская астрология','Тибетские и монгольские системы календаря и астрологических вычислений использовались для определения дат ритуалов и важных событий.'],
-['Лунный календарь','Лунно-солнечные циклы имели значение для религиозных праздников и календарной практики.'],
-['Культурные тексты','Калмыцкая письменная и устная традиция сохраняет исторические сведения о религии, календаре и мировоззрении.'],
-['Отличие от западного зодиака','В этой традиции действовали иные календарные и астрологические системы. Их нельзя просто приравнять к двенадцати западным знакам.']]}
+['Небесные наблюдения','Дворцовые астрономы фиксировали затмения, кометы, новые звёзды и движения планет. Записи имели календарное и политическое значение.'],
+['Лунно-солнечный календарь','Календарные системы согласовывали лунные месяцы с солнечным годом при помощи дополнительных месяцев.'],
+['Двенадцать земных ветвей','Двенадцать циклических обозначений использовались в счёте времени и сочетались с другими системами. Их нельзя просто отождествлять с двенадцатью западными знаками зодиака.'],
+['Астрология и государство','Небесные знамения могли интерпретироваться как отражение состояния государства и правителя. Наблюдение и толкование имели официальный характер.']]},
+{title:'Древняя Индия',period:'I тысячелетие до н. э. — Средневековье',region:'Индийский субконтинент',
+intro:'Индийская астрономическая и астрологическая традиция развивалась в тесной связи с календарём, религиозными ритуалами и математикой.',
+sections:[
+['Джйотиша','Термин обозначает традицию знания о светилах и времени. В ней соединялись календарные расчёты, астрономия и астрологические интерпретации.'],
+['Накшатры','Лунные стоянки — одна из важных систем деления небесного пути Луны. Она имеет собственную историю и не сводится к западному зодиаку.'],
+['Сиддханты','Математические астрономические трактаты содержали методы расчёта движений небесных тел и календарных явлений.'],
+['Зодиакальные системы','В Индии развивались собственные формы зодиакальной астрологии, взаимодействовавшие с эллинистическими знаниями. Их история сложна и многослойна.']]},
+{title:'Персия и Иранский мир',period:'Ахемениды — Сасаниды и позднейшие эпохи',region:'Иранское плато и соседние области',
+intro:'Иранский мир был важным пространством обмена между Месопотамией, Средней Азией, Индией и Средиземноморьем. Знания о небе развивались в религиозной и придворной среде.',
+sections:[
+['Небесный порядок','В зороастрийской традиции космос описывался через противостояние порядка и разрушения. Звёзды и планеты могли получать религиозные интерпретации.'],
+['Календарь','Иранские календарные системы связывали солнечный год, сезонные праздники и религиозные даты.'],
+['Контакты с Вавилоном','После завоеваний и культурных контактов в Иран проникали месопотамские астрономические знания и методы предсказаний.'],
+['Поздняя передача знаний','Иранские учёные участвовали в передаче астрономических и астрологических текстов в исламскую эпоху.']]},
+{title:'Арабский и исламский мир',period:'VIII–XV века',region:'Ближний Восток, Северная Африка, Испания и Центральная Азия',
+intro:'В исламскую эпоху астрономия получила мощное развитие. Учёные переводили греческие, персидские и индийские труды, создавали обсерватории, уточняли таблицы и развивали математические методы.',
+sections:[
+['Байт аль-хикма и переводы','В Багдаде и других центрах переводили научные тексты, включая труды по астрономии и математике. Знания обсуждались, проверялись и развивались.'],
+['Астролябия','Астролябии помогали решать задачи определения времени, высоты светил и ориентации. Прибор имел научное и практическое значение.'],
+['Обсерватории и таблицы','Учёные составляли зижи — астрономические таблицы, использовавшиеся для вычислений и календарных задач.'],
+['Астрология и критика','Астрологические практики существовали рядом с математической астрономией, но вызывали религиозные и философские споры. Не все учёные поддерживали предсказания по звёздам.']]}
 ];
-
-$('historyCards').innerHTML=histories.map((h,i)=>`<button class="item-button" data-history="${i}"><span class="symbol">${['𒀭','☥','Ω','SPQR','☀','♞','✧','◈','☯','☼','✺','☽'][i]}</span><strong>${h.title}</strong><p>${h.region}</p><span class="pill">${h.period}</span></button>`).join('');
-document.querySelectorAll('[data-history]').forEach(b=>b.onclick=()=>showHistory(+b.dataset.history));
+function renderHistories(){
+ $('historyCards').innerHTML=histories.map((h,i)=>`<div class="card collection-card"><span class="pill">${h.period}</span><h3>${h.title}</h3><p class="muted">${h.region}</p><button data-history="${i}">Открыть главу</button></div>`).join('');
+ document.querySelectorAll('[data-history]').forEach(b=>b.onclick=()=>showHistory(+b.dataset.history));
+}
 function showHistory(i){
  const h=histories[i];
- $('historyDetail').innerHTML=`<div class="eyebrow">${h.region} · ${h.period}</div><h2>${h.title}</h2><p class="lead">${h.intro}</p>`+
- h.sections.map((s,n)=>`<h3>${n+1}. ${s[0]}</h3><p>${s[1]}</p>`).join('')+
- `<div class="fact">Исторический подход: археологические находки, письменные источники и поздние этнографические записи имеют разную доказательную силу. Поздние фольклорные описания не всегда позволяют точно восстановить древнейшие верования.</div>`;
+ $('historyDetail').innerHTML=`<div class="eyebrow">${h.period} · ${h.region}</div><h2>${h.title}</h2><p class="lead">${h.intro}</p>${h.sections.map(s=>`<h3>${s[0]}</h3><p>${s[1]}</p>`).join('')}<div class="warning">Историческая справка: культурные традиции менялись со временем. Поздние этнографические записи и современные реконструкции не всегда позволяют точно восстановить древние практики.</div>`;
  $('historyDetail').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-/* КОЛЛЕКЦИЯ АМУЛЕТОВ */
+/* АМУЛЕТЫ И ОБЕРЕГИ */
 const amulets=[
-['Скарабей','Древний Египет','II тысячелетие до н. э. и позднее','Фаянс, камень, стеатит, сердолик, золото','Связан с образом жука, катящего шарик, и представлениями о возрождении и движении Солнца.','Носили как подвеску или перстень, использовали как печать. Сердечные скарабеи помещали на мумии.','На нижней стороне часто вырезали имена, титулы, орнаменты и надписи.'],
-['Уджат — Око Гора','Древний Египет','С древнейших эпох; широко использовался позднее','Фаянс, камень, стекло, металл','Связан с мифом о повреждённом и восстановленном глазе Гора. Символизировал целостность и восстановление.','Встречался на украшениях, погребальных предметах и амулетах.','Форма глаза имела разные варианты; значение зависело от контекста.'],
-['Анкх','Древний Египет','Древнее царство и позднее','Камень, фаянс, металл, дерево','Иероглифический знак жизни. Боги часто изображались с анкхом в руке.','Использовался в храмовых рельефах, росписях, украшениях и ритуальных предметах.','Не всякое изображение анкха было амулетом: это также письменный и религиозный знак.'],
-['Джед','Древний Египет','Древнее царство и позднее','Камень, фаянс, дерево, металл','Связан с Осирисом, устойчивостью и восстановлением порядка.','Изображался в храмах и гробницах, встречался в виде амулетов.','Церемония поднятия джеда имела важное ритуальное значение.'],
-['Тьет — узел Исиды','Древний Египет','Особенно распространён в Новом царстве','Красная яшма, сердолик, фаянс','Связан с Исидой и защитными представлениями.','Помещался в погребения; известны предписания о материале и расположении.','Красный цвет мог символизировать жизненную силу; трактовки различались.'],
-['Цилиндрическая печать','Месопотамия','С конца IV тысячелетия до н. э.','Камень, халцедон, сердолик, стеатит','Прежде всего личная печать. Некоторые изображения имели религиозное значение.','Прокатывалась по влажной глине и создавала непрерывный рисунок.','Сюжеты изображали богов, героев и сцены поклонения. Не каждая печать была амулетом.'],
-['Фигурки защитных существ','Месопотамия','Особенно известны в I тысячелетии до н. э.','Глина, бронза, камень','Некоторые существа считались защитниками зданий и людей.','Фигурки могли помещать в ниши под полом, у входов и в других частях дома.','Археологическое место находки помогает понять назначение фигурки.'],
-['Булла','Древний Рим','Республика и Империя','Золото, бронза, кожа','Подвеска, связанная с защитными представлениями и социальным статусом ребёнка.','Римские мальчики определённых социальных слоёв носили буллу до совершеннолетия.','Булла могла обозначать не только защиту, но и возраст и положение владельца.'],
-['Fascinum','Древний Рим','Республиканский и имперский периоды','Бронза, камень, кость','Фаллические изображения могли иметь апотропеическую функцию — отвращать зависть и вред.','Встречались на подвесках, украшениях, предметах быта и архитектуре.','Контекст мог быть защитным, декоративным, шутливым или связанным с плодородием.'],
-['Геммы','Греция и Рим','I тысячелетие до н. э. — первые века н. э.','Агат, сердолик, яшма, аметист','Геммы служили печатями и украшениями; часть имела магические надписи и образы.','Камни вставляли в перстни и подвески.','Греко-египетские геммы соединяли мотивы разных религий.'],
-['Торк','Кельтские и европейские общества','Особенно характерен для I тысячелетия до н. э.','Золото, серебро, бронза','Шейное украшение, которое могло указывать на статус или особую роль человека.','Носили на шее; находят в погребениях и кладах.','Не каждый торк был амулетом: значение определяется контекстом.'],
-['Рунические предметы','Северная Европа','Первые века н. э. — Средневековье','Камень, дерево, металл, кость','Руны прежде всего были системой письма; некоторые надписи могли иметь защитный смысл.','Наносили на камни, оружие, украшения и бытовые предметы.','Современные эзотерические значения рун часто отличаются от исторических свидетельств.'],
-['Славянские подвески','Восточнославянские земли','Раннее и развитое Средневековье','Бронза, серебро, стекло, кость, янтарь','Могли обозначать статус, региональную принадлежность и иметь символическое значение.','Входили в состав костюмных комплексов; известны лунницы и другие формы подвесок.','Поздние народные объяснения не всегда отражают первоначальный смысл находки.'],
-['Марийские и удмуртские украшения','Поволжье и Приуралье','Средневековье — новое время','Металл, монеты, стеклянные бусы, ткань','Украшения могли обозначать возраст, семейное положение и региональную традицию; отдельным элементам приписывали защитное значение.','Носили как часть традиционного костюма, в том числе праздничного и обрядового.','Нельзя считать каждый элемент украшения оберегом без конкретных свидетельств.'],
-['Сибирские подвески','Народы Сибири','Разные эпохи и регионы','Металл, кость, камень, дерево','В отдельных традициях предметы связывались с животными, духами, предками и защитой.','Использовались как украшения, детали одежды или ритуальные предметы.','Сибирь включает множество народов; символика предметов не универсальна.']
+{title:'Скарабей',culture:'Древний Египет',date:'Среднее царство и позднее; особенно распространён в Новом царстве',material:'Фаянс, стеатит, камень, глазурованная керамика, иногда драгоценные материалы',
+intro:'Скарабей изображал жука-навозника, который катит шар. Египтяне связывали его образ с солнечным циклом, обновлением и возрождением.',
+making:'Фигурки вырезали из мягкого камня или формовали из фаянсовой массы, затем глазуровали и обжигали. На плоской нижней стороне могли вырезать имя владельца, царя, короткую формулу или орнамент. Некоторые экземпляры использовали как печати.',
+use:'Скарабеев носили как подвески, вставляли в кольца, использовали в качестве печатей. Особую категорию составляли крупные сердечные скарабеи, помещавшиеся на грудь умершего во время погребения.',
+protection:'В египетских погребальных представлениях сердечный скарабей был связан с защитой сердца и прохождением посмертного суда. Его функция раскрывается через погребальные тексты и контекст находок.',
+evidence:'Скарабеи известны по многочисленным музейным коллекциям и археологическим комплексам Египта и соседних регионов. Их формы, надписи и материалы помогают датировать предметы и изучать обмен.',
+fact:'Не каждый скарабей был исключительно украшением или амулетом: многие служили печатями, а некоторые имели памятную или административную функцию.'},
+{title:'Уджат — Око Гора',culture:'Древний Египет',date:'II тысячелетие до н. э. и позднее',material:'Фаянс, камень, стекло, золото, серебро, дерево',
+intro:'Уджат — стилизованное изображение глаза, связанное с мифом о повреждении и восстановлении глаза бога Гора. Символ выражал целостность, восстановление и защиту.',
+making:'Изображение вырезали на камне, формовали из фаянса или наносили на украшения и погребальные предметы. Встречаются подвески, бусины, элементы ожерелий и небольшие вставки.',
+use:'Око Гора носили как подвеску, помещали в погребальный инвентарь, использовали в украшениях и ритуальных предметах. Символ встречается также в архитектурном и декоративном контексте.',
+protection:'В египетских верованиях уджат связывали с защитой, исцелением и восстановлением нарушенной целостности. Это религиозная символика древнего общества, а не доказанное медицинское действие.',
+evidence:'Изображения уджат встречаются в египетских гробницах, храмовых комплексах и музейных коллекциях. Важны материал, надписи и археологический слой.',
+fact:'Символ мог иметь несколько значений одновременно: защитное, царское, погребальное и ритуальное.'},
+{title:'Анкх',culture:'Древний Египет',date:'III тысячелетие до н. э. — поздняя античность',material:'Камень, дерево, металл, фаянс, роспись',
+intro:'Анкх — иероглифический знак жизни. Его часто изображали в руках богов и царей, а также включали в храмовые рельефы и предметы.',
+making:'Знак вырезали в камне, отливали или изготавливали из дерева и фаянса. В изображениях он мог быть частью ритуальной сцены, а в виде подвески — самостоятельным предметом.',
+use:'Анкх присутствует на рельефах, амулетах, украшениях и предметах храмового обихода. В сценах божества могли подносить его к лицу царя как символ дарования жизни.',
+protection:'Анкх прежде всего обозначал жизнь и жизненную силу. В контексте амулета он мог выражать пожелание жизни и благополучия, но не следует приписывать ему одну универсальную функцию.',
+evidence:'Знак широко представлен в египетской письменности, храмовом искусстве и погребальных предметах. Его значение подтверждается иероглифическим употреблением.',
+fact:'Анкх — не просто декоративный крест: это древний письменный знак со значением «жизнь».'},
+{title:'Джед — столб устойчивости',culture:'Древний Египет',date:'Раннединастический период и позднее',material:'Камень, фаянс, дерево, металл',
+intro:'Джед — символ устойчивости и прочности, связанный с богом Осирисом. Его изображение часто встречается в религиозных и погребальных контекстах.',
+making:'Знак вырезали на амулетах и рельефах, формовали из фаянса или делали из дерева. В ритуальных изображениях столб мог быть частью церемонии поднятия джеда.',
+use:'Амулеты в форме джеда помещали в погребальный инвентарь и носили как подвески. Символ включали в изображения на саркофагах и стенах гробниц.',
+protection:'Джед связывали с устойчивостью, прочностью и восстановлением жизни после смерти. В погребальном контексте он выражал пожелание сохранения и стойкости.',
+evidence:'Символ встречается на саркофагах, стенах храмов, амулетах и ритуальных предметах. Его связь с Осирисом хорошо представлена в египетской иконографии.',
+fact:'В некоторых ритуальных сценах изображено поднятие столба джед — действие, связанное с восстановлением порядка.'},
+{title:'Тьет — узел Исиды',culture:'Древний Египет',date:'Новое царство и позднее',material:'Красная яшма, сердолик, фаянс, стекло',
+intro:'Тьет, или узел Исиды, напоминает по форме перевязанный узел. Его связывали с богиней Исидой и защитой, особенно в погребальной традиции.',
+making:'Амулеты вырезали из красного камня или формовали из фаянса. Цвет и материал могли иметь символическое значение; предмет иногда помещали в погребальные обёртывания.',
+use:'Тьет использовали в составе погребального набора, помещали на тело умершего или в бинты мумии. Он также встречается в ожерельях и отдельных украшениях.',
+protection:'В погребальных текстах и ритуальной практике знак связывали с защитой Исиды и благополучием умершего в загробном мире.',
+evidence:'Предметы известны по египетским погребениям и музейным коллекциям. Красные каменные экземпляры особенно характерны для некоторых погребальных наборов.',
+fact:'Название «узел Исиды» — современное описательное обозначение символа; древняя религиозная функция раскрывается по текстам и контексту.'},
+{title:'Месопотамская цилиндрическая печать',culture:'Шумер, Аккад, Вавилония и Ассирия',date:'IV–I тысячелетия до н. э.',material:'Камень, стеатит, сердолик, лазурит и другие минералы',
+intro:'Цилиндрическая печать была личным знаком владельца и инструментом удостоверения документов и имущества. Она могла одновременно иметь религиозную и символическую ценность.',
+making:'Небольшой цилиндр вырезали из камня, затем наносили изображение в зеркальном виде. При прокатывании по влажной глине он оставлял непрерывный рельефный оттиск.',
+use:'Печать носили на шнуре или закрепляли в качестве личного предмета. Ею отмечали глиняные таблички, дверные пломбы, сосуды и хозяйственные документы.',
+protection:'Изображения богов, защитных существ и сцен поклонения могли выражать религиозную принадлежность и надежду на покровительство. Однако главная подтверждённая функция печати — идентификация и удостоверение.',
+evidence:'Тысячи печатей и оттисков обнаружены в археологических слоях городов Месопотамии. Сюжеты помогают изучать религию, социальные связи и администрацию.',
+fact:'Цилиндрическая печать — своего рода личная подпись древнего владельца, но с гораздо более сложным художественным изображением.'},
+{title:'Фигурки ламассу и защитных существ',culture:'Ассирия и Месопотамия',date:'I тысячелетие до н. э.',material:'Камень, глина, металл',
+intro:'Крылатые быки и львы с человеческими головами, известные как ламассу, охраняли входы в дворцы и важные здания. Другие защитные фигурки помещали в специальные ниши и основания сооружений.',
+making:'Монументальные фигуры высекали из каменных блоков. Малые защитные статуэтки могли лепить из глины, наносить на них надписи и помещать в строительные закладки.',
+use:'Крупные фигуры ставили у ворот и входов. Малые изображения могли быть скрыты в стенах, под порогами или в основаниях зданий согласно ритуальным практикам.',
+protection:'В месопотамских верованиях такие существа охраняли пространство от опасных сил. Их функция была архитектурной, ритуальной и символической.',
+evidence:'Монументальные ламассу известны по ассирийским дворцовым комплексам, в том числе Нимруду и Ниневии. Малые фигурки обнаружены в строительных контекстах.',
+fact:'Некоторые ламассу изображались с пятью ногами: спереди фигура кажется стоящей, а сбоку — шагающей.'},
+{title:'Греческая защитная подвеска и гемма',culture:'Древняя Греция и эллинистический мир',date:'VI век до н. э. — поздняя античность',material:'Камень, сердолик, аметист, металл, стекло',
+intro:'Геммы представляли собой резные камни с изображениями богов, животных, символов и сцен. Одни служили печатями, другие — украшениями; некоторые могли иметь защитное значение.',
+making:'Камень шлифовали и вырезали с помощью абразивов и вращающихся инструментов. Изображение могло быть выпуклым (камея) или углублённым (инталия).',
+use:'Геммы вставляли в кольца, подвешивали на шнуры или использовали для оттисков на воске и глине. Выбор изображения мог быть личным и религиозным.',
+protection:'В античном мире существовали амулеты и магические геммы с защитными надписями и изображениями. Но не всякая гемма была амулетом: многие служили печатями или украшениями.',
+evidence:'Археологические находки и музейные коллекции содержат геммы с мифологическими сценами, портретами и надписями.',
+fact:'Инталия позволяла владельцу оставлять личный оттиск, поэтому художественная ценность сочеталась с практической функцией.'},
+{title:'Римская булла',culture:'Древний Рим',date:'Республиканский и императорский периоды',material:'Золото, бронза, кожа, ткань',
+intro:'Булла — подвесной футляр или медальон, который в римской традиции носили дети свободнорождённых семей. Предмет имел социальное и, в некоторых контекстах, защитное значение.',
+making:'Буллу изготавливали как полый медальон или футляр, который можно было открыть. Материал зависел от статуса и достатка семьи.',
+use:'Её носили на шнуре вокруг шеи. По традиции мальчики могли продолжать носить буллу до достижения взрослого статуса, после чего предмет посвящали божеству или хранили в семье.',
+protection:'Буллу связывали с защитой ребёнка от сглаза и несчастий. Значение зависело от семейного положения, эпохи и местной практики.',
+evidence:'Римские источники описывают обычай ношения буллы; археологические находки медальонов и футляров дополняют письменные свидетельства.',
+fact:'Булла была не только украшением, но и знаком социального статуса ребёнка.'},
+{title:'Фасцинум и символ от сглаза',culture:'Древний Рим',date:'Республиканский и императорский периоды',material:'Бронза, кость, камень, керамика',
+intro:'Фасцинум — фаллический защитный символ, известный в римской культуре. Его изображения использовали в предметах быта, украшениях и декоре.',
+making:'Фигурки отливали из бронзы, вырезали из кости или создавали из других доступных материалов. Изображение могло сочетаться с жестами и другими защитными символами.',
+use:'Подвески могли носить дети, изображения размещали на предметах, в домах и общественных пространствах. Символ встречался также в настенном и архитектурном декоре.',
+protection:'В римских верованиях подобные изображения должны были отводить сглаз и вредоносное воздействие. Это часть античной апотропеической практики.',
+evidence:'Известны бронзовые подвески, изображения на предметах быта и археологические находки из Помпей и других римских поселений.',
+fact:'Современное восприятие символа может отличаться от античного: в римском контексте он мог иметь защитное, а не эротическое значение.'},
+{title:'Кельтский торк',culture:'Кельтские общества Европы',date:'I тысячелетие до н. э. — первые века н. э.',material:'Золото, серебро, бронза, железо',
+intro:'Торк — жёсткое шейное украшение с открытыми или соединёнными концами. Он был важным элементом материальной культуры ряда кельтских обществ.',
+making:'Торки изготавливали из металлических прутьев или полос, скручивали, ковали и украшали геометрическими узорами. Некоторые золотые экземпляры требовали сложной обработки металла.',
+use:'Торки носили на шее, использовали как статусные украшения и, возможно, как ритуальные предметы. Точное значение каждого изделия зависит от места и контекста находки.',
+protection:'Торк не следует автоматически считать амулетом. В некоторых случаях он мог иметь сакральное или статусное значение, но защитная функция должна подтверждаться отдельно.',
+evidence:'Известны крупные кельтские золотые торки из погребений и кладов Западной и Центральной Европы. Они свидетельствуют о мастерстве металлургов и социальной иерархии.',
+fact:'Торки часто связывают с образами воинов и божеств в кельтском искусстве, но их значение было разнообразным.'},
+{title:'Скандинавский молот Тора',culture:'Скандинавия эпохи викингов',date:'VIII–XI века',material:'Серебро, бронза, железо, янтарь',
+intro:'Подвески в форме молота Тора стали одним из узнаваемых предметов скандинавской эпохи викингов. Они связаны с образом бога грома и защитной символикой.',
+making:'Подвески отливали из металла, ковали или вырезали. Некоторые украшали орнаментом, насечками и плетёными мотивами.',
+use:'Молот носили на шее как подвеску. Он мог обозначать религиозную принадлежность, культурную идентичность и связь с традиционными богами.',
+protection:'В скандинавской религиозной символике Тор защищал богов и людей от опасных сил. Подвеска могла выражать просьбу о покровительстве, но смысл конкретной находки не всегда можно определить однозначно.',
+evidence:'Молоточки Тора найдены в Скандинавии и регионах контактов викингов. Известны серебряные и бронзовые экземпляры, а также формы с руническими и орнаментальными деталями.',
+fact:'В эпоху христианизации подвески-молоты могли выступать и как знак сохранения традиционной веры.'},
+{title:'Славянские лунницы и височные украшения',culture:'Восточнославянские и соседние археологические культуры',date:'Раннее и развитое Средневековье',material:'Бронза, серебро, медь, стеклянные бусины',
+intro:'Лунницы — украшения в форме полумесяца, известные в разных регионах Европы и Восточной Европы. Их форма иногда связывается с лунной символикой, но назначение и смысл могли различаться.',
+making:'Украшения отливали из бронзы и других металлов, выковывали, украшали зернью, насечками и подвесками. Височные кольца и подвесы крепили к головному убору или волосам.',
+use:'Лунницы носили как подвески и элементы женского костюма. Они могли показывать региональную принадлежность, возраст, семейное положение или достаток.',
+protection:'Защитное значение некоторых украшений предполагается на основании символики и этнографических параллелей, но нельзя считать каждый полумесяц доказанным оберегом.',
+evidence:'Находки известны из средневековых погребений и кладов восточноевропейских территорий. Контекст помогает понять, как украшения носили и сочетали.',
+fact:'Форма полумесяца сама по себе не доказывает существование единого древнеславянского культа Луны.'},
+{title:'Солнечные и крестовидные подвески',culture:'Восточная Европа и славянские регионы',date:'Средневековье',material:'Бронза, серебро, медь, дерево',
+intro:'Геометрические подвески с лучами, крестовидными и круговыми мотивами встречаются в разных археологических культурах. Их символика зависела от времени и места.',
+making:'Предметы отливали, вырезали, штамповали или собирали из нескольких деталей. Орнамент мог наноситься насечкой и чеканкой.',
+use:'Их носили на одежде, головных уборах и в составе ожерелий. В некоторых случаях предметы входили в погребальный инвентарь.',
+protection:'Солнечная или защитная трактовка возможна для отдельных предметов, но без контекста нельзя утверждать, что каждый круглый знак был оберегом.',
+evidence:'Археологические материалы происходят из погребений, поселений и кладов. Датировка и местная традиция важнее современных популярных объяснений.',
+fact:'Одинаковый геометрический мотив мог иметь разные значения у разных народов.'}
 ];
-$('amuletCards').innerHTML=amulets.map((a,i)=>`<button class="item-button" data-amulet="${i}"><span class="symbol">${['𓆣','𓂀','☥','𓊽','𓋹','◈','♜','◉','✧','◎','♧','ᚱ','☽','✺','❖'][i]}</span><strong>${a[0]}</strong><p>${a[1]}</p><span class="pill">${a[2]}</span></button>`).join('');
-document.querySelectorAll('[data-amulet]').forEach(b=>b.onclick=()=>showAmulet(+b.dataset.amulet));
+function renderAmulets(){
+ $('amuletCards').innerHTML=amulets.map((a,i)=>`<div class="card collection-card"><span class="pill">${a.culture}</span><h3>${a.title}</h3><p class="muted">${a.date}</p><button data-amulet="${i}">Изучить предмет</button></div>`).join('');
+ document.querySelectorAll('[data-amulet]').forEach(b=>b.onclick=()=>showAmulet(+b.dataset.amulet));
+}
 function showAmulet(i){
  const a=amulets[i];
- $('amuletDetail').innerHTML=`<div class="eyebrow">${a[1]}</div><h2>${a[0]}</h2><p><b>Датировка:</b> ${a[2]}</p><p><b>Материалы:</b> ${a[3]}</p><h3>Символика и значение</h3><p>${a[4]}</p><h3>Как использовали</h3><p>${a[5]}</p><div class="fact"><b>Интересный факт:</b> ${a[6]}</div><p class="muted">Историческое описание передаёт представления людей соответствующей эпохи и не доказывает наличие сверхъестественных свойств.</p>`;
+ $('amuletDetail').innerHTML=`
+ <div class="eyebrow">${a.culture} · ${a.date}</div><h2>${a.title}</h2>
+ <p class="lead">${a.intro}</p>
+ <h3>Материалы</h3><p>${a.material}</p>
+ <h3>Как изготавливали</h3><p>${a.making}</p>
+ <h3>Как носили и использовали</h3><p>${a.use}</p>
+ <h3>От чего, согласно верованиям, защищал</h3><p>${a.protection}</p>
+ <h3>Археологические свидетельства</h3><p>${a.evidence}</p>
+ <h3>Интересный факт</h3><p>${a.fact}</p>
+ <div class="warning">Историческое описание не означает, что предмет обладает реальной сверхъестественной или лечебной силой.</div>`;
  $('amuletDetail').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-/* ГАЛЕРЕЯ ЗНАКОВ: ПОДРОБНЫЕ ХАРАКТЕРИСТИКИ */
-const signs=[
-{name:'Овен',sym:'♈',dates:'21 марта — 19 апреля',element:'Огонь',planet:'Марс',mode:'Кардинальный',
-intro:'Овен открывает зодиакальный круг и символизирует начало, импульс, пробуждение энергии и движение вперёд. В традиционной астрологии это знак первичного действия.',
-temper:'Овну приписывают живой, стремительный и прямой темперамент. Такой образ не любит долго оставаться в неопределённости: ему важно попробовать, проверить, начать. Он часто предпочитает действовать самостоятельно, не ожидая разрешения. В эмоциональном плане может быстро загораться идеей и так же быстро раздражаться, если сталкивается с препятствием.',
-character:'В традиционном описании Овен — человек действия. Он ценит честность, ясность и ощущение личной свободы. Ему легче проявить себя в ситуации, где нужно сделать первый шаг, чем долго поддерживать уже созданную систему. Иногда его прямота кажется резкостью, хотя в символическом образе знака она связана с нежеланием скрывать намерения.',
-strength:'Смелость, инициативность, решительность, самостоятельность, способность вдохновлять других, готовность защищать слабых и начинать сложные дела.',
-weak:'Импульсивность, нетерпение, поспешные выводы, склонность спорить, желание немедленного результата. Иногда трудно признать, что выбранный путь требует пересмотра.',
-emotion:'Эмоции могут проявляться открыто и ярко. Овен символически быстро реагирует на происходящее, но не всегда долго удерживает обиду. Важны движение, ощущение самостоятельности и возможность выразить себя.',
-love:'В отношениях ценит искренность, инициативу и живой интерес. Может проявлять чувства прямо и ждать такой же открытости. Ему важно ощущать, что отношения не превращаются в постоянный контроль.',
-friend:'Часто изображается как активный и преданный друг, готовый включиться в трудную ситуацию. Любит совместные приключения и честный разговор, но может быть слишком прямолинейным.',
-work:'Связывается с предпринимательством, спортом, управлением, проектами на старте и деятельностью, где требуется решительность. В денежных вопросах полезно не путать смелость с риском без расчёта.',
-compat:'В популярных трактовках часто выделяют Льва и Стрельца как близких по стихии. С Весами, противоположным знаком, связывают тему баланса самостоятельности и партнёрства. Это не гарантия реальной совместимости.',
-myth:'Образ барана связан с греческим мифом о золотом руне, Фриксе и Гелле. В разных версиях мифа детали различаются.',
-symbol:'Баран, рога, весенний импульс, начало нового цикла.'},
-{name:'Телец',sym:'♉',dates:'20 апреля — 20 мая',element:'Земля',planet:'Венера',mode:'Фиксированный',
-intro:'Телец символизирует устойчивость, материальный мир, чувственное восприятие, плодородие и сохранение созданного.',
-temper:'Традиционный образ Тельца — спокойный, основательный и последовательный. Он предпочитает сначала почувствовать почву под ногами, а затем действовать. Ему важны комфорт, надёжность и предсказуемость. Быстрые перемены могут вызывать сопротивление, особенно если непонятно, зачем они нужны.',
-character:'Телец ценит качество, постоянство и реальные результаты. Он может долго присматриваться к людям и обстоятельствам, но после принятого решения обычно не любит менять курс. Его характер в астрологической символике связывают с терпением и сильной привязанностью к привычному миру.',
-strength:'Терпение, верность, практичность, выдержка, умение создавать устойчивую основу, чувство красоты и материальная предусмотрительность.',
-weak:'Упрямство, собственничество, сопротивление переменам, чрезмерная привязанность к комфорту и трудность быстро отпускать старые решения.',
-emotion:'Чувства описываются как глубокие и устойчивые. Телец может не сразу показывать переживания, но ценит постоянство и эмоциональную безопасность.',
-love:'Ценит верность, телесную близость, заботу и доверие. Предпочитает отношения, где слова подтверждаются поступками. Не любит неопределённость и эмоциональные игры.',
-friend:'Надёжный друг, который дорожит проверенными связями. Может не стремиться к огромному кругу общения, зато ценит долгую дружбу.',
-work:'Связывается с финансами, ремёслами, природой, дизайном, кулинарией, красотой и работой, требующей терпения. В символическом подходе предпочитает планомерное накопление.',
-compat:'Часто упоминаются Дева и Козерог как близкие по земной стихии. Со Скорпионом связывают сильное притяжение и напряжение противоположностей.',
-myth:'Бык встречается в мифах многих культур. В греческих историях известны миф о Европе и образ критского быка.',
-symbol:'Бык, плодородие, земля, устойчивость, чувственность.'},
-{name:'Близнецы',sym:'♊',dates:'21 мая — 20 июня',element:'Воздух',planet:'Меркурий',mode:'Мутабельный',
-intro:'Близнецы символизируют слово, любознательность, обмен знаниями, движение и множество точек зрения.',
-temper:'Подвижный и интеллектуально активный образ. Близнецам приписывают любопытство, быструю реакцию, интерес к новым людям и темам. Им важно получать впечатления и обмениваться мыслями. Однообразие может быстро утомлять.',
-character:'Близнецы в традиционной символике легко адаптируются к разным компаниям и обстоятельствам. Они могут видеть ситуацию с нескольких сторон и любят обсуждать идеи. Иногда окружающим кажется, что они меняют мнение слишком часто, хотя сам знак символизирует гибкость мышления.',
-strength:'Любознательность, коммуникабельность, чувство юмора, гибкость, способность быстро учиться и находить связи между разными идеями.',
-weak:'Рассеянность, непостоянство, перегруженность впечатлениями, поверхностное отношение к отдельным темам и привычка начинать несколько дел одновременно.',
-emotion:'Эмоции могут проходить через разговор и интеллектуальное осмысление. Важны возможность проговорить переживания и получить новый взгляд на ситуацию.',
-love:'В отношениях ценит общение, юмор, интеллектуальный контакт и свободу. Ему важно, чтобы партнёры могли быть не только возлюбленными, но и интересными собеседниками.',
-friend:'Часто становится связующим звеном между разными людьми. Любит обмен новостями, идеями и впечатлениями, но нуждается в разнообразии.',
-work:'Связывается с языками, письмом, торговлей, журналистикой, преподаванием, медиа и информационными технологиями. В финансовых делах полезно не распылять внимание.',
-compat:'В популярных трактовках часто выделяют Весы и Водолея. Стрелец, противоположный знак, символизирует расширение кругозора и поиск смысла.',
-myth:'Знак связан с Диоскурами — Кастором и Поллуксом. Их история посвящена братству, смертности и бессмертию.',
-symbol:'Близнецы, двойственность, слово, обмен, движение.'},
-{name:'Рак',sym:'♋',dates:'21 июня — 22 июля',element:'Вода',planet:'Луна',mode:'Кардинальный',
-intro:'Рак символизирует дом, память, эмоциональные корни, заботу и потребность в защищённом пространстве.',
-temper:'Чувствительный, восприимчивый и осторожный образ. Раку приписывают сильную связь с близкими и прошлым. Он может долго присматриваться к человеку, прежде чем довериться. В привычной обстановке раскрывается легче, чем среди незнакомых людей.',
-character:'В традиционной астрологии Рак воспринимает мир через чувства и личный опыт. Он ценит семейные связи, память, традиции и ощущение принадлежности. Иногда стремление защититься приводит к замкнутости или уходу в себя.',
-strength:'Забота, верность, чуткость, память, способность создавать уют, поддерживать близких и замечать эмоциональные нюансы.',
-weak:'Ранимость, перепады настроения, закрытость, привязанность к прошлому, трудность отпускать обиды и чрезмерная осторожность.',
-emotion:'Эмоциональная жизнь описывается как глубокая и изменчивая. Важны доверие, безопасность и возможность побыть наедине с собой.',
-love:'Ценит надёжность, нежность, эмоциональную близость и чувство дома. Может проявлять любовь через заботу и внимание к повседневным мелочам.',
-friend:'Внимательный друг, который помнит важные события и старается поддерживать близких. Иногда ему самому требуется время, чтобы восстановить силы.',
-work:'Связывается с гостеприимством, историей, заботой, психологией, питанием и деятельностью, где важны человеческие отношения.',
-compat:'В популярных системах часто выделяют Рыб и Скорпиона. Козерог как противоположный знак символизирует баланс между домом и внешними обязанностями.',
-myth:'Знак связан с крабом из мифа о Геракле и Лернейской гидре. В разных версиях краб выступает помощником чудовища или посланником богини.',
-symbol:'Краб, панцирь, дом, вода, память и лунные циклы.'},
-{name:'Лев',sym:'♌',dates:'23 июля — 22 августа',element:'Огонь',planet:'Солнце',mode:'Фиксированный',
-intro:'Лев символизирует жизненную силу, творчество, достоинство, щедрость и желание выразить себя.',
-temper:'Яркий, энергичный и гордый образ. Льву приписывают стремление к признанию, творчеству и роли вдохновителя. Он может быть щедрым и открытым, но особенно чувствителен к пренебрежению и несправедливой критике.',
-character:'В традиционном описании Лев стремится действовать достойно и оставлять заметный след. Ему важно ощущать смысл своих усилий и видеть, что его вклад ценят. Он часто хочет защищать тех, кого считает своими.',
-strength:'Щедрость, смелость, великодушие, творческая энергия, преданность, уверенность и способность вдохновлять.',
-weak:'Самолюбие, драматизация, болезненная реакция на критику, упрямство и желание всегда оставаться в центре внимания.',
-emotion:'Чувства могут проявляться ярко. Лев символически нуждается в тепле и признании, но также стремится дарить внимание и поддержку другим.',
-love:'Ценит преданность, восхищение, романтику и щедрое проявление чувств. Важны уважение и признание индивидуальности партнёра.',
-friend:'Может быть щедрым и защитным другом. Любит совместные события, праздники и поддерживает тех, кем искренне дорожит.',
-work:'Связывается с творчеством, сценой, руководством, обучением и проектами, где можно проявить индивидуальность и организаторские способности.',
-compat:'Часто называют Овна и Стрельца. Водолей как противоположный знак отражает баланс личного самовыражения и коллективных интересов.',
-myth:'Лев связан с Немейским львом, которого победил Геракл в первом подвиге. Его шкура стала одним из атрибутов героя.',
-symbol:'Лев, Солнце, царственность, творчество, жизненная сила.'},
-{name:'Дева',sym:'♍',dates:'23 августа — 22 сентября',element:'Земля',planet:'Меркурий',mode:'Мутабельный',
-intro:'Дева символизирует анализ, мастерство, порядок, внимательность и способность улучшать окружающий мир.',
-temper:'Наблюдательный, вдумчивый и практичный образ. Деве приписывают стремление разбираться в деталях, замечать несоответствия и доводить работу до качественного результата.',
-character:'Дева ценит компетентность, ясность и полезность. Она может быть требовательной к себе и окружающим, потому что замечает то, что другие пропускают. Её забота часто выражается не громкими словами, а конкретной помощью.',
-strength:'Внимательность, трудолюбие, аналитическое мышление, ответственность, аккуратность, организованность и способность помогать делом.',
-weak:'Перфекционизм, излишняя критичность, тревожность, чрезмерный контроль и трудность принимать несовершенство.',
-emotion:'Переживания могут сначала анализироваться, а не сразу выражаться. Важны ощущение порядка, предсказуемость и понимание того, что можно сделать практически.',
-love:'Выражает заботу через помощь, внимание к деталям и надёжность. Ценит честность и уважение, предпочитает отношения, в которых можно доверять поступкам.',
-friend:'Друг, который поможет разобраться с проблемой, заметит мелочь и предложит практическое решение. Иногда может давать слишком много советов.',
-work:'Связывается с исследованием, редактурой, анализом, ремеслом, организацией и работой с деталями. В денежных вопросах символически ценит расчёт и порядок.',
-compat:'Часто выделяют Тельца и Козерога. Рыбы как противоположный знак добавляют тему интуиции, воображения и доверия.',
-myth:'Образ Девы связывали с разными женскими божествами и фигурами, включая Астрею и Деметру. Единой версии происхождения знака нет.',
-symbol:'Дева, колос, урожай, ремесло, порядок, знание.'},
-{name:'Весы',sym:'♎',dates:'23 сентября — 22 октября',element:'Воздух',planet:'Венера',mode:'Кардинальный',
-intro:'Весы символизируют равновесие, справедливость, отношения, красоту и поиск гармонии.',
-temper:'Дипломатичный и ориентированный на взаимодействие образ. Весам приписывают способность рассматривать разные стороны вопроса и стремление избегать ненужной грубости.',
-character:'Весы ценят взаимное уважение и эстетическую гармонию. Им важно, чтобы отношения и договорённости были справедливыми. Иногда стремление учесть все мнения затрудняет принятие решения.',
-strength:'Тактичность, чувство справедливости, эстетический вкус, способность договариваться, видеть альтернативы и находить компромисс.',
-weak:'Нерешительность, зависимость от одобрения, избегание конфликта, затягивание выбора и стремление понравиться всем.',
-emotion:'Эмоциональное равновесие имеет большое значение. Весы могут тяжело переживать грубость и постоянные конфликты, предпочитая сначала восстановить спокойствие.',
-love:'Ценит взаимность, уважение, красоту общения и партнёрство. Важен баланс между личными желаниями и интересами другого человека.',
-friend:'Часто выступает посредником и старается сохранять мир в компании. Любит культурное общение и совместные впечатления.',
-work:'Связывается с правом, переговорами, искусством, дизайном, дипломатией и деятельностью, где важны отношения и чувство меры.',
-compat:'В популярных трактовках часто выделяют Близнецов и Водолея. Овен как противоположный знак символизирует баланс самостоятельности и партнёрства.',
-myth:'Весы — необычный знак среди зодиакальных образов: он изображает предмет, а не живое существо. В античности связывался с мерой и равновесием.',
-symbol:'Весы, справедливость, договор, равновесие, гармония.'},
-{name:'Скорпион',sym:'♏',dates:'23 октября — 21 ноября',element:'Вода',planet:'Марс; в современной традиции также Плутон',mode:'Фиксированный',
-intro:'Скорпион символизирует глубину, тайну, трансформацию, внутреннюю силу и способность проходить через кризисы.',
-temper:'Интенсивный, наблюдательный и осторожный образ. Скорпиону приписывают стремление понять скрытые мотивы и не доверять поверхностным объяснениям. Он может долго присматриваться к людям, прежде чем раскрыться.',
-character:'Скорпион в астрологической символике не любит половинчатости. Он стремится к глубине, искренности и сильным переживаниям. Иногда это превращается в подозрительность или желание всё контролировать.',
-strength:'Выдержка, решительность, проницательность, верность, способность концентрироваться и меняться после трудных периодов.',
-weak:'Ревность, подозрительность, крайности, стремление контролировать, скрытность и долгое удерживание обид.',
-emotion:'Чувства описываются как сильные и глубокие. Скорпион может не показывать переживания окружающим, предпочитая сначала разобраться с ними внутри.',
-love:'Ценит эмоциональную близость, честность и доверие. Поверхностность может вызывать отстранение; важны верность и ощущение безопасности.',
-friend:'Предпочитает небольшой круг близких людей. В дружбе ценит надёжность, конфиденциальность и готовность быть рядом в сложный момент.',
-work:'Связывается с исследованиями, психологией, расследованиями, кризисными задачами и работой с закрытой информацией. Важно не поддаваться желанию всё контролировать.',
-compat:'Часто выделяют Рака и Рыб. Телец как противоположный знак символизирует напряжение между стабильностью и переменами.',
-myth:'Скорпион связан с мифом об Орионе. В разных версиях скорпион послан богиней или появляется как ответ на гордыню охотника.',
-symbol:'Скорпион, яд, защита, тайна, трансформация, возрождение.'},
-{name:'Стрелец',sym:'♐',dates:'22 ноября — 21 декабря',element:'Огонь',planet:'Юпитер',mode:'Мутабельный',
-intro:'Стрелец символизирует путешествие, поиск смысла, обучение, философию и расширение горизонтов.',
-temper:'Оптимистичный, независимый и любознательный образ. Стрельцу приписывают стремление к свободе, новым впечатлениям и широкому взгляду на мир.',
-character:'Стрелец ценит честность и возможность самостоятельно выбирать направление. Он может вдохновлять других, но иногда слишком быстро высказывает мнение и не замечает, насколько резко оно звучит.',
-strength:'Энтузиазм, щедрость, открытость новому, чувство юмора, любознательность и способность вдохновлять.',
-weak:'Излишняя прямота, беспокойство, нетерпение, поспешные обещания и трудность оставаться в рамках однообразной рутины.',
-emotion:'Эмоции часто связаны с ощущением свободы и перспективы. Когда жизнь кажется слишком тесной, может возникать желание резко сменить обстановку.',
-love:'Ценит доверие, свободу, общие интересы и возможность расти вместе. Плохо переносит чрезмерный контроль и постоянные ограничения.',
-friend:'Часто описывается как вдохновляющий спутник, который любит приключения, обсуждения и новые впечатления.',
-work:'Связывается с образованием, путешествиями, философией, издательским делом, международными проектами и преподаванием.',
-compat:'В популярных трактовках часто выделяют Овна и Льва. Близнецы как противоположный знак символизируют обмен идеями и разные взгляды.',
-myth:'Знак изображается кентавром-лучником. Его часто связывают с Хироном, хотя античные традиции не всегда отождествляли их напрямую.',
-symbol:'Лучник, кентавр, дорога, горизонт, поиск знания.'},
-{name:'Козерог',sym:'♑',dates:'22 декабря — 19 января',element:'Земля',planet:'Сатурн',mode:'Кардинальный',
-intro:'Козерог символизирует время, ответственность, структуру, выносливость и достижение долгосрочных целей.',
-temper:'Сдержанный, собранный и практичный образ. Козерогу приписывают серьёзное отношение к обязанностям и способность сохранять направление даже при медленном продвижении.',
-character:'Козерог ценит компетентность и результат. Он может казаться закрытым, потому что предпочитает сначала оценить обстоятельства. В традиционном описании его сила раскрывается через опыт и последовательность.',
-strength:'Дисциплина, терпение, надёжность, организованность, стратегическое мышление и способность выдерживать нагрузку.',
-weak:'Чрезмерная строгость, пессимизм, трудность расслабляться, эмоциональная сдержанность и привычка брать слишком много ответственности.',
-emotion:'Переживания могут скрываться за внешним спокойствием. Важны уважение, надёжность и понимание, что усилия имеют смысл.',
-love:'Ценит верность, стабильность и отношения, которые развиваются постепенно. Может выражать чувства через заботу, поддержку и конкретные поступки.',
-friend:'Не всегда быстро сближается, но дорожит долгосрочной дружбой. Часто помогает практическими действиями.',
-work:'Связывается с управлением, архитектурой, планированием, наукой, ремеслом и долгими проектами. Символически предпочитает расчёт и устойчивую стратегию.',
-compat:'Часто выделяют Тельца и Деву. Рак как противоположный знак символизирует баланс карьеры и домашней жизни.',
-myth:'Козерог имеет необычный образ морского козла. В греческой традиции его связывают с Паном и мифами о превращениях богов.',
-symbol:'Морской козёл, гора, глубина, время, достижение.'},
-{name:'Водолей',sym:'♒',dates:'20 января — 18 февраля',element:'Воздух',planet:'Сатурн; в современной традиции также Уран',mode:'Фиксированный',
-intro:'Водолей символизирует идеи, общество, независимость, обновление и необычный взгляд на привычные вещи.',
-temper:'Независимый, интеллектуальный и оригинальный образ. Водолею приписывают интерес к новым системам, коллективным идеям и нестандартным решениям.',
-character:'Водолей ценит свободу мышления и не любит, когда его заставляют следовать правилам без объяснения. Он может быть дружелюбным, но при этом нуждаться в личном пространстве.',
-strength:'Самостоятельность, изобретательность, гуманность, широкий кругозор, способность мыслить нестандартно и видеть перспективу.',
-weak:'Эмоциональная отстранённость, упрямство, непредсказуемость, интеллектуализация чувств и склонность ставить идею выше конкретной ситуации.',
-emotion:'Может сначала осмысливать переживания рационально. Важны уважение к личным границам и возможность оставаться независимым.',
-love:'Ценит дружбу, интеллектуальное равенство и свободу. Отношения должны оставлять место индивидуальности каждого.',
-friend:'Часто имеет широкий круг знакомств и интересуется необычными людьми. Ценит общие идеи и возможность быть собой.',
-work:'Связывается с наукой, технологиями, общественными проектами, исследованием и изобретательством.',
-compat:'В популярных системах часто выделяют Близнецов и Весы. Лев как противоположный знак отражает баланс индивидуальности и общего дела.',
-myth:'Образ Водолея связывают с Ганимедом — юношей, ставшим в мифе виночерпием богов. Само созвездие имеет более древнюю историю.',
-symbol:'Водонос, потоки, знание, общество, обновление.'},
-{name:'Рыбы',sym:'♓',dates:'19 февраля — 20 марта',element:'Вода',planet:'Юпитер; в современной традиции также Нептун',mode:'Мутабельный',
-intro:'Рыбы символизируют воображение, сострадание, интуитивное восприятие, творчество и завершение цикла.',
-temper:'Мечтательный, восприимчивый и впечатлительный образ. Рыбам приписывают богатый внутренний мир, способность сопереживать и тонкое восприятие настроений.',
-character:'Рыбы в традиционной символике легко погружаются в образы и переживания. Они могут быть творческими и отзывчивыми, но иногда им сложно отделить собственные желания от ожиданий окружающих.',
-strength:'Сочувствие, воображение, гибкость, творческое мышление, способность сопереживать и видеть необычные решения.',
-weak:'Неопределённость, уход от трудных решений, идеализация, рассеянность и трудность с личными границами.',
-emotion:'Эмоциональная восприимчивость считается одной из главных черт знака. Рыбам символически важно иметь время на отдых, тишину и восстановление.',
-love:'Ценит нежность, эмоциональную близость и ощущение единства. Может идеализировать партнёра, поэтому важны честность и ясные границы.',
-friend:'Часто описывается как сочувствующий друг, готовый выслушать и поддержать. Иногда нуждается в уединении.',
-work:'Связывается с искусством, музыкой, литературой, творчеством, помощью людям и деятельностью, где важно воображение.',
-compat:'В популярных трактовках часто выделяют Рака и Скорпиона. Дева как противоположный знак символизирует баланс мечты и практичности.',
-myth:'В греческой мифологии Рыб связывают с Афродитой и Эросом, которые приняли образ рыб, спасаясь от чудовища Тифона.',
-symbol:'Две рыбы, вода, сон, сострадание, завершение.'}
-];
-
-function renderZodiac(){
- $('zodiacGrid').innerHTML=signs.map((s,i)=>`<button class="item-button zodiac-card" data-sign="${i}"><span class="symbol">${s.sym}</span><strong>${s.name}</strong><span class="muted">${s.dates}</span><span class="pill">${s.element}</span></button>`).join('');
- $('revelationGrid').innerHTML=signs.map((s,i)=>`<button class="item-button zodiac-card" data-reveal="${i}"><span class="symbol">${s.sym}</span><strong>${s.name}</strong><span class="muted">${s.dates}</span></button>`).join('');
- $('horoscopeGrid').innerHTML=signs.map((s,i)=>`<button class="item-button zodiac-card" data-horo="${i}"><span class="symbol">${s.sym}</span><strong>${s.name}</strong></button>`).join('');
- document.querySelectorAll('[data-sign]').forEach(b=>b.onclick=()=>showSign(+b.dataset.sign));
- document.querySelectorAll('[data-reveal]').forEach(b=>b.onclick=()=>{go('zodiac');showSign(+b.dataset.reveal)});
- document.querySelectorAll('[data-horo]').forEach(b=>b.onclick=()=>showHoro(+b.dataset.horo));
+/* ЛУННАЯ ФАЗА — ПРИБЛИЗИТЕЛЬНАЯ */
+function moonFor(date){
+ const synodic=29.530588853;
+ const known=Date.UTC(2000,0,6,18,14);
+ const t=Date.UTC(date.getFullYear(),date.getMonth(),date.getDate(),12);
+ const age=((t-known)/86400000%synodic+synodic)%synodic;
+ const illumination=(1-Math.cos(2*Math.PI*age/synodic))/2*100;
+ let phase,symbol;
+ if(age<1.85||age>27.68){phase='Новолуние';symbol='●'}
+ else if(age<5.54){phase='Растущий серп';symbol='🌒'}
+ else if(age<9.23){phase='Первая четверть';symbol='🌓'}
+ else if(age<12.92){phase='Растущая Луна';symbol='🌔'}
+ else if(age<16.61){phase='Полнолуние';symbol='○'}
+ else if(age<20.30){phase='Убывающая Луна';symbol='🌖'}
+ else if(age<23.99){phase='Последняя четверть';symbol='🌗'}
+ else{phase='Убывающий серп';symbol='🌘'}
+ return {age,illumination,phase,symbol};
 }
-function showSign(i){
- const s=signs[i];
- $('zodiacDetail').innerHTML=`<div class="eyebrow">${s.dates} · ${s.mode}</div><h2>${s.sym} ${s.name}</h2>
- <p class="intro">${s.intro}</p>
- <div class="grid">
- <div class="card"><h3>Стихия</h3><p>${s.element}</p></div>
- <div class="card"><h3>Планета-покровитель</h3><p>${s.planet}</p></div>
- <div class="card"><h3>Символика</h3><p>${s.symbol}</p></div>
- </div>
- <h3>Темперамент</h3><p>${s.temper}</p>
- <h3>Характер и особенности личности</h3><p>${s.character}</p>
- <h3>Сильные стороны</h3><p>${s.strength}</p>
- <h3>Слабые стороны и внутренние трудности</h3><p>${s.weak}</p>
- <h3>Эмоциональный мир</h3><p>${s.emotion}</p>
- <h3>Любовь и романтические отношения</h3><p>${s.love}</p>
- <h3>Дружба и общение</h3><p>${s.friend}</p>
- <h3>Работа, способности и отношение к деньгам</h3><p>${s.work}</p>
- <h3>Совместимость с другими знаками</h3><p>${s.compat}</p>
- <h3>Мифология и история</h3><p>${s.myth}</p>
- <div class="fact"><b>Главные символы знака:</b> ${s.symbol}</div>
- <div class="warning">Это традиционное астрологическое описание солнечного знака. Оно не является научным диагнозом или гарантированным описанием конкретного человека.</div>`;
- $('zodiacDetail').scrollIntoView({behavior:'smooth',block:'start'});
+function updateMoon(date){
+ const m=moonFor(date);
+ $('moonSymbol').textContent=m.symbol;
+ $('moonPhase').textContent=m.phase;
+ $('moonAge').textContent=`Возраст Луны: примерно ${m.age.toFixed(1)} суток`;
+ $('moonIllum').textContent=`Освещённость: примерно ${m.illumination.toFixed(0)}%`;
+ $('moonInfo').textContent=`${fmt(date)} · ${m.phase}`;
 }
-renderZodiac();
-
-/* ПОСЛАНИЕ ДНЯ */
-const dailyTexts=[
-'Не торопи события. Иногда ясность приходит после того, как стихает внутренний шум.',
-'Сохрани то, что действительно имеет для тебя значение. Не всякая возможность заслуживает твоей энергии.',
-'Посмотри на привычную вещь с другой стороны. Ответ может скрываться в неожиданной детали.',
-'Сила не всегда проявляется громко. Иногда она заключается в спокойном и последовательном шаге.',
-'Позволь себе завершить старое дело, прежде чем открывать новую страницу.',
-'Не путай осторожность со страхом. Внимательность тоже может быть проявлением смелости.',
-'Сегодня можно уделить время тому, что возвращает чувство равновесия.',
-'Не сравнивай свой путь с чужим. У каждого своя скорость и собственные испытания.',
-'Иногда самое важное решение — позволить себе отдохнуть и услышать собственные мысли.',
-'Сохраняй любопытство. Новое знание может открыть дверь, которую ты раньше не замечала.',
-'Не позволяй одной неудаче определять всё путешествие. Она лишь часть большого пути.',
-'Смелость не исключает сомнений. Она помогает двигаться, даже когда ответы ещё не найдены.'
-];
-function showMessage(){let n=(today.getDate()-1)%dailyTexts.length;$('secretText').textContent=dailyTexts[n];$('secretTitle').textContent='Послание дня · '+today.toLocaleDateString('ru-RU',{day:'numeric',month:'long'});}
-showMessage();
-$('newMessage').onclick=()=>{$('secretText').textContent=dailyTexts[Math.floor(Math.random()*dailyTexts.length)];$('secretTitle').textContent='Новое послание';};
-
-/* ГОРОСКОП */
-const forecasts=[
-'День подходит для инициативы и небольших смелых шагов. Не принимай решения только из-за спешки.',
-'Обрати внимание на простые радости и практические задачи. Последовательность сегодня полезнее резких перемен.',
-'Общение может принести интересную идею. Проверяй детали и не обещай больше, чем сможешь выполнить.',
-'Удели внимание дому, близким и собственному эмоциональному состоянию. Не обязательно решать всё сразу.',
-'Хороший повод проявить творческую сторону и поделиться идеей. Оставь место для мнения других людей.',
-'Сосредоточься на порядке и деталях. Не превращай стремление к качеству в чрезмерную самокритику.',
-'Попробуй найти равновесие между своими желаниями и интересами окружающих. Спокойный разговор поможет.',
-'Не бойся посмотреть на сложную задачу глубже. Но не делай выводов без фактов.',
-'Новый взгляд или обучение могут вдохновить. Сохраняй любознательность, но учитывай реальные обстоятельства.',
-'Планомерный подход поможет справиться с делами. Не забывай оставлять время на отдых.',
-'Необычная идея может оказаться полезной, если проверить её на практике. Прислушайся к команде.',
-'Творчество и сочувствие могут помочь в общении. Сохраняй личные границы и не бери на себя чужую ответственность.'
-];
-function showHoro(i){
- const s=signs[i];
- $('horoscopeDetail').innerHTML=`<h2>${s.sym} ${s.name}</h2><p class="muted">${today.toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'})}</p><p>${forecasts[i]}</p><div class="fact">Символический совет: выбери одно небольшое действие, которое приблизит тебя к важной цели.</div>`;
-}
-
-/* ПРИБЛИЖЁННАЯ ФАЗА ЛУНЫ */
-function lunar(date){
- const syn=29.530588853,known=Date.UTC(2000,0,6,18,14),t=Date.UTC(date.getFullYear(),date.getMonth(),date.getDate(),12);
- let age=((t-known)/86400000%syn+syn)%syn,phase=age/syn,illum=(1-Math.cos(2*Math.PI*phase))/2*100;
- let name,symbol;
- if(phase<.035||phase>.965){name='Новолуние';symbol='●'}
- else if(phase<.215){name='Растущий серп';symbol='◔'}
- else if(phase<.285){name='Первая четверть';symbol='◐'}
- else if(phase<.465){name='Растущая Луна';symbol='◕'}
- else if(phase<.535){name='Полнолуние';symbol='○'}
- else if(phase<.715){name='Убывающая Луна';symbol='◕'}
- else if(phase<.785){name='Последняя четверть';symbol='◑'}
- else{name='Убывающий серп';symbol='◔'}
- return{age,illum,name,symbol};
-}
-function updateMoon(){
- const d=new Date($('moonDate').value+'T12:00:00');if(isNaN(d))return;
- const m=lunar(d);$('moonSymbol').textContent=m.symbol;$('moonPhase').textContent=m.name;
- $('moonAge').textContent='Возраст Луны: примерно '+m.age.toFixed(1)+' суток';
- $('moonIllum').textContent='Освещённость: примерно '+m.illum.toFixed(0)+'%';
- $('moonInfo').textContent=d.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-}
-$('moonDate').value=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
-$('moonDate').onchange=updateMoon;updateMoon();
+$('moonDate').value=dateKey(today);
+$('moonDate').onchange=()=>updateMoon(new Date($('moonDate').value+'T12:00:00'));
+updateMoon(today);
 
 /* ЛИЧНЫЕ ЗАПИСИ */
-function getNotes(){try{return JSON.parse(localStorage.getItem('grimuarNotes')||'[]')}catch(e){return[]}}
-function escapeHTML(str){return String(str).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function getNotes(){return loadJSON('grimuarNotes',[])}
 function renderNotes(){
  const notes=getNotes();
- $('notes').innerHTML=notes.length?notes.map((n,i)=>`<div class="card"><h3>${escapeHTML(n.title||'Запись без названия')}</h3><p>${escapeHTML(n.text).replace(/\n/g,'<br>')}</p><small class="muted">${n.date}</small><br><button class="action" data-delete="${i}">Удалить</button></div>`).join(''):'<p class="muted">Пока нет сохранённых записей.</p>';
- document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{const a=getNotes();a.splice(+b.dataset.delete,1);localStorage.setItem('grimuarNotes',JSON.stringify(a));renderNotes()});
+ $('notes').innerHTML=notes.length?notes.map((n,i)=>`<div class="card"><h3>${escapeHTML(n.title)}</h3><p>${escapeHTML(n.text).replace(/\n/g,'<br>')}</p><small class="muted">${escapeHTML(n.date)}</small><br><button class="action" data-delete-note="${i}">Удалить</button></div>`).join(''):'<p class="muted">Записей пока нет.</p>';
+ document.querySelectorAll('[data-delete-note]').forEach(b=>b.onclick=()=>{const a=getNotes();a.splice(+b.dataset.deleteNote,1);saveJSON('grimuarNotes',a);renderNotes()});
 }
 $('saveNote').onclick=()=>{
  const title=$('noteTitle').value.trim(),text=$('noteText').value.trim();
- if(!title&&!text){alert('Добавь название или текст записи.');return}
- const a=getNotes();a.unshift({title,text,date:new Date().toLocaleString('ru-RU')});
- localStorage.setItem('grimuarNotes',JSON.stringify(a));$('noteTitle').value='';$('noteText').value='';renderNotes();
+ if(!title||!text){alert('Заполни название и текст записи.');return}
+ const notes=getNotes();notes.unshift({title,text,date:fmt(new Date())});
+ saveJSON('grimuarNotes',notes);
+ $('noteTitle').value='';$('noteText').value='';renderNotes();
 };
 renderNotes();
+
+/* ЗАПУСК */
+renderZodiac();
+renderHistories();
+renderAmulets();
+renderDailyMessage();
+selectHomeDay(weekdayIndex(today));
+selectArchiveDay(weekdayIndex(today));
 </script>
 </body>
 </html>
