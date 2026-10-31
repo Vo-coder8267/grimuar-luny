@@ -4,441 +4,570 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#100b18">
-<title>Гримуар Луны — Книга звёздных тайн</title>
-
+<title>Гримуар Луны — тайны звёзд и древних знаний</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Marcellus&display=swap');
 
 :root {
-  --gold: #d8bd86;
-  --gold-light: #f0dcae;
-  --purple: #a98abf;
-  --text: #e9dfeb;
-  --muted: #b6a6bd;
-  --panel: rgba(28,20,39,.91);
+  --gold:#d6b66e;
+  --silver:#d8d7e9;
+  --blue:#101c3d;
+  --cyan:#42c5c5;
+  --purple:#a99be9;
+  --green:#174b3b;
+  --text:#f4eddf;
 }
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  color: var(--text);
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 19px;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:var(--text);
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;
+  background:#10152b;
+}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+#app{min-height:100vh}
+.sidebar{
+  position:fixed;left:0;top:0;bottom:0;width:245px;
+  padding:25px 16px;z-index:10;
+  background:linear-gradient(180deg,#101b38,#080d20);
+  border-right:1px solid #b99a5c;
+  overflow-y:auto;
+}
+.logo{
+  text-align:center;color:#e8cc8b;
+  font-family:Marcellus,serif;font-size:25px;
+  padding:12px 4px 25px;
+  border-bottom:1px solid #806b49;
+}
+.logo small{display:block;font-size:13px;letter-spacing:3px;margin-top:8px}
+.nav{display:grid;gap:8px;margin-top:24px}
+.nav button{
+  color:#e9e1d2;background:rgba(255,255,255,.035);
+  border:1px solid rgba(214,182,110,.28);
+  border-radius:9px;padding:12px;text-align:left;
+  transition:.25s;
+}
+.nav button:hover,.nav button.active{
+  color:#fff;border-color:var(--gold);
+  background:linear-gradient(90deg,rgba(87,105,164,.35),rgba(147,112,184,.18));
+  box-shadow:0 0 15px #8b82ce55;
+}
+.main{margin-left:245px;min-height:100vh}
+.topbar{
+  height:58px;display:flex;align-items:center;justify-content:center;
+  gap:25px;padding:8px 15px;
+  background:#090e20dd;border-bottom:1px solid #b99a5c;
+  position:sticky;top:0;z-index:5;backdrop-filter:blur(12px);
+}
+.topbar span{cursor:pointer;color:#e6d9bb}
+.topbar span:hover{color:#fff1ad}
+.menu-toggle{display:none}
+.page{display:none;min-height:calc(100vh - 58px);padding:35px 4% 65px}
+.page.active{display:block;animation:appear .5s ease}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1,h2,h3{font-family:Marcellus,serif;font-weight:400}
+h1{text-align:center;font-size:clamp(30px,4vw,52px);margin:8px 0 12px}
+h2{text-align:center;font-size:30px;color:#ecd59c}
+h3{color:#e9d39a}
+.subtitle{text-align:center;font-size:21px;margin-bottom:28px}
+.panel{
+  background:linear-gradient(145deg,#111c35dd,#090e20e8);
+  border:1px solid #b99a5c88;border-radius:15px;
+  padding:22px;box-shadow:0 10px 35px #0007;
+}
+.gold{color:#e9ca80}
+.muted{color:#c5bed2}
+.btn{
+  color:#fff1ce;background:linear-gradient(120deg,#34466a,#583e76);
+  border:1px solid #d6b66e;border-radius:9px;
+  padding:11px 20px;transition:.2s;
+}
+.btn:hover{box-shadow:0 0 18px #a89aff88;transform:translateY(-2px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:17px}
+.card{
+  background:linear-gradient(145deg,#172344dd,#080e21);
+  border:1px solid #b99a5c88;border-radius:12px;
+  padding:17px;text-align:center;cursor:pointer;transition:.25s;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 0 20px #a78bff55;border-color:#e5c47d}
+.card .symbol{font-size:48px;display:block;margin:8px}
+.card p{color:#d5c9df;margin:7px 0}
+.glow{color:#b8c6ff;text-shadow:0 0 8px #779cff,0 0 18px #a17cff}
+.hero{
+  min-height:300px;border:1px solid #d6b66e88;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:30px;position:relative;overflow:hidden;
   background:
-    radial-gradient(ellipse at 50% 0%, #49304f 0%, transparent 48%),
-    radial-gradient(ellipse at 10% 80%, #28203e 0%, transparent 40%),
-    linear-gradient(145deg,#100b18,#171020 55%,#090811);
-  background-attachment: fixed;
+   radial-gradient(circle at 50% 40%,#536a9a66,transparent 42%),
+   linear-gradient(130deg,#10244b,#202c56 48%,#11152f);
 }
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .3;
-  background-image:
-    radial-gradient(#fff 1px, transparent 1px),
-    radial-gradient(#d8bd86 1px, transparent 1px);
-  background-size: 73px 73px, 113px 113px;
-  background-position: 0 0, 30px 40px;
+.hero:before{
+ content:"✧　☾　✧　✦　✧　☽　✧";
+ position:absolute;inset:15px;color:#e6d29b;
+ letter-spacing:18px;opacity:.45;font-size:22px;
 }
-
-header {
-  text-align: center;
-  padding: 55px 15px 35px;
+.hero-content{position:relative;max-width:750px}
+.hero p{font-size:23px;line-height:1.5}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:22px 0}
+input,textarea,select{
+ width:100%;background:#10182d;color:#f6edda;
+ border:1px solid #b99a5c88;border-radius:8px;padding:12px;
+ margin:8px 0;
 }
-
-.moon-symbol {
-  color: var(--gold);
-  font-size: 38px;
-  letter-spacing: 15px;
-  text-shadow: 0 0 20px #d8bd86;
+textarea{min-height:120px;resize:vertical}
+.tag{
+ display:inline-block;border:1px solid #d6b66e88;border-radius:30px;
+ padding:5px 12px;margin:4px;color:#f3dca4;
 }
-
-h1 {
-  font-family: 'Marcellus', Georgia, serif;
-  font-size: clamp(38px,7vw,72px);
-  font-weight: normal;
-  color: var(--gold-light);
-  letter-spacing: 5px;
-  margin: 15px 0;
-  text-shadow: 0 0 30px #9c6cae;
+.zodiac-art{
+ min-height:145px;border-radius:9px;
+ display:flex;align-items:center;justify-content:center;
+ font-size:75px;
+ background:radial-gradient(circle,#9c754d66,transparent 65%),#101a32;
+ border:1px solid #c49d5e77;
 }
-
-.subtitle {
-  color: var(--muted);
-  font-size: 23px;
-  font-style: italic;
-}
-
-header .ornament {
-  color: var(--gold);
-  margin-top: 25px;
-  letter-spacing: 8px;
-}
-
-main {
-  width: min(1100px,92%);
-  margin: auto;
-  position: relative;
-}
-
-.panel {
-  background: var(--panel);
-  border: 1px solid rgba(192,157,198,.45);
-  border-radius: 15px;
-  padding: 28px;
-  margin: 22px 0;
-  box-shadow: 0 12px 40px #0008, inset 0 0 25px #8e65900b;
-}
-
-h2 {
-  font-family: 'Marcellus', Georgia, serif;
-  font-weight: normal;
-  color: var(--gold);
-  font-size: 27px;
-  text-align: center;
-  margin: 0 0 20px;
-}
-
-.date {
-  text-align: center;
-  color: var(--purple);
-  font-size: 19px;
-  margin-bottom: 15px;
-}
-
-.daily-message {
-  text-align: center;
-  line-height: 1.65;
-  font-size: 23px;
-  max-width: 800px;
-  margin: auto;
-}
-
-.divider {
-  text-align: center;
-  color: var(--gold);
-  letter-spacing: 10px;
-  margin: 22px 0;
-}
-
-.moon-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.moon-emoji {
-  font-size: 65px;
-  color: var(--gold);
-  text-shadow: 0 0 25px #d8bd86;
-}
-
-.moon-info {
-  max-width: 570px;
-  line-height: 1.6;
-}
-
-.moon-name {
-  color: var(--gold-light);
-  font-size: 26px;
-}
-
-.sign-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 13px;
-}
-
-.sign {
-  background: linear-gradient(145deg,#30243c,#1c1527);
-  border: 1px solid #624c70;
-  border-radius: 12px;
-  padding: 18px 8px;
-  color: var(--text);
-  font-family: inherit;
-  font-size: 20px;
-  cursor: pointer;
-  transition: .25s;
-}
-
-.sign:hover, .sign.active {
-  border-color: var(--gold);
-  background: linear-gradient(145deg,#57405d,#30213e);
-  box-shadow: 0 0 20px #c6a06b35;
-  transform: translateY(-3px);
-}
-
-.sign-symbol {
-  display: block;
-  font-size: 35px;
-  color: var(--gold);
-  margin-bottom: 7px;
-}
-
-.sign-dates {
-  display: block;
-  color: var(--muted);
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.forecast {
-  text-align: center;
-  line-height: 1.7;
-  font-size: 23px;
-  min-height: 70px;
-}
-
-.selected-sign {
-  color: var(--gold-light);
-  font-size: 30px;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.magic-section {
-  text-align: center;
-  line-height: 1.7;
-  font-size: 22px;
-}
-
-.magic-symbol {
-  font-size: 45px;
-  color: var(--gold);
-  margin: 5px;
-}
-
-.action {
-  display: block;
-  margin: 20px auto 0;
-  padding: 12px 25px;
-  color: #f4e9d2;
-  background: linear-gradient(135deg,#61466e,#392843);
-  border: 1px solid var(--gold);
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 19px;
-  cursor: pointer;
-}
-
-.action:hover {
-  background: linear-gradient(135deg,#80618a,#50385c);
-}
-
-footer {
-  text-align: center;
-  padding: 40px 15px;
-  color: #98869f;
-  line-height: 1.8;
-}
-
-@media(max-width:700px) {
-  .sign-grid { grid-template-columns: repeat(3,1fr); }
-  .panel { padding: 20px 14px; }
-  .daily-message,.forecast { font-size: 21px; }
-}
-
-@media(max-width:420px) {
-  .sign-grid { grid-template-columns: repeat(2,1fr); }
+.footer{text-align:center;color:#d5c4a0;padding:35px 10px}
+/* Цветовые миры разделов */
+#home{background:radial-gradient(ellipse at 50% 0%,#245477,#101c3d 55%,#0b1127)}
+#moon{background:radial-gradient(ellipse at 50% 0%,#536c9c,#1b2850 48%,#10182e)}
+#history{background:radial-gradient(ellipse at 50% 0%,#326c52,#123c35 50%,#0c211f)}
+#amulets{background:radial-gradient(ellipse at 50% 0%,#42613d,#153c2c 48%,#101c19)}
+#message{background:radial-gradient(ellipse at 50% 0%,#57477d,#222143 50%,#11152c)}
+#horoscope{background:radial-gradient(ellipse at 50% 0%,#665b99,#282750 48%,#14182e)}
+#revelation{background:radial-gradient(ellipse at 50% 0%,#344d8a,#171f4b 55%,#10152e)}
+#zodiac{background:radial-gradient(ellipse at 50% 0%,#243b6b,#11182e 55%,#080e20)}
+#grimoire{background:radial-gradient(ellipse at 50% 0%,#655039,#302b35 55%,#17151e)}
+/* Декоративные разделители */
+.ornament{text-align:center;color:#d6b66e;letter-spacing:9px;margin:20px}
+.phase{font-size:65px;text-align:center;color:#dbe7ff;text-shadow:0 0 25px #a9c9ff}
+.day-cell{min-height:82px;padding:8px;border:1px solid #91a9d655;border-radius:7px;text-align:center;background:#182440}
+.day-cell.today{border:2px solid #d6b66e;box-shadow:0 0 12px #b9caff55}
+.month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.month-grid button{background:#182440;color:#eee;border:1px solid #8fa4ca66;border-radius:7px;padding:10px 2px}
+.month-grid button:hover{border-color:#e8cf8e}
+@media(max-width:850px){
+ .sidebar{transform:translateX(-100%);transition:.3s}
+ .sidebar.open{transform:translateX(0)}
+ .main{margin-left:0}
+ .menu-toggle{display:block;position:fixed;left:12px;top:12px;z-index:20}
+ .topbar{padding-left:65px;gap:12px;overflow-x:auto;justify-content:flex-start}
+ .columns{grid-template-columns:1fr}
+ .page{padding:25px 15px 50px}
 }
 </style>
 </head>
-
 <body>
+<div id="app">
+<aside class="sidebar" id="sidebar">
+ <div class="logo">☾ Гримуар Луны ☽<small>КНИГА ТАЙНЫХ ЗНАНИЙ</small></div>
+ <nav class="nav">
+  <button class="active" data-page="home">✧ Главная</button>
+  <button data-page="moon">☾ Лунный календарь</button>
+  <button data-page="history">✧ Древняя астрология</button>
+  <button data-page="amulets">♧ Амулеты и обереги</button>
+  <button data-page="message">✧ Тайное послание</button>
+  <button data-page="horoscope">☼ Ежедневный гороскоп</button>
+  <button data-page="revelation">✧ Откровение звёзд</button>
+  <button data-page="zodiac">☉ Галерея зодиаков</button>
+  <button data-page="grimoire">♙ Гримуар</button>
+ </nav>
+ <div class="footer">✦ Знания между небом и землёй ✦</div>
+</aside>
 
-<header>
-  <div class="moon-symbol">☾ ✦ ☽</div>
-  <h1>Гримуар Луны</h1>
-  <div class="subtitle">Книга звёздных тайн и древней магии</div>
-  <div class="ornament">✧ ━━━━━ ✧ ━━━━━ ✧</div>
+<button class="btn menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+<main class="main">
+<header class="topbar">
+ <span onclick="showPage('home')">Главная</span>
+ <span onclick="showPage('moon')">Луна</span>
+ <span onclick="showPage('history')">Астрология</span>
+ <span onclick="showPage('amulets')">Реликвии</span>
+ <span onclick="showPage('message')">Послание</span>
+ <span onclick="showPage('grimoire')">Гримуар</span>
 </header>
 
-<main>
-
-<section class="panel">
-  <h2>✧ Послание нового дня ✧</h2>
-  <div class="date" id="today"></div>
-  <div class="daily-message" id="daily"></div>
-  <div class="divider">☽ ✦ ☾</div>
-  <div class="moon-card">
-    <div class="moon-emoji" id="moonEmoji">🌙</div>
-    <div class="moon-info">
-      <div class="moon-name" id="moonName"></div>
-      <div id="moonText"></div>
-    </div>
+<!-- ГЛАВНАЯ -->
+<section class="page active" id="home">
+ <div class="hero">
+  <div class="hero-content">
+   <div class="gold">✧ ✦ ☾ ✦ ✧</div>
+   <h1>Послание нового дня</h1>
+   <div id="todayDate" class="gold"></div>
+   <p id="dailyText">Даже в самой глубокой ночи звёзды продолжают указывать путь.</p>
+   <div class="gold">✧ ✦ ✧</div>
+   <div class="phase" id="homeMoon">☽</div>
+   <div id="homePhase">Лунная фаза</div>
   </div>
-</section>
-
-<section class="panel">
-  <h2>✧ Звёздная книга двенадцати знаков ✧</h2>
-  <p style="text-align:center;color:#b6a6bd">
-    Выбери свой знак, чтобы открыть его сегодняшнее предсказание.
-  </p>
-  <div class="sign-grid" id="signGrid"></div>
-</section>
-
-<section class="panel">
-  <h2>✧ Откровение звёзд ✧</h2>
-  <div class="selected-sign" id="selectedSign">✦ Твой знак ждёт тебя ✦</div>
-  <div class="forecast" id="forecast">
-    Прикоснись к своему знаку зодиака, и гримуар откроет тебе его тайну.
+ </div>
+ <div class="columns">
+  <div class="panel">
+   <h2>✧ Откровение звёзд ✧</h2>
+   <p class="subtitle">Твой знак ждёт тебя</p>
+   <div class="grid">
+    <button class="btn" onclick="showPage('revelation')">Выбрать свой знак</button>
+   </div>
   </div>
+  <div class="panel">
+   <h2>✧ Тайное послание ✧</h2>
+   <p class="subtitle">Открой письмо, которое ждёт именно сегодня.</p>
+   <button class="btn" onclick="showPage('message')">Открыть послание</button>
+  </div>
+ </div>
+ <div class="panel">
+  <h2>Лунный календарь</h2>
+  <p class="subtitle" id="homeMoonInfo"></p>
+  <div style="text-align:center"><button class="btn" onclick="showPage('moon')">Войти в Хрустальную Луну</button></div>
+ </div>
 </section>
 
-<section class="panel">
-  <h2>✧ Магия дня ✧</h2>
-  <div class="magic-symbol">♜</div>
-  <div class="magic-section" id="ritual"></div>
-  <button class="action" onclick="newRitual()">Открыть другой ритуал</button>
+<!-- ЛУННЫЙ КАЛЕНДАРЬ -->
+<section class="page" id="moon">
+ <h1>☾ Хрустальная Луна ☾</h1>
+ <p class="subtitle">Серебряный свет, тайны ночного неба</p>
+ <div class="columns">
+  <div class="panel">
+   <h2>Луна сегодня</h2>
+   <div class="phase" id="moonIcon">☽</div>
+   <h2 id="moonName"></h2>
+   <p id="moonDetails" class="subtitle"></p>
+   <p class="muted">Место наблюдения: Красноярск, Россия</p>
+   <p class="muted">Фаза рассчитана приближённо. Время восхода и захода здесь пока не вычисляется.</p>
+  </div>
+  <div class="panel">
+   <h2>Фазы Луны</h2>
+   <div class="grid">
+    <div class="card"><span class="symbol">🌑</span>Новолуние</div>
+    <div class="card"><span class="symbol">🌓</span>Первая четверть</div>
+    <div class="card"><span class="symbol">🌕</span>Полнолуние</div>
+    <div class="card"><span class="symbol">🌗</span>Последняя четверть</div>
+   </div>
+  </div>
+ </div>
+ <div class="panel">
+  <h2>Календарь месяца</h2>
+  <div style="display:flex;justify-content:center;gap:15px;align-items:center">
+   <button class="btn" onclick="changeMonth(-1)">‹</button>
+   <h3 id="monthTitle"></h3>
+   <button class="btn" onclick="changeMonth(1)">›</button>
+  </div>
+  <div class="month-grid" id="calendar"></div>
+  <p id="selectedDate" class="subtitle"></p>
+ </div>
+ <div class="panel">
+  <h2>Лунные дни</h2>
+  <p>В разных астрологических традициях начало лунного дня определяется по-разному. Здесь номер дня является ориентировочным расчётом от новолуния, а не универсальной исторической системой.</p>
+  <div id="lunarDay" class="gold"></div>
+ </div>
 </section>
 
-<section class="panel">
-  <h2>✧ Тайное послание ✧</h2>
-  <div class="magic-symbol">☽</div>
-  <div class="magic-section" id="secret"></div>
+<!-- ДРЕВНЯЯ АСТРОЛОГИЯ -->
+<section class="page" id="history">
+ <div class="hero" style="background:linear-gradient(120deg,#173d32dd,#101d26),radial-gradient(circle,#a48a4c55,transparent)">
+  <div class="hero-content">
+   <h1>Изумрудная библиотека</h1>
+   <p>Знания древних цивилизаций о небе и звёздах</p>
+   <div class="gold">✧ МЕСОПОТАМИЯ · ЕГИПЕТ · ГРЕЦИЯ · РИМ ✧</div>
+  </div>
+ </div>
+ <div class="grid" style="margin-top:25px">
+  <div class="card" onclick="showInfo('Вавилон и Месопотамия','В Месопотамии наблюдения за небесными явлениями вели храмовые писцы. Вавилонские учёные систематизировали движения небесных тел и развивали гороскопическую астрологию.')">
+   <span class="symbol">𒀭</span><h3>Вавилон и Месопотамия</h3><p>Таблицы, знамения и первые гороскопы</p>
+  </div>
+  <div class="card" onclick="showInfo('Древний Египет','Египетские традиции включали наблюдение за звёздами, деканами и календарными циклами. Звёздные изображения встречались на потолках гробниц и храмов.')">
+   <span class="symbol">𓂀</span><h3>Древний Египет</h3><p>Деканы и звёздные календари</p>
+  </div>
+  <div class="card" onclick="showInfo('Древняя Греция','Греческие мыслители развивали представления о планетах, созвездиях и устройстве космоса. Эллинистическая эпоха сыграла важную роль в формировании западной астрологии.')">
+   <span class="symbol">🏛</span><h3>Древняя Греция</h3><p>Планеты и зодиак</p>
+  </div>
+  <div class="card" onclick="showInfo('Древний Рим','В Риме астрологические знания распространялись в обществе, при дворе и в литературе. Отношение властей к астрологам менялось в разные периоды.')">
+   <span class="symbol">☼</span><h3>Древний Рим</h3><p>Знаки и небесные предсказания</p>
+  </div>
+ </div>
+ <div class="panel" style="margin-top:22px"><h2>История планет и созвездий</h2><p>Исследуй, как разные цивилизации наблюдали небо, называли звёзды и связывали небесные циклы с земной жизнью. Исторические факты отделяются от позднейших астрологических толкований.</p></div>
+</section>
+
+<!-- АМУЛЕТЫ -->
+<section class="page" id="amulets">
+ <div class="hero" style="background:radial-gradient(circle at 50% 45%,#51734477,transparent 45%),linear-gradient(120deg,#102c22,#203c28)">
+  <div class="hero-content"><h1>Амулеты и обереги</h1><p>Священная роща друидов</p><div class="gold">✧ ДРЕВНИЕ СИМВОЛЫ · ПРИРОДА · ТРАДИЦИИ ✧</div></div>
+ </div>
+ <div class="columns">
+  <div class="panel">
+   <div class="zodiac-art">🌳</div>
+   <h2>Древо Жизни</h2>
+   <p>Один из широко распространённых символических образов, встречающийся в разных культурах. Его значения зависят от конкретной традиции и эпохи.</p>
+  </div>
+  <div class="panel">
+   <h2>Залы реликвий</h2>
+   <div class="nav">
+    <button onclick="showInfo('Древние символы','Здесь будут собраны символы с указанием культуры, датировки и исторического контекста.')">✧ Древние символы</button>
+    <button onclick="showInfo('Защитные амулеты','Предметы, которые в конкретных культурах использовались как защита от опасностей и несчастий.')">✧ Защитные амулеты</button>
+    <button onclick="showInfo('Талисманы удачи','История предметов, которым приписывали способность приносить благополучие.')">✧ Талисманы удачи</button>
+    <button onclick="showInfo('Обереги дома','Домашние защитные предметы и их культурное значение.')">✧ Обереги дома</button>
+    <button onclick="showInfo('Рунические знаки','История рунических письмен и символов в североевропейских культурах.')">✧ Рунические знаки</button>
+   </div>
+  </div>
+ </div>
+ <h2>Популярные обереги</h2>
+ <div class="grid">
+  <div class="card" onclick="showInfo('Триксель','Трискелион — орнамент из трёх расходящихся элементов. Встречается в разных древних культурах; его смысл зависит от места и времени.')"><span class="symbol">☘</span>Триксель</div>
+  <div class="card" onclick="showInfo('Пентаграмма','Пятиконечная звезда имеет долгую историю использования в религиозных, философских и магических контекстах.')"><span class="symbol">☆</span>Пентаграмма</div>
+  <div class="card" onclick="showInfo('Рука Фатимы','Хамса — амулет в форме ладони, известный в ближневосточных и североафриканских традициях.')"><span class="symbol">🪬</span>Хамса</div>
+  <div class="card" onclick="showInfo('Молот Тора','Мьёльнир — молот бога Тора в скандинавской мифологии. Его изображения известны по археологическим находкам эпохи викингов.')"><span class="symbol">⚒</span>Молот Тора</div>
+ </div>
+ <p class="footer">Древние символы — история, культура и традиции</p>
+</section>
+
+<!-- ТАЙНОЕ ПОСЛАНИЕ -->
+<section class="page" id="message">
+ <div class="hero" style="background:radial-gradient(circle at 80% 25%,#7778d966,transparent 35%),linear-gradient(120deg,#201d43,#34305e,#15172f)">
+  <div class="hero-content"><h1>Тайное послание</h1><p>Зал древних печатей и Лунное святилище</p><div class="gold">☾ ✧ СЛУШАЙ ЗНАКИ НОЧИ ✧ ☽</div></div>
+ </div>
+ <div class="columns">
+  <div class="panel">
+   <h2>✧ Послание дня ✧</h2>
+   <div class="zodiac-art">📜</div>
+   <p id="secretText" class="subtitle">В тишине ночи рождается сила. Прислушайся к себе — и увидишь дорогу.</p>
+   <button class="btn" onclick="newMessage()">Открыть новое послание</button>
+  </div>
+  <div class="panel">
+   <h2>Лунное святилище</h2>
+   <div class="phase">🌕</div>
+   <p class="subtitle">Символы, печати и древние знаки</p>
+   <div class="grid">
+    <div class="card">☾<p>Луна</p></div><div class="card">✧<p>Звезда</p></div>
+    <div class="card">𓂀<p>Око</p></div><div class="card">♧<p>Древо</p></div>
+   </div>
+  </div>
+ </div>
+ <div class="panel"><h2>Популярные символы</h2><div class="grid">
+  <div class="card">☯<p>Равновесие</p></div><div class="card">☆<p>Пентаграмма</p></div><div class="card">☥<p>Анкх</p></div><div class="card">ᛉ<p>Руна защиты</p></div><div class="card">☾<p>Лунный знак</p></div>
+ </div></div>
+</section>
+
+<!-- ЕЖЕДНЕВНЫЙ ГОРОСКОП -->
+<section class="page" id="horoscope">
+ <div class="hero">
+  <div class="hero-content"><h1>Ежедневный гороскоп</h1><p>Узнай, что приготовили звёзды именно для тебя</p><div id="horoscopeDate" class="gold"></div></div>
+ </div>
+ <h2>Выбери свой знак</h2>
+ <div class="grid" id="horoscopeGrid"></div>
+ <div class="panel" id="horoscopeResult" style="margin-top:22px">
+  <h2>Твоё звёздное предсказание</h2>
+  <p class="subtitle">Выбери знак зодиака, чтобы открыть прогноз.</p>
+ </div>
+</section>
+
+<!-- ОТКРОВЕНИЕ ЗВЁЗД -->
+<section class="page" id="revelation">
+ <h1>✧ Откровение звёзд ✧</h1>
+ <p class="subtitle">Выбери знак, чтобы узнать его характер и символику</p>
+ <div class="grid" id="revelationGrid"></div>
+ <div class="panel" id="signInfo" style="margin-top:22px">
+  <h2>Твой знак ждёт тебя</h2><p class="subtitle">Нажми на карточку знака.</p>
+ </div>
+</section>
+
+<!-- ГАЛЕРЕЯ ЗОДИАКОВ -->
+<section class="page" id="zodiac">
+ <h1>Галерея зодиаков</h1>
+ <p class="subtitle">Двенадцать символов древнего звёздного круга</p>
+ <div class="grid" id="zodiacGallery"></div>
+ <p class="footer">Каждый знак — отдельная история небесного круга</p>
+</section>
+
+<!-- ГРИМУАР -->
+<section class="page" id="grimoire">
+ <div class="hero" style="background:linear-gradient(130deg,#493c35,#222331,#111827)">
+  <div class="hero-content"><h1>Гримуар Луны</h1><p>Личная книга знаний, заметок и открытий</p><div class="gold">✧ СОХРАНЯЙ СВОИ ЗАПИСИ ✧</div></div>
+ </div>
+ <div class="panel">
+  <h2>Новая запись</h2>
+  <input id="noteTitle" placeholder="Название записи">
+  <textarea id="noteText" placeholder="Запиши свои мысли, открытия и наблюдения..."></textarea>
+  <button class="btn" onclick="saveNote()">Сохранить в гримуар</button>
+ </div>
+ <div class="panel" style="margin-top:20px">
+  <h2>Мои записи</h2><div id="notes"></div>
+ </div>
+ <p class="muted">Записи сохраняются локально в этом браузере. Для синхронизации между устройствами потребуется отдельное облачное хранилище.</p>
 </section>
 
 </main>
+</div>
 
-<footer>
-  <div class="divider">✧ ☾ ✧</div>
-  ГРИМУАР ЛУНЫ<br>
-  Книга звёздных тайн и ночных откровений<br>
-  Все тексты предназначены для вдохновения и развлечения.
-  <br>© 2026
-</footer>
+<div id="modal" style="display:none;position:fixed;inset:0;background:#000b;z-index:30;align-items:center;justify-content:center;padding:20px">
+ <div class="panel" style="max-width:600px;width:100%">
+  <button class="btn" style="float:right" onclick="closeModal()">Закрыть ✕</button>
+  <h2 id="modalTitle"></h2><p id="modalText"></p>
+ </div>
+</div>
 
 <script>
-const signs = [
- {name:"Овен",symbol:"♈",dates:"21 марта — 19 апреля"},
- {name:"Телец",symbol:"♉",dates:"20 апреля — 20 мая"},
- {name:"Близнецы",symbol:"♊",dates:"21 мая — 20 июня"},
- {name:"Рак",symbol:"♋",dates:"21 июня — 22 июля"},
- {name:"Лев",symbol:"♌",dates:"23 июля — 22 августа"},
- {name:"Дева",symbol:"♍",dates:"23 августа — 22 сентября"},
- {name:"Весы",symbol:"♎",dates:"23 сентября — 22 октября"},
- {name:"Скорпион",symbol:"♏",dates:"23 октября — 21 ноября"},
- {name:"Стрелец",symbol:"♐",dates:"22 ноября — 21 декабря"},
- {name:"Козерог",symbol:"♑",dates:"22 декабря — 19 января"},
- {name:"Водолей",symbol:"♒",dates:"20 января — 18 февраля"},
- {name:"Рыбы",symbol:"♓",dates:"19 февраля — 20 марта"}
+const signs=[
+{name:'Овен',symbol:'♈',dates:'21.03 – 19.04',element:'Огонь',planet:'Марс',desc:'Энергичный, инициативный и прямолинейный знак. В астрологической традиции связан с началом, смелостью и действием.'},
+{name:'Телец',symbol:'♉',dates:'20.04 – 20.05',element:'Земля',planet:'Венера',desc:'Знак устойчивости, чувственности и постоянства. Его символика связана с плодородием, материальным миром и природой.'},
+{name:'Близнецы',symbol:'♊',dates:'21.05 – 20.06',element:'Воздух',planet:'Меркурий',desc:'Символ общения, обмена знаниями, любознательности и двойственности.'},
+{name:'Рак',symbol:'♋',dates:'21.06 – 22.07',element:'Вода',planet:'Луна',desc:'Связан с домом, памятью, заботой и эмоциональным миром.'},
+{name:'Лев',symbol:'♌',dates:'23.07 – 22.08',element:'Огонь',planet:'Солнце',desc:'Символ творчества, достоинства, жизненной силы и самовыражения.'},
+{name:'Дева',symbol:'♍',dates:'23.08 – 22.09',element:'Земля',planet:'Меркурий',desc:'Связана с анализом, вниманием к деталям, порядком и ремеслом.'},
+{name:'Весы',symbol:'♎',dates:'23.09 – 22.10',element:'Воздух',planet:'Венера',desc:'Символ равновесия, союза, красоты и поиска справедливости.'},
+{name:'Скорпион',symbol:'♏',dates:'23.10 – 21.11',element:'Вода',planet:'Плутон / Марс',desc:'В астрологической символике связан с глубиной, тайной, преобразованием и силой воли.'},
+{name:'Стрелец',symbol:'♐',dates:'22.11 – 21.12',element:'Огонь',planet:'Юпитер',desc:'Символ пути, исследования, мировоззрения и стремления к знаниям.'},
+{name:'Козерог',symbol:'♑',dates:'22.12 – 19.01',element:'Земля',planet:'Сатурн',desc:'Связан с дисциплиной, временем, ответственностью и достижением цели.'},
+{name:'Водолей',symbol:'♒',dates:'20.01 – 18.02',element:'Воздух',planet:'Уран / Сатурн',desc:'Символ идей, сообщества, независимости и обновления.'},
+{name:'Рыбы',symbol:'♓',dates:'19.02 – 20.03',element:'Вода',planet:'Нептун / Юпитер',desc:'Связаны с воображением, состраданием, снами и внутренним миром.'}
+];
+const forecasts=[
+'Сегодня стоит уделить внимание своим намерениям. Не торопись: ясность придёт вместе со спокойствием.',
+'День подходит для общения и новых идей. Прислушайся к тому, что раньше оставалось незамеченным.',
+'Обрати внимание на близких. Маленький поступок может оказаться важнее громких слов.',
+'Сохраняй равновесие между желаниями и обязанностями. Не каждый вызов требует немедленного ответа.',
+'Время проявить творческую сторону. Позволь себе сделать первый шаг к тому, что давно откладывалось.',
+'Терпение и внимание к деталям помогут увидеть решение. Не недооценивай маленькие достижения.',
+'День напоминает о важности гармонии. Честный разговор может рассеять давнее недопонимание.',
+'Не бойся перемен, но не принимай решения под влиянием мгновения. Сила начинается с осознанности.',
+'Перед тобой может открыться новый путь. Сохраняй любознательность и проверяй свои предположения.',
+'Последовательность важнее скорости. Раздели большую задачу на несколько небольших шагов.',
+'Необычная идея заслуживает внимания. Запиши её, прежде чем она растворится в повседневности.',
+'Дай место воображению, но не забывай о реальности. Твоя чуткость может стать источником мудрого решения.'
+];
+const dailyMessages=[
+'Даже самая долгая ночь уступает место рассвету. Береги внутренний огонь.',
+'Не ищи все ответы сразу. Иногда дорога открывается шаг за шагом.',
+'Твоя сила не нуждается в доказательствах. Позволь ей проявиться в поступках.',
+'Там, где заканчивается страх, начинается возможность увидеть новый путь.',
+'Слушай тишину: в ней порой яснее всего слышно собственное сердце.'
+];
+const secretMessages=[
+'Не всякая закрытая дверь означает отказ. Иногда она бережёт тебя от неверного пути.',
+'То, что растёт медленно, часто пускает самые крепкие корни.',
+'Не отдавай свой свет тем, кто требует от тебя погаснуть.',
+'Старые страхи теряют власть, когда ты перестаёшь прятаться от перемен.',
+'Вспомни о том, что придавало тебе силу. Возможно, это ближе, чем кажется.'
 ];
 
-const forecasts = [
- "Сегодня твоя энергия способна открыть двери, которые раньше казались закрытыми. Не бойся сделать первый шаг, но выбирай направление сердцем.",
- "Звёзды напоминают: настоящая сила живёт в спокойствии. Удели внимание дому, близким и тому, что приносит тебе чувство устойчивости.",
- "День может принести интересную мысль или неожиданную встречу. Не отмахивайся от маленьких совпадений — иногда они становятся началом большого пути.",
- "Твоя чувствительность сегодня станет даром. Прислушайся к интуиции, но не забывай защищать собственные границы.",
- "Сегодня время проявить себя. Не прячь таланты и не позволяй чужим сомнениям заглушить твой внутренний свет.",
- "Внимание к мелочам поможет увидеть то, что другие пропускают. Заверши начатое и освободи место для новых возможностей.",
- "Ищи равновесие между собственными желаниями и ожиданиями окружающих. Не обязательно соглашаться со всеми, чтобы сохранить мир.",
- "День подходит для глубоких размышлений и честных решений. Отпусти то, что давно перестало приносить тебе пользу.",
- "Перед тобой может открыться необычный путь. Сохрани любопытство и не бойся учиться новому.",
- "Терпение сегодня станет твоим главным союзником. Даже маленькое движение вперёд приближает тебя к большой цели.",
- "Необычная идея может оказаться ценнее привычного плана. Дай воображению свободу и запиши всё, что придёт в голову.",
- "Твоя душа нуждается в тишине и вдохновении. Не торопись с ответами: иногда мудрость приходит именно в паузе."
-];
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+ document.getElementById('sidebar').classList.remove('open');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
 
-const dailyMessages = [
- "Сегодня вселенная словно приоткрывает тяжёлую завесу. Не ищи ответы во внешнем мире, пока не услышишь собственный голос.",
- "Даже самая долгая ночь заканчивается рассветом. Не отказывайся от надежды, если путь кажется непростым.",
- "Всё, что уходит, освобождает место для нового. Не держись за двери, которые судьба уже закрыла.",
- "Внимательно наблюдай за знаками вокруг. Иногда самое важное послание приходит в самой простой форме.",
- "Сегодня твоя сила — в выборе. Не позволяй страху решать за тебя.",
- "Береги свою энергию. Не каждый зов требует ответа и не каждая битва достойна твоего участия.",
- "Позволь мечтам стать немного смелее. Мир меняется с того момента, когда ты решаешь поверить в возможность."
-];
+function showInfo(title,text){
+ document.getElementById('modalTitle').textContent=title;
+ document.getElementById('modalText').textContent=text;
+ document.getElementById('modal').style.display='flex';
+}
+function closeModal(){document.getElementById('modal').style.display='none'}
 
-const rituals = [
- "Зажги свечу или включи мягкий свет. Сделай три глубоких вдоха. Назови про себя одно желание, которому хочешь посвятить сегодняшний день.",
- "Возьми лист бумаги и запиши то, от чего хочешь освободиться. Затем сложи лист и убери его подальше. Это символический жест отпускания прошлого.",
- "Налей стакан чистой воды. Посмотри на её поверхность и подумай о спокойствии, которое хочешь сохранить внутри себя.",
- "Открой окно и впусти свежий воздух. Представь, как вместе с ним в твою жизнь приходит обновление.",
- "Перед сном запиши три вещи, за которые благодарна этому дню. Даже маленькие события могут скрывать большое значение."
-];
-
-const secrets = [
- "Не всякая тень означает опасность. Иногда именно в темноте рождается самый яркий свет.",
- "Твоя история ещё не завершена. Самые важные страницы могут быть впереди.",
- "Не сравнивай свой путь с чужим. У каждой души собственное время расцвета.",
- "То, что ты ищешь, иногда находится ближе, чем кажется. Загляни внутрь себя.",
- "Смелость — это не отсутствие страха, а способность идти вперёд, несмотря на него.",
- "Не забывай: ты имеешь право начинать заново столько раз, сколько потребуется."
-];
-
-const date = new Date();
-const dayNumber = Math.floor(Date.UTC(
- date.getFullYear(),date.getMonth(),date.getDate()
-)/86400000);
-
-function dailyPick(arr,offset=0) {
- return arr[((dayNumber+offset)%arr.length+arr.length)%arr.length];
+function renderSigns(){
+ const makeCard=(s,fn)=>`<div class="card" onclick="${fn}('${s.name}')"><div class="zodiac-art">${s.symbol}</div><h3>${s.name}</h3><p>${s.dates}</p><p class="glow">${s.element}</p></div>`;
+ document.getElementById('horoscopeGrid').innerHTML=signs.map(s=>makeCard(s,'selectHoroscope')).join('');
+ document.getElementById('revelationGrid').innerHTML=signs.map(s=>makeCard(s,'selectSign')).join('');
+ document.getElementById('zodiacGallery').innerHTML=signs.map(s=>`<div class="card" onclick="selectSign('${s.name}')"><div class="zodiac-art">${s.symbol}</div><h3>${s.name}</h3><p>${s.element} · ${s.planet}</p><p class="glow">Древний знак зодиака</p></div>`).join('');
+}
+function selectSign(name){
+ const s=signs.find(x=>x.name===name);
+ document.getElementById('signInfo').innerHTML=`<h2>${s.symbol} ${s.name}</h2><div class="zodiac-art">${s.symbol}</div><p>${s.desc}</p><p><b>Стихия:</b> ${s.element}</p><p><b>Планета-покровитель:</b> ${s.planet}</p><p><b>Период:</b> ${s.dates}</p><p class="muted">Это описание традиционной астрологической символики, а не научная характеристика личности.</p>`;
+}
+function selectHoroscope(name){
+ const i=signs.findIndex(x=>x.name===name),s=signs[i];
+ document.getElementById('horoscopeResult').innerHTML=`<h2>${s.symbol} ${s.name}</h2><p class="subtitle glow">${new Date().toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'})}</p><p style="font-size:23px;text-align:center">${forecasts[i]}</p><p class="muted" style="text-align:center">Развлекательный астрологический прогноз.</p>`;
 }
 
-document.getElementById("today").textContent =
- date.toLocaleDateString("ru-RU",{
-  weekday:"long",day:"numeric",month:"long",year:"numeric"
- });
-
-document.getElementById("daily").textContent = dailyPick(dailyMessages);
-
-const lunarAge = (((date.getTime()-Date.UTC(2000,0,6,18,14))/86400000)
- %29.530588 +29.530588)%29.530588;
-
-const phases = [
- ["🌑","Новолуние","Время новых намерений, тишины и внутреннего обновления."],
- ["🌒","Растущий серп","Период первых шагов, планов и зарождения новых идей."],
- ["🌓","Первая четверть","Время действовать, преодолевать сомнения и укреплять намерения."],
- ["🌔","Растущая Луна","Период развития, накопления сил и движения к цели."],
- ["🌕","Полнолуние","Время ярких эмоций, осознаний и подведения промежуточных итогов."],
- ["🌖","Убывающая Луна","Период освобождения от лишнего и завершения старых дел."],
- ["🌗","Последняя четверть","Время переосмысления, очищения пространства и выбора нового пути."],
- ["🌘","Стареющий серп","Период отдыха, спокойствия и подготовки к новому циклу."]
-];
-
-const phaseIndex = Math.round(lunarAge/29.530588*8)%8;
-document.getElementById("moonEmoji").textContent=phases[phaseIndex][0];
-document.getElementById("moonName").textContent=phases[phaseIndex][1];
-document.getElementById("moonText").textContent=phases[phaseIndex][2];
-
-const grid=document.getElementById("signGrid");
-
-signs.forEach((sign,index)=>{
- const button=document.createElement("button");
- button.className="sign";
- button.innerHTML=
-  '<span class="sign-symbol">'+sign.symbol+'</span>'+
-  sign.name+
-  '<span class="sign-dates">'+sign.dates+'</span>';
-
- button.addEventListener("click",()=>{
-  document.querySelectorAll(".sign").forEach(b=>b.classList.remove("active"));
-  button.classList.add("active");
-  document.getElementById("selectedSign").textContent=
-   sign.symbol+" "+sign.name;
-  document.getElementById("forecast").textContent=
-   forecasts[(index+dayNumber)%forecasts.length];
- });
- grid.appendChild(button);
-});
-
-function newRitual(){
- const index=Math.floor(Math.random()*rituals.length);
- document.getElementById("ritual").textContent=rituals[index];
+let currentMonth=new Date().getMonth(),currentYear=new Date().getFullYear();
+const monthNames=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+function moonAge(date){
+ const known=Date.UTC(2000,0,6,18,14);
+ const days=(date.getTime()-known)/86400000;
+ return ((days%29.530588853)+29.530588853)%29.530588853;
 }
-
-document.getElementById("secret").textContent=dailyPick(secrets,3);
-newRitual();
+function moonData(date){
+ const age=moonAge(date),illum=(1-Math.cos(2*Math.PI*age/29.530588853))/2;
+ let name,icon;
+ if(age<1.85||age>27.68){name='Новолуние';icon='🌑'}
+ else if(age<7.38){name='Растущий серп';icon='🌒'}
+ else if(age<9.22){name='Первая четверть';icon='🌓'}
+ else if(age<13.84){name='Растущая Луна';icon='🌔'}
+ else if(age<16.15){name='Полнолуние';icon='🌕'}
+ else if(age<20.76){name='Убывающая Луна';icon='🌖'}
+ else if(age<22.61){name='Последняя четверть';icon='🌗'}
+ else{name='Убывающий серп';icon='🌘'}
+ return {age,illum,name,icon,day:Math.floor(age)+1};
+}
+function renderMoon(){
+ const d=new Date(),m=moonData(d);
+ document.getElementById('moonIcon').textContent=m.icon;
+ document.getElementById('moonName').textContent=m.name;
+ document.getElementById('moonDetails').textContent=`Возраст: ${m.age.toFixed(1)} суток · Освещённость: ${(m.illum*100).toFixed(0)}%`;
+ document.getElementById('lunarDay').textContent=`Ориентировочный лунный день: ${m.day}`;
+ document.getElementById('homeMoon').textContent=m.icon;
+ document.getElementById('homePhase').textContent=m.name;
+ document.getElementById('homeMoonInfo').textContent=`${m.name} · освещённость ${(m.illum*100).toFixed(0)}%`;
+ renderCalendar();
+}
+function changeMonth(n){
+ currentMonth+=n;
+ if(currentMonth<0){currentMonth=11;currentYear--}
+ if(currentMonth>11){currentMonth=0;currentYear++}
+ renderCalendar();
+}
+function renderCalendar(){
+ const first=new Date(currentYear,currentMonth,1);
+ const count=new Date(currentYear,currentMonth+1,0).getDate();
+ let offset=(first.getDay()+6)%7;
+ document.getElementById('monthTitle').textContent=monthNames[currentMonth]+' '+currentYear;
+ let html=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(x=>`<div class="gold" style="text-align:center">${x}</div>`).join('');
+ for(let i=0;i<offset;i++)html+='<div></div>';
+ for(let day=1;day<=count;day++){
+  const dt=new Date(currentYear,currentMonth,day),m=moonData(dt);
+  const today=dt.toDateString()===new Date().toDateString()?'today':'';
+  html+=`<button class="${today}" onclick="selectCalendarDate(${day})">${day}<br><small>${m.icon}</small></button>`;
+ }
+ document.getElementById('calendar').innerHTML=html;
+}
+function selectCalendarDate(day){
+ const dt=new Date(currentYear,currentMonth,day),m=moonData(dt);
+ document.getElementById('selectedDate').textContent=`${dt.toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'})}: ${m.name}, лунный день ${m.day}, освещённость ${(m.illum*100).toFixed(0)}%`;
+}
+function newMessage(){
+ const i=Math.floor(Math.random()*secretMessages.length);
+ document.getElementById('secretText').textContent=secretMessages[i];
+}
+function saveNote(){
+ const title=document.getElementById('noteTitle').value.trim();
+ const body=document.getElementById('noteText').value.trim();
+ if(!title&&!body){alert('Сначала напиши свою запись.');return}
+ const notes=JSON.parse(localStorage.getItem('lunarGrimoireNotes')||'[]');
+ notes.unshift({title:title||'Без названия',body,date:new Date().toLocaleString('ru-RU')});
+ localStorage.setItem('lunarGrimoireNotes',JSON.stringify(notes));
+ document.getElementById('noteTitle').value='';
+ document.getElementById('noteText').value='';
+ renderNotes();
+}
+function renderNotes(){
+ const notes=JSON.parse(localStorage.getItem('lunarGrimoireNotes')||'[]');
+ document.getElementById('notes').innerHTML=notes.length?notes.map((n,i)=>`<div class="card" style="text-align:left;margin:10px 0"><h3>${escapeHTML(n.title)}</h3><small>${escapeHTML(n.date)}</small><p>${escapeHTML(n.body)}</p><button class="btn" onclick="deleteNote(${i})">Удалить</button></div>`).join(''):'<p class="muted">Пока здесь нет записей.</p>';
+}
+function deleteNote(i){
+ const notes=JSON.parse(localStorage.getItem('lunarGrimoireNotes')||'[]');
+ notes.splice(i,1);localStorage.setItem('lunarGrimoireNotes',JSON.stringify(notes));renderNotes();
+}
+function escapeHTML(s){
+ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function init(){
+ const now=new Date();
+ document.getElementById('todayDate').textContent=now.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+ document.getElementById('dailyText').textContent=dailyMessages[Math.floor((now.getFullYear()*366+now.getMonth()*31+now.getDate())%dailyMessages.length)];
+ document.getElementById('horoscopeDate').textContent=now.toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'});
+ renderSigns();renderMoon();renderNotes();
+}
+init();
 </script>
-
 </body>
 </html>
