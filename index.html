@@ -112,32 +112,162 @@ footer{text-align:center;color:#8f94b3;font-size:12px;padding:35px 0}
  main{padding:17px}
  .topline{align-items:flex-start}
 }
-/* ===== ХУДОЖЕСТВЕННОЕ ОФОРМЛЕНИЕ «ГРИМУАРА ЛУНЫ» ===== */
-:root{--bg:#050b20;--panel:#0b1630;--panel2:#172548;--gold:#e8c77b;--silver:#dce9ff;--text:#f4efff;--muted:#b9c6e4;--line:rgba(232,199,123,.62);--violet:#a78bfa;}
-html{scroll-behavior:smooth} body{background:#050a1c url('assets/crystals-candles.jpg') center/cover fixed;color:var(--text);font-family:Georgia,'Times New Roman',serif}
-body:before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,7,20,.94),rgba(5,11,31,.82) 48%,rgba(4,8,24,.9)),radial-gradient(circle at 50% 0,#293c71aa,transparent 55%)}
-.layout{grid-template-columns:260px minmax(0,1fr);max-width:1900px;margin:auto;background:rgba(3,8,24,.30);box-shadow:0 0 90px #000}
-.sidebar{background:linear-gradient(180deg,rgba(5,10,30,.98),rgba(8,13,35,.95)),url('assets/crystals-candles.jpg') center bottom/cover;border-right:1px solid #d9b96c88;box-shadow:12px 0 35px #0008;padding:20px 14px}
-.brand{font-size:26px;color:#f4d78d;text-shadow:0 0 14px #9a6cff,0 2px 4px #000;letter-spacing:1px;padding:12px 4px 22px;border-bottom:1px solid #d6b66e66}.brand:before{content:'☾ ✧';display:block;font-size:38px;color:#c9b8ff;text-shadow:0 0 22px #9b78ff}.brand small{color:#d6d9f2;letter-spacing:3px;margin-top:5px}
-.nav button{position:relative;overflow:hidden;border:1px solid #d9c17a44;border-radius:3px;margin:7px 0;padding:14px 12px;background:linear-gradient(100deg,#111b3be8,#0a1230d9);color:#e8e3f6;font-size:15px;box-shadow:inset 0 0 16px #9e80ff0b;transition:.25s}.nav button:before{content:'✧';color:#e9c979;margin-right:10px}.nav button:hover,.nav button.active{background:linear-gradient(100deg,#563a91,#172957 75%);border-color:#f1d58b;box-shadow:0 0 17px #a77aff88,inset 0 0 16px #d4b3ff33;color:#fff4d3;transform:translateX(3px)}
-main{max-width:1600px;padding:24px clamp(14px,2.4vw,38px);background:linear-gradient(180deg,#07112ad9,#071027c9)}
-.topline{position:sticky;top:0;z-index:8;margin:-24px -20px 24px;padding:17px 20px;background:linear-gradient(90deg,#070d22f2,#111b3df2,#070d22f2);border-bottom:1px solid #d9b96c88;box-shadow:0 8px 25px #0008}.topline span{color:#e3d5ac;letter-spacing:.5px}
-.page{position:relative;isolation:isolate;padding:clamp(16px,2.2vw,30px);margin-bottom:26px;border:1px solid #d7b96e88;border-radius:8px;background:linear-gradient(135deg,rgba(5,12,32,.94),rgba(10,22,48,.86));box-shadow:0 15px 45px #0008,inset 0 0 35px #b5a2ff0b;overflow:hidden}.page:after{content:'✧  ☾  ✧';position:absolute;right:24px;top:18px;color:#d9c17b88;font-size:24px;letter-spacing:12px;pointer-events:none}
-h1{font-size:clamp(32px,4vw,54px);color:#f3d48d;text-shadow:0 2px 5px #000,0 0 18px #9e75ff77;text-align:center;margin:12px 0 20px}h2{color:#f1d48e;text-shadow:0 0 12px #b48cff44;border-bottom:1px solid #d9bd7770;padding-bottom:10px}h3{color:#e9d49d}p{color:#e8e9f6}.lead{font-size:18px;color:#d6def4}
-.eyebrow{text-align:center;color:#c6b4ff;letter-spacing:4px;text-shadow:0 0 12px #9b75ff;text-transform:uppercase}.card,.detail{position:relative;background:linear-gradient(145deg,rgba(9,20,48,.94),rgba(15,25,54,.91));border:1px solid #d7bb7c99;border-radius:5px;padding:20px;box-shadow:inset 0 0 28px #b4a1ff12,0 8px 24px #0006}.card:before,.detail:before{content:'✦';position:absolute;top:5px;left:9px;color:#e7ca83;opacity:.8}.card button,.action{background:linear-gradient(135deg,#39275f,#172a53);border:1px solid #e4c77c;color:#fff0c9;border-radius:3px;padding:11px 17px;box-shadow:0 0 12px #9474d833}.card button:hover,.action:hover{background:linear-gradient(135deg,#7450a5,#263f76);box-shadow:0 0 18px #b69aff88}
-.pill{border-color:#c9a95c;color:#f1d998;background:#111c3c}.fact,.warning{background:#111d3beF;border-color:#e1c77d;color:#e7e5f2}.warning{border-left-color:#a99af4}
-.home-hero{position:relative;min-height:560px;padding:50px 32px 35px;border:1px solid #edcf82;border-radius:7px;overflow:hidden;background:linear-gradient(90deg,rgba(5,10,27,.10),rgba(5,10,27,.25)),url('assets/witch-orb.jpg') left center/auto 100% no-repeat, url('assets/moon-castle.jpg') right center/auto 100% no-repeat,radial-gradient(ellipse at center,#263a70,#070d23 72%);box-shadow:inset 0 0 80px #0009,0 0 30px #8f73db33}.home-hero:after{content:'✧';position:absolute;right:5%;top:10%;font-size:90px;color:#f4d58b99;text-shadow:0 0 25px #fff}.home-hero h1{margin-top:24px;font-size:clamp(38px,5vw,68px);text-shadow:0 4px 8px #000,0 0 24px #b38aff}.home-hero p{max-width:760px;text-shadow:0 2px 5px #000;background:#07122bb0;border:1px solid #d9bc7777;border-radius:4px;padding:10px 18px}.home-hero .symbol-row{font-size:34px;color:#e9d08d;text-shadow:0 0 18px #a78bfa}.home-block{margin-top:34px}.home-block>.card{padding:26px}.home-message{background:linear-gradient(90deg,#0b1737eF,#1c1942eF),url('assets/seal-sanctum.jpg') center/cover}.home-message .message-text{font-size:22px;color:#f8e6b5;text-shadow:0 2px 5px #000}
-#zodiac{background:linear-gradient(90deg,#071027ee,#071027c9),url('assets/witch-orb.jpg') right top/auto 100% no-repeat,#08132c}#zodiacGrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.zodiac-card{position:relative;min-height:225px!important;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:16px 10px 14px!important;border:1px solid #e8c77c!important;border-radius:4px!important;background-color:#101b39!important;background-size:cover!important;background-position:center!important;box-shadow:inset 0 -100px 65px #03091beF,0 6px 18px #0008!important}.zodiac-card:after{content:'';position:absolute;inset:4px;border:1px solid #f0d99a88;pointer-events:none}.zodiac-card .symbol{font-size:38px!important;color:#f5d98f!important;text-shadow:0 0 12px #000}.zodiac-card strong{font-size:22px;color:#fff0c5;text-shadow:0 2px 5px #000}.zodiac-card .muted,.zodiac-card .pill{position:relative;z-index:1}.zodiac-card:nth-child(1){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-aries.jpg')!important}.zodiac-card:nth-child(2){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-taurus.jpg')!important}.zodiac-card:nth-child(3){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-gemini.jpg')!important}.zodiac-card:nth-child(4){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-cancer.jpg')!important}.zodiac-card:nth-child(5){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-leo.jpg')!important}.zodiac-card:nth-child(6){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-virgo.jpg')!important}.zodiac-card:nth-child(7){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-libra.jpg')!important}.zodiac-card:nth-child(8){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-scorpio.jpg')!important}.zodiac-card:nth-child(9){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-sagittarius.jpg')!important}.zodiac-card:nth-child(10){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-capricorn.jpg')!important}.zodiac-card:nth-child(11){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-aquarius.jpg')!important}.zodiac-card:nth-child(12){background-image:linear-gradient(0deg,#03091bee,transparent 75%),url('assets/zodiac-pisces.jpg')!important}.zodiac-card.selected{box-shadow:0 0 24px #f4d27d99!important;transform:translateY(-3px)}
-#moon{background:linear-gradient(90deg,#06132bdc,#07122b99),url('assets/crystal-moon.jpg') right center/auto 100% no-repeat,#08142d}#moon .card:first-child{background:linear-gradient(145deg,#0d1c3cdd,#182b50dd),url('assets/crystal-moon.jpg') center/cover}#moon .symbol{font-size:76px;text-shadow:0 0 25px #dceaff}
-#history{background:linear-gradient(90deg,#041b1bdf,#08291fe0),url('assets/emerald-library.jpg') right center/auto 100% no-repeat,#08231e}#history .card,#history .detail{border-color:#c5a45e;background:linear-gradient(145deg,#0a3028ed,#0b1e24ed)}
-#amulets{background:linear-gradient(90deg,#061b18df,#08251be0),url('assets/druid-grove.jpg') right center/auto 100% no-repeat,#08251d}#amulets .card,#amulets .detail{border-color:#c6ad70;background:linear-gradient(145deg,#10382ced,#0a241fed)}
-#message{background:linear-gradient(90deg,#07132de8,#0a1430c9),url('assets/seal-sanctum.jpg') center/cover fixed}#message .home-message{min-height:340px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(90deg,#07132acc,#0a1430bb),url('assets/seal-sanctum.jpg') center/cover}
-#grimoire{background:linear-gradient(90deg,#160f23e8,#0c142be0),url('assets/emerald-library.jpg') right center/auto 100% no-repeat,#101325}#grimoire .card{background:linear-gradient(145deg,#251a32ed,#0d1931ed)}
-#horoscope{background:linear-gradient(90deg,#07132de8,#09132ed9),url('assets/moon-castle.jpg') right center/auto 100% no-repeat,#07122a}
-input,textarea,select{background:#070f25;border:1px solid #d6b96e;color:#f8f2e6}footer{color:#d9c68f;border-top:1px solid #d9b96c55;margin-top:28px}
-@media(max-width:1000px){#zodiacGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.home-hero{background-position:left center,right center;background-size:auto 80%,auto 80%}}
-@media(max-width:700px){.layout{display:block}.sidebar{left:-280px;width:270px}.sidebar.open{left:0}main{padding:12px}.topline{margin:-12px -12px 15px;padding:13px}.page{padding:13px}.home-hero{min-height:420px;background-position:left center,right center;background-size:auto 65%,auto 65%;padding:22px 14px}.home-hero h1{font-size:36px}#zodiacGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.zodiac-card{min-height:185px!important}.page:after{display:none}}
 
+/* ===== ЧИСТАЯ ВИЗУАЛЬНАЯ СИСТЕМА: БЕЗ СКРИНШОТОВ И ПОВТОРНЫХ ФОНОВ ===== */
+:root{
+ --bg:#071126;--panel:#101d3a;--panel2:#19294a;--gold:#e6c987;--silver:#dce9f8;
+ --text:#f3eff8;--muted:#c0c9df;--line:rgba(224,190,120,.58);
+ --violet:#a99ad9;--ice:#a9d9ed;--emerald:#9dc9a9;
+}
+html{scroll-behavior:smooth;background:#050b1b}
+body{background:radial-gradient(ellipse at 50% -10%,#263c69 0,#101d3b 35%,#060d20 78%);color:var(--text)}
+.layout{grid-template-columns:260px minmax(0,1fr);max-width:1900px;margin:0 auto;background:transparent}
+.sidebar{background:linear-gradient(180deg,#08132b 0%,#0b1730 55%,#10182e 100%);border-right:1px solid #b99b63;box-shadow:12px 0 34px #0007;padding:22px 14px}
+.brand{font-size:26px;color:#f0d48f;text-shadow:0 0 18px #8e78c9;letter-spacing:.5px;padding:12px 4px 23px;border-bottom:1px solid #b99b6380}
+.brand:before{content:'☾  ✧  ◇';display:block;color:#c8c5f3;font-size:34px;margin-bottom:8px;text-shadow:0 0 20px #b9a8ff}
+.brand small{color:#cbd3e9;letter-spacing:3px;margin-top:8px}
+.nav button{position:relative;border:1px solid #b99b634d;border-radius:3px;margin:7px 0;padding:14px 12px;background:linear-gradient(100deg,#101d3b,#0b1530);color:#e6e5f1;transition:background .2s,border-color .2s,transform .2s}
+.nav button:before{content:'✧';color:#e6c987;margin-right:10px}
+.nav button:hover,.nav button.active{background:linear-gradient(100deg,#493b70,#172b50);border-color:#f0d18a;color:#fff2ce;box-shadow:0 0 16px #9b83c855;transform:translateX(2px)}
+main{max-width:1640px;padding:24px clamp(14px,2.4vw,38px)}
+.topline{position:sticky;top:0;z-index:8;margin:-24px -20px 24px;padding:16px 20px;background:linear-gradient(90deg,#08132bf5,#17264af5,#08132bf5);border-bottom:1px solid #c6a66a;box-shadow:0 8px 22px #0006}
+.topline span{color:#e5d7b7;letter-spacing:.3px}
+.page{position:relative;isolation:isolate;padding:clamp(16px,2.2vw,30px);margin-bottom:26px;border:1px solid #c6a66a;border-radius:5px;background:linear-gradient(145deg,rgba(7,17,39,.97),rgba(12,25,52,.97));box-shadow:0 14px 40px #0006,inset 0 0 32px #a6a0e00a;overflow:hidden}
+.page:before{content:'✧';position:absolute;right:25px;top:13px;color:#e3ca8b66;font-size:28px;pointer-events:none}
+.page:after{content:'☾  ✧  ◇  ✧  ☽';position:absolute;right:24px;bottom:14px;color:#d7c18b45;font-size:13px;letter-spacing:7px;pointer-events:none}
+h1{font-size:clamp(32px,4vw,54px);color:#f1d596;text-shadow:0 2px 5px #000,0 0 18px #8f7acb66;text-align:center;margin:12px 0 20px}
+h2{color:#efd493;text-shadow:0 0 10px #a18acb44;border-bottom:1px solid #c6a66a70;padding-bottom:9px}
+h3{color:#ead6a5}
+p{color:#e8e9f4}.lead{color:#d9e1f2;font-size:18px}.eyebrow{text-align:center;color:#c8b9ef;letter-spacing:4px;text-shadow:0 0 12px #9d83d2;text-transform:uppercase}
+.card,.detail{position:relative;background:linear-gradient(145deg,rgba(16,31,61,.97),rgba(9,20,43,.97));border:1px solid #c6a66a99;border-radius:4px;box-shadow:inset 0 0 22px #a5a0db0c,0 8px 22px #0005}
+.card:before,.detail:before{content:'✦';position:absolute;top:7px;left:10px;color:#e6ca8b99;pointer-events:none}
+.card button,.action{background:linear-gradient(135deg,#3a315f,#172d51);border:1px solid #d7b978;color:#fff0ce;border-radius:3px;box-shadow:0 0 10px #8874bb22}
+.card button:hover,.action:hover{background:linear-gradient(135deg,#68528d,#294773);box-shadow:0 0 16px #b49be955}
+.pill{border-color:#c6a66a;color:#f1d99e;background:#111e3b}.fact,.warning{background:#142344;border-color:#d2b875;color:#e9e7f2}.warning{border-left-color:#a99bd6}
+input,textarea,select{background:#09152e;border:1px solid #c6a66a;color:#f8f3e8}
+footer{color:#d9c68f;border-top:1px solid #c6a66a55;margin-top:28px}
+/* Главная: сценическая композиция создаётся CSS-формами, без картинки с текстом */
+#home .home-hero{position:relative;min-height:420px;padding:48px 28px 36px;border:1px solid #e0c27e;border-radius:5px;overflow:hidden;background:radial-gradient(circle at 78% 30%,#e4d8f333 0 3%,transparent 4%),radial-gradient(circle at 79% 30%,#a9c9e733 0 13%,transparent 13.5%),radial-gradient(ellipse at 80% 95%,#263f69 0 20%,transparent 54%),linear-gradient(110deg,#08142e 0%,#13264b 48%,#08142b 100%);box-shadow:inset 0 0 70px #0008}
+#home .home-hero:before{content:'☾';position:absolute;right:11%;top:5%;font-size:clamp(90px,14vw,180px);line-height:1;color:#e3e8f5;text-shadow:0 0 20px #d7e8ff,0 0 55px #a5bde8;opacity:.78;pointer-events:none}
+#home .home-hero:after{content:'♜     ✦     ♜';position:absolute;right:4%;bottom:7%;font-size:clamp(24px,4vw,52px);letter-spacing:12px;color:#d6c18e;text-shadow:0 0 18px #a18bcb;opacity:.8;pointer-events:none}
+#home .home-hero h1,#home .home-hero p,#home .home-hero .eyebrow,#home .home-hero .symbol-row{position:relative;z-index:1}
+#home .home-hero h1{font-size:clamp(38px,5vw,66px)}
+#home .home-hero p{max-width:760px;text-align:center;margin:14px auto;padding:9px 16px;background:#07132dcc;border:1px solid #c6a66a66}
+#home .home-hero .symbol-row{color:#e8d49c;text-shadow:0 0 15px #a58bdb}
+#home .home-block{margin-top:32px}
+#home .home-block:first-of-type{position:relative}
+#home .home-message{background:radial-gradient(ellipse at 50% 0,#36446a,#111d3a 65%);border:1px solid #d6bb80}
+/* Зодиакальная галерея: карточки самостоятельные, декоративные, без несуществующих jpg */
+#zodiac{background:linear-gradient(145deg,#0b1530,#111b36 55%,#09142b)}
+#zodiacGrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+#zodiacGrid .zodiac-card{position:relative;min-height:220px!important;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:18px 12px!important;overflow:hidden;border:1px solid #c6a66a!important;border-radius:3px!important;background:radial-gradient(ellipse at 50% 20%,#7a689255,transparent 58%),linear-gradient(160deg,#1a2c50,#09152d)!important;box-shadow:inset 0 -85px 55px #030918b8,0 7px 18px #0007!important}
+#zodiacGrid .zodiac-card:before{content:'✧';position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:24px;color:#f0d99c}
+#zodiacGrid .zodiac-card:after{content:'';position:absolute;inset:6px;border:1px solid #e6d19b66;pointer-events:none}
+#zodiacGrid .zodiac-card .symbol{position:relative;z-index:1;font-size:56px!important;color:#f2d997!important;text-shadow:0 0 18px #d6c5ff88}
+#zodiacGrid .zodiac-card strong{position:relative;z-index:1;font-size:22px;color:#fff0c5}
+#zodiacGrid .zodiac-card .muted,#zodiacGrid .zodiac-card .pill{position:relative;z-index:1}
+#zodiacGrid .zodiac-card:nth-child(1){background:radial-gradient(ellipse at 50% 24%,#b85b3e88,transparent 54%),linear-gradient(160deg,#482b36,#11152b)!important}
+#zodiacGrid .zodiac-card:nth-child(2){background:radial-gradient(ellipse at 50% 24%,#8b9b6b88,transparent 54%),linear-gradient(160deg,#253d3b,#101b2b)!important}
+#zodiacGrid .zodiac-card:nth-child(3){background:radial-gradient(ellipse at 50% 24%,#9a8acb88,transparent 54%),linear-gradient(160deg,#352c55,#10172d)!important}
+#zodiacGrid .zodiac-card:nth-child(4){background:radial-gradient(ellipse at 50% 24%,#719bbd88,transparent 54%),linear-gradient(160deg,#183d55,#101a30)!important}
+#zodiacGrid .zodiac-card:nth-child(5){background:radial-gradient(ellipse at 50% 24%,#c28c4388,transparent 54%),linear-gradient(160deg,#533a25,#17182a)!important}
+#zodiacGrid .zodiac-card:nth-child(6){background:radial-gradient(ellipse at 50% 24%,#a9a18b88,transparent 54%),linear-gradient(160deg,#39443d,#111a2a)!important}
+#zodiacGrid .zodiac-card:nth-child(7){background:radial-gradient(ellipse at 50% 24%,#b9a2d888,transparent 54%),linear-gradient(160deg,#3b3154,#11172e)!important}
+#zodiacGrid .zodiac-card:nth-child(8){background:radial-gradient(ellipse at 50% 24%,#a34c6788,transparent 54%),linear-gradient(160deg,#462538,#10152b)!important}
+#zodiacGrid .zodiac-card:nth-child(9){background:radial-gradient(ellipse at 50% 24%,#b27d4c88,transparent 54%),linear-gradient(160deg,#4a352a,#11182b)!important}
+#zodiacGrid .zodiac-card:nth-child(10){background:radial-gradient(ellipse at 50% 24%,#73918b88,transparent 54%),linear-gradient(160deg,#203c3c,#111a2b)!important}
+#zodiacGrid .zodiac-card:nth-child(11){background:radial-gradient(ellipse at 50% 24%,#70a9c888,transparent 54%),linear-gradient(160deg,#1c3d57,#10192e)!important}
+#zodiacGrid .zodiac-card:nth-child(12){background:radial-gradient(ellipse at 50% 24%,#668cb788,transparent 54%),linear-gradient(160deg,#233b58,#10182d)!important}
+#zodiacGrid .zodiac-card.selected{outline:2px solid #f0d18a;box-shadow:0 0 22px #e7ca8b66!important;transform:translateY(-3px)}
+/* Разделы сохраняют собственные палитры и орнамент, но без фоновых изображений */
+#moon{background:radial-gradient(ellipse at 88% 8%,#b7d9f322,transparent 32%),linear-gradient(145deg,#0b1c37,#142b4b 55%,#08152d)}
+#moon .card{background:linear-gradient(145deg,#1b3556,#0d1d39);border-color:#a9cde1}
+#moon .symbol{font-size:76px;color:#d9efff;text-shadow:0 0 25px #b7dfff}
+#history{background:radial-gradient(ellipse at 90% 8%,#72a98722,transparent 35%),linear-gradient(145deg,#092a27,#0c332c 55%,#071e20)}
+#history .card,#history .detail{border-color:#b9a16a;background:linear-gradient(145deg,#123c32,#0a2527)}
+#amulets{background:radial-gradient(ellipse at 85% 10%,#8cbf7b22,transparent 35%),linear-gradient(145deg,#0b2b24,#12382c 55%,#071e1c)}
+#amulets .card,#amulets .detail{border-color:#c6ad70;background:linear-gradient(145deg,#174334,#0a2823)}
+#message{background:radial-gradient(ellipse at 50% 8%,#8d7bbd33,transparent 38%),linear-gradient(145deg,#101735,#151d40 55%,#08132d)}
+#message .home-message{min-height:300px;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at 50% 0,#4b4774,#171e42 65%,#0b1733);border:1px solid #c9b4e4}
+#horoscope{background:radial-gradient(ellipse at 90% 5%,#a8b7e522,transparent 35%),linear-gradient(145deg,#0b1632,#172448 55%,#08142b)}
+/* Декоративные панели и адаптивность */
+.weekday button{background:#18294a;border:1px solid #c6a66a;color:#f0e6ce}
+.weekday button.active{background:#665438;color:#fff0c8}
+.item-button{background:#152849;border-color:#bda36e}
+@media(max-width:1000px){#zodiacGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:800px){.layout{display:block}.sidebar{position:fixed;left:-280px;top:0;width:270px;height:100vh;transition:left .25s}.sidebar.open{left:0}.menu-toggle{display:inline-block}main{padding:12px}.topline{margin:-12px -12px 15px;padding:13px}.page{padding:14px}#home .home-hero{min-height:350px;padding:25px 14px}#home .home-hero:before{right:5%;top:14%;font-size:100px}#home .home-hero:after{font-size:22px;letter-spacing:5px}#zodiacGrid{grid-template-columns:repeat(2,minmax(0,1fr))}#zodiacGrid .zodiac-card{min-height:185px!important}}
+@media(max-width:420px){#zodiacGrid{grid-template-columns:1fr 1fr;gap:9px}#zodiacGrid .zodiac-card{padding:12px 7px!important;min-height:165px!important}#zodiacGrid .zodiac-card .symbol{font-size:44px!important}.topline span{font-size:11px}}
+
+
+/* Zodiac artwork integration — selected second image collection */
+.zodiac-card{
+ position:relative;
+ isolation:isolate;
+ background:#081326!important;
+ display:flex;
+ flex-direction:column;
+ justify-content:flex-end;
+ overflow:hidden;
+}
+.zodiac-card .zodiac-art{
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ object-position:center;
+ z-index:0;
+ opacity:.94;
+ pointer-events:none;
+ transition:transform .35s ease,opacity .35s ease;
+}
+.zodiac-card:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:1;
+ background:linear-gradient(180deg,rgba(3,8,20,.02) 24%,rgba(3,8,20,.18) 48%,rgba(3,8,20,.94) 100%);
+ pointer-events:none;
+}
+.zodiac-card:after{
+ content:"";
+ position:absolute;
+ inset:7px;
+ border:1px solid rgba(222,187,112,.68);
+ z-index:2;
+ pointer-events:none;
+}
+.zodiac-card:hover .zodiac-art{transform:scale(1.045);opacity:1}
+.zodiac-card .symbol{display:none!important}
+.zodiac-card strong{
+ z-index:3;
+ position:relative;
+ color:#fff0c8!important;
+ text-shadow:0 2px 8px #000,0 0 12px #000;
+ letter-spacing:1px;
+}
+.zodiac-card .muted,.zodiac-card .pill{
+ z-index:3;position:relative;
+ color:#f1e4c8!important;
+ text-shadow:0 1px 6px #000;
+}
+#zodiacGrid .zodiac-card{min-height:250px!important;padding:16px 10px 18px!important}
+#zodiacGrid .zodiac-card .zodiac-art{object-position:center 42%}
+#zodiacGrid .zodiac-card:before{background:linear-gradient(180deg,rgba(3,8,20,.02) 15%,rgba(3,8,20,.08) 45%,rgba(3,8,20,.95) 100%)}
+.zodiac-portrait{
+ display:block;width:min(100%,420px);aspect-ratio:1/1;object-fit:cover;
+ border:1px solid #c6a66a;border-radius:8px;margin:0 auto 18px;
+ box-shadow:0 12px 35px #0009;
+}
+@media(max-width:800px){#zodiacGrid .zodiac-card{min-height:205px!important}}
+@media(max-width:420px){#zodiacGrid .zodiac-card{min-height:175px!important}}
+
+
+/* Утверждённые тематические иллюстрации */
+.section-art{display:block;width:min(100%,920px);max-height:330px;object-fit:cover;margin:22px auto 28px;border-radius:18px;border:1px solid rgba(201,174,111,.55);box-shadow:0 12px 38px rgba(0,0,0,.42),0 0 22px rgba(88,122,173,.18)}
+.home-art{width:min(100%,980px);max-height:360px;object-fit:cover;object-position:center 48%;margin:0 auto 22px;border-radius:18px;border:1px solid rgba(201,174,111,.6);box-shadow:0 12px 38px rgba(0,0,0,.45)}
+.home-cosmic{display:block;width:min(100%,980px);max-height:170px;object-fit:cover;margin:22px auto 0;border-radius:14px;opacity:.9;border:1px solid rgba(201,174,111,.35)}
+@media(max-width:700px){.section-art{max-height:240px;margin:16px auto 22px}.home-art{max-height:240px}.home-cosmic{max-height:120px}}
 </style>
 </head>
 <body>
@@ -152,21 +282,22 @@ input,textarea,select{background:#070f25;border:1px solid #d6b96e;color:#f8f2e6}
   <button data-page="amulets">♧ Амулеты и обереги</button>
   <button data-page="message">✧ Тайное послание</button>
   <button data-page="horoscope">☼ Архив гороскопов</button>
-  <button data-page="grimoire">▤ Гримуар</button>
  </nav>
 </aside>
 
 <main>
 <div class="topline">
  <button class="action menu-toggle" id="menuToggle">☰ Разделы</button>
- <span class="topline-title">✧ Книга символов, истории и небесных знаний ✧</span>
+ <span>Книга символов, истории и небесных знаний</span>
  <span id="today"></span>
 </div>
 
 <!-- ГЛАВНАЯ -->
 <section class="page active" id="home">
  <div class="home-hero">
-  <div class="eyebrow">✧ Добро пожаловать в хранилище знаний ✧</div>
+  <img class="home-art" src="illustrations/home-main.png" alt="Главная иллюстрация Гримуара Луны">
+  <img class="home-cosmic" src="illustrations/cosmic-sacred-geometry.png" alt="Космическая сакральная геометрия">
+  <div class="eyebrow">Добро пожаловать в хранилище знаний</div>
   <h1>✧ Гримуар Луны ✧</h1>
   <div class="symbol-row">☾ ✧ ♆ ✧ ☉</div>
   <p>Книга древних символов, небесных циклов, исторических традиций и личных открытий.</p>
@@ -201,7 +332,6 @@ input,textarea,select{background:#070f25;border:1px solid #d6b96e;color:#f8f2e6}
    <div class="card"><h3>☾ Лунный календарь</h3><p>Фазы Луны и календарная справка.</p><button data-go="moon">Открыть</button></div>
    <div class="card"><h3>❖ Древняя астрология</h3><p>История небесных традиций разных народов.</p><button data-go="history">Открыть</button></div>
    <div class="card"><h3>♧ Амулеты и обереги</h3><p>Предметы, символы и защитные традиции.</p><button data-go="amulets">Открыть</button></div>
-   <div class="card"><h3>▤ Гримуар</h3><p>Личные записи и наблюдения.</p><button data-go="grimoire">Открыть</button></div>
   </div>
  </div>
 </section>
@@ -220,6 +350,7 @@ input,textarea,select{background:#070f25;border:1px solid #d6b96e;color:#f8f2e6}
 <section class="page" id="moon">
  <div class="eyebrow">Небесный календарь</div><h1>Лунный календарь</h1>
  <p class="lead">Наблюдение за лунным циклом и его основными фазами.</p>
+ <img class="section-art" src="illustrations/moon-phases.jpg" alt="Иллюстрация фаз Луны">
  <div class="grid">
   <div class="card"><h3>☾ Луна</h3><div class="symbol" id="moonSymbol">◐</div><h2 id="moonPhase">Фаза Луны</h2><p id="moonAge"></p><p id="moonIllum"></p></div>
   <div class="card"><h3>Календарная дата</h3><input type="date" id="moonDate"><p id="moonInfo"></p></div>
@@ -239,6 +370,7 @@ input,textarea,select{background:#070f25;border:1px solid #d6b96e;color:#f8f2e6}
  <div class="eyebrow">Историческая библиотека</div>
  <h1>Древняя астрология и небесные традиции</h1>
  <p class="lead">От Вавилона и Египта до народов Восточной Европы, Поволжья, Урала, Сибири и Кавказа. История того, как люди наблюдали за небом, измеряли время и представляли устройство мира.</p>
+ <img class="section-art" src="illustrations/ancient-astrology.png" alt="Хрустальный дворец древней астрологии">
  <div class="warning">Не все культуры использовали астрологию в современном смысле. У многих существовали собственные календари, мифы о небесных светилах, сезонные обряды и способы ориентирования по звёздам. Мы не будем искусственно превращать их в западный зодиак.</div>
  <div class="grid" id="historyCards"></div>
  <div class="detail" id="historyDetail"><p class="muted">Выбери историческую традицию, чтобы открыть подробную главу.</p></div>
@@ -256,6 +388,7 @@ input,textarea,select{background:#070f25;border:1px solid #d6b96e;color:#f8f2e6}
  <div class="eyebrow">Предметы веры и повседневной жизни</div>
  <h1>Амулеты и обереги</h1>
  <p class="lead">Историческая коллекция защитных предметов, украшений, печатей и символов разных культур.</p>
+ <img class="section-art" src="illustrations/amulets-rune-circle.png" alt="Рунический круг для раздела амулетов и оберегов">
  <div class="warning">Защитные свойства описываются как верования людей соответствующей эпохи, а не как доказанное действие предметов. Не каждый древний предмет был амулетом: назначение определяется по контексту находки и письменным свидетельствам.</div>
  <div class="grid" id="amuletCards"></div>
  <div class="detail" id="amuletDetail"><p class="muted">Выбери предмет из коллекции.</p></div>
@@ -265,6 +398,7 @@ input,textarea,select{background:#070f25;border:1px solid #d6b96e;color:#f8f2e6}
 <section class="page" id="message">
  <div class="eyebrow">Зал древних печатей</div><h1>Тайное послание</h1>
  <p class="lead">Здесь можно посмотреть сегодняшнее послание и историю ранее показанных текстов.</p>
+ <img class="section-art" src="illustrations/secret-message.jpg" alt="Книга заклинаний и волшебные предметы">
  <div class="card home-message">
   <div class="symbol-row">☾ ✧ ◈ ✧ ☽</div>
   <h2 id="archiveSecretTitle"></h2>
@@ -281,26 +415,14 @@ input,textarea,select{background:#070f25;border:1px solid #d6b96e;color:#f8f2e6}
  <div class="eyebrow">Календарь прогнозов</div>
  <h1>Архив гороскопов</h1>
  <p class="lead">Выбери дату недели и знак, чтобы прочитать прогноз. На главной странице всегда отображается текущий день.</p>
+ <img class="section-art" src="illustrations/daily-horoscope.jpg" alt="Астрологическая иллюстрация для ежедневного гороскопа">
  <div class="weekday" id="archiveWeekDays"></div>
  <div class="grid" id="archiveHoroscopeGrid"></div>
  <div class="detail" id="archiveForecast"><h2>Твой прогноз</h2><p>Выбери знак.</p></div>
  <div class="warning">Астрологические прогнозы являются развлекательными текстами, а не научными предсказаниями.</div>
 </section>
 
-<!-- ЛИЧНЫЙ ГРИМУАР -->
-<section class="page" id="grimoire">
- <div class="eyebrow">Личные записи</div><h1>Гримуар</h1>
- <p class="lead">Сохраняй заметки, наблюдения, идеи и найденные сведения.</p>
- <div class="card">
-  <label>Название записи</label><input id="noteTitle" placeholder="Например: Символика полнолуния">
-  <label>Текст</label><textarea id="noteText" placeholder="Запиши свои мысли..."></textarea>
-  <button class="action" id="saveNote">Сохранить запись</button>
- </div>
- <h2>Мои записи</h2><div id="notes"></div>
- <div class="warning">Записи хранятся только в локальном хранилище этого браузера. Синхронизации с другими устройствами нет.</div>
-</section>
-
-<footer>✧ Гримуар Луны · История, символы и личные записи ✧</footer>
+<footer>✧ Гримуар Луны · История, символы и небесные знания ✧</footer>
 </main>
 </div>
 
@@ -461,9 +583,12 @@ const signs=[
  myth:'Рыбы связаны с греческими мифами об Афродите и Эросе, которые, согласно одной из версий, превратились в рыб, спасаясь от чудовища Тифона. Образ стал символом взаимной связи.'}
 ];
 
+const zodiacArtwork = ["zodiac-icons/01_Aries.png", "zodiac-icons/02_Taurus.png", "zodiac-icons/03_Gemini.png", "zodiac-icons/04_Cancer.png", "zodiac-icons/05_Leo.png", "zodiac-icons/06_Virgo.png", "zodiac-icons/07_Libra.png", "zodiac-icons/08_Scorpio.png", "zodiac-icons/09_Sagittarius.png", "zodiac-icons/10_Capricorn.png", "zodiac-icons/11_Aquarius.png", "zodiac-icons/12_Pisces.png"];
+
 function renderZodiac(){
  $('zodiacGrid').innerHTML=signs.map((s,i)=>`
  <button class="item-button zodiac-card" data-sign="${i}">
+  <img class="zodiac-art" src="${zodiacArtwork[i]}" alt="${s.name}" loading="lazy">
   <span class="symbol">${s.symbol}</span><strong>${s.name}</strong>
   <span class="muted">${s.dates}</span><br>
   <span class="pill">${s.element}</span>
@@ -475,6 +600,7 @@ function showZodiac(i){
  document.querySelectorAll('#zodiacGrid .zodiac-card').forEach((b,n)=>b.classList.toggle('selected',n===i));
  $('zodiacDetail').innerHTML=`
  <div class="eyebrow">${s.dates} · ${s.mode}</div>
+ <img class="zodiac-portrait" src="${zodiacArtwork[i]}" alt="${s.name}">
  <h2>${s.symbol} ${s.name}</h2>
  <p class="intro">${s.intro}</p>
  <div><span class="pill">Стихия: ${s.element}</span><span class="pill">Планета: ${s.planet}</span></div>
@@ -539,13 +665,14 @@ function renderWeek(containerId,selected,handler){
  $(containerId).querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>handler(+b.dataset.day));
 }
 function renderSignButtons(containerId,handler){
- $(containerId).innerHTML=signs.map((s,i)=>`<button class="item-button zodiac-card" data-sign="${i}"><span class="symbol">${s.symbol}</span><strong>${s.name}</strong><span class="muted">${s.dates}</span></button>`).join('');
+ $(containerId).innerHTML=signs.map((s,i)=>`<button class="item-button zodiac-card" data-sign="${i}"><img class="zodiac-art" src="${zodiacArtwork[i]}" alt="${s.name}" loading="lazy"><span class="symbol">${s.symbol}</span><strong>${s.name}</strong><span class="muted">${s.dates}</span></button>`).join('');
  $(containerId).querySelectorAll('[data-sign]').forEach(b=>b.onclick=()=>handler(+b.dataset.sign));
 }
 function showForecast(targetId,signIndex,day){
  const d=dateForDay(day),f=forecastFor(signIndex,d),s=signs[signIndex];
  $(targetId).innerHTML=`
  <div class="forecast-date">${f.date.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</div>
+ <img class="zodiac-portrait" src="${zodiacArtwork[signIndex]}" alt="${s.name}">
  <h2>${s.symbol} ${f.title}</h2><p class="intro">${f.text}</p>
  <div class="rule"></div>
  <h3>Настроение и внутреннее состояние</h3><p>Постарайся замечать собственные чувства и не сравнивать свой путь с чужим. Тебе не обязательно успевать всё сразу.</p>
@@ -915,21 +1042,6 @@ updateMoon(today);
 
 /* ЛИЧНЫЕ ЗАПИСИ */
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function getNotes(){return loadJSON('grimuarNotes',[])}
-function renderNotes(){
- const notes=getNotes();
- $('notes').innerHTML=notes.length?notes.map((n,i)=>`<div class="card"><h3>${escapeHTML(n.title)}</h3><p>${escapeHTML(n.text).replace(/\n/g,'<br>')}</p><small class="muted">${escapeHTML(n.date)}</small><br><button class="action" data-delete-note="${i}">Удалить</button></div>`).join(''):'<p class="muted">Записей пока нет.</p>';
- document.querySelectorAll('[data-delete-note]').forEach(b=>b.onclick=()=>{const a=getNotes();a.splice(+b.dataset.deleteNote,1);saveJSON('grimuarNotes',a);renderNotes()});
-}
-$('saveNote').onclick=()=>{
- const title=$('noteTitle').value.trim(),text=$('noteText').value.trim();
- if(!title||!text){alert('Заполни название и текст записи.');return}
- const notes=getNotes();notes.unshift({title,text,date:fmt(new Date())});
- saveJSON('grimuarNotes',notes);
- $('noteTitle').value='';$('noteText').value='';renderNotes();
-};
-renderNotes();
-
 /* ЗАПУСК */
 renderZodiac();
 renderHistories();
